@@ -9,11 +9,10 @@ import { Home } from "./pages/Home";
 import { Inspiracion } from "./pages/Inspiracion";
 
 export const router = createBrowserRouter(
-    createRoutesFromElements(
-      // Root Route: All navigation will start from here.
-      <Route path="/" element={<Home />} errorElement={<h1>Not found!</h1>} >
-        {/* Nested Routes: Defines sub-routes within the BaseHome component. */}
-        <Route path="inspiracion" element={<Inspiracion />} />
-      </Route>
-    )
+  createRoutesFromElements(
+    <>
+      <Route path="/" element={<Home />} errorElement={<h1>Not found!</h1>} />
+      <Route path="/inspiracion" element={<Inspiracion />} />
+    </>
+  )
 );
