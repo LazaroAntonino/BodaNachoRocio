@@ -291,6 +291,15 @@ const RSVPForm = () => {
 const Inspiracion = () => {
   return (
     <div className="page-wrapper">
+      {/* Imagen principal con texto centrado */}
+      <section className="main-photo-section">
+        <div className="main-photo-wrapper">
+          <img src="https://picsum.photos/1600/600?random=10" alt="Rocío & Nacho" className="main-photo-img" />
+          <div className="main-photo-overlay">
+            <span className="main-photo-text">Rocío & Nacho</span>
+          </div>
+        </div>
+      </section>
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-container">
