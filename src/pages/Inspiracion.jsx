@@ -312,9 +312,22 @@ const Inspiracion = () => {
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-container">
-          <h1 className="hero-title">
-            Queremos compartir contigo el día más feliz de nuestras vidas
-          </h1>
+          <p>A nuestros familiares y amigos…</p>
+          <p>Aunque parezca que fue ayer cuando, con una cena improvisada, unos ceviches y cero expectativas, nuestro querido amigo Nacho —y su incapacidad de renunciar a cualquier plan— nos presentara, lo cierto es que han pasado ya 6 años y hoy estamos felices de recordaros que ¡nos casamos!</p>
+          <p>En Jávea, el 13 de junio de 2026. Lo repetiremos varias veces, para los más despistados.</p>
+          <p>Sabemos que casarnos en Alicante o Madrid habría sido más sencillo, pero confiamos en que nuestra boda sea la excusa perfecta para una escapada de fin de semana que dé por inaugurada nuestra época favorita: ¡el verano! Y nos parecía que no había lugar mejor para hacerlo, que a orillas de nuestro Mediterráneo. Así que, señoras y señores, metan en sus maletas sus mejores galas, pero dejen espacio para la toalla y el bañador.</p>
+          <p>Ahora en serio, estamos muy emocionados por compartir este día con todos vosotros – nuestra familia y amigos más queridos – y queremos daros las gracias, de corazón, a todos los que os desplazáis hasta aquí para acompañarnos —algunos incluso desde el otro lado del océano. Nos hace muchísima ilusión celebrar este día rodeados de tanto cariño.</p>
+          <p>Será un día para celebrar, reírnos mucho y compartir con nuestras personas favoritas este paso tan importante. Mientras tanto, en esta web os iremos contando todo lo que necesitáis saber: dónde, cómo y cuándo, además de daros información sobre horarios, recomendaciones etc. También es la mejor opción para confirmar vuestra asistencia, si queréis utilizar el servicio de autobús o informarnos sobre cualquier intolerancia o alergia que debamos tener en cuenta.</p>
+          <p className="mt-4">Con todo nuestro cariño,<br/>Nacho y Ro</p>
+        </div>
+      </section>
+
+      
+      {/* Gallery Section */}
+      <section className="gallery-section">
+        <div className="section-container">
+          <h2 className="section-title">Hemos preparado todo para que sea un día inolvidable</h2>
+          <ImageSlider />
         </div>
       </section>
 
@@ -337,78 +350,6 @@ const Inspiracion = () => {
           </div>
         </div>
       </section>
-
-      {/* Story Section */}
-      <section className="story-section">
-        <div className="section-container">
-          <div className="story-grid">
-            <div className="story-text-column">
-              <p className="story-paragraph">
-                Toda buena historia comienza con un coqueteo evidente. En este caso un "si pasas por aquí pagas peaje".
-              </p>
-              <p className="story-paragraph">
-                Toda buena historia tiene altos y bajos, cercanías y distancias. Y así, nos tomamos lo de la distancia en serio, y nos tomó 9 años volver a reencontrarnos.
-              </p>
-              <p className="story-paragraph">
-                Algo en todos esos años dejó macerar la forma de amor que sentimos por el otro... lo que nos permite elegirnos día a día de forma libre y poder mirarnos y acompañarnos con más amor, aceptación, paciencia, apañe y ternura.
-              </p>
-            </div>
-            <div className="story-image-column">
-              <div className="story-image-wrapper">
-                <img
-                  src="https://picsum.photos/600/800?random=1"
-                  alt="Pareja"
-                  className="story-img"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      
-
-      {/* Gallery Section */}
-      <section className="gallery-section">
-        <div className="section-container">
-          <h2 className="section-title">Hemos preparado todo para que sea un día inolvidable</h2>
-          <ImageSlider />
-        </div>
-      </section>
-
-      {/* Collaborative Album Section */}
-      <section className="album-section">
-        <div className="section-container">
-          <h2 className="section-title">Sube y comparte tus registros de fotos y videos del día de la boda en nuestro álbum colaborativo.</h2>
-          <a href="#" className="cta-button cta-primary">Ir al álbum</a>
-        </div>
-      </section>
-
-      {/* Playlist Section */}
-      <section className="playlist-section">
-        <div className="section-container">
-          <h2 className="section-title">Agrega las canciones que no pueden faltar en la fiesta en nuestra Playlist colaborativa que compartiremos con el DJ.</h2>
-          <a href="#" className="cta-button cta-secondary">Ir a la playlist</a>
-        </div>
-      </section>
-
-      {/* RSVP Section */}
-      <section className="rsvp-section">
-        <div className="section-container">
-          <h2 className="section-title">Completa el siguiente formulario para saber si contaremos con tu asistencia.</h2>
-          <RSVPForm />
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="footer-section">
-        <div className="section-container">
-          <h2 className="footer-title">¡Te esperamos!</h2>
-          <p className="footer-credits">
-            <a href="http://www.kippisdesign.com/" target="_blank" rel="noopener">Diseño y desarrollo por Kippis Design. Todos los derechos reservados.</a>
-          </p>
-        </div>
-      </footer>
     </div>
   );
 };
