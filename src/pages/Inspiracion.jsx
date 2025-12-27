@@ -311,10 +311,11 @@ const Inspiracion = () => {
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-container">
-          <p>A nuestros familiares y amigos…</p>
-          <p>Aunque parezca que fue ayer cuando, con una cena improvisada, unos ceviches y cero expectativas, nuestro querido amigo Nacho —y su incapacidad de renunciar a cualquier plan— nos presentara, lo cierto es que han pasado ya 6 años y hoy estamos felices de recordaros que ¡nos casamos!</p>
-          <p>En Jávea, el 13 de junio de 2026. Lo repetiremos varias veces, para los más despistados.</p>
-          <p>Sabemos que casarnos en Alicante o Madrid habría sido más sencillo, pero confiamos en que nuestra boda sea la excusa perfecta para una escapada de fin de semana que dé por inaugurada nuestra época favorita: ¡el verano! Y nos parecía que no había lugar mejor para hacerlo, que a orillas de nuestro Mediterráneo. Así que, señoras y señores, metan en sus maletas sus mejores galas, pero dejen espacio para la toalla y el bañador.</p>
+          <h2>A nuestros familiares y amigos…</h2>
+          <p>Aunque parezca que fue ayer cuando, con una cena improvisada, unos ceviches y cero expectativas, nuestro querido amigo Nacho —y su incapacidad de renunciar a cualquier plan— nos presentara, lo cierto es que han pasado ya 6 años y hoy estamos felices de recordaros que <b>¡nos casamos!</b></p>
+          <h3>En Jávea, el 13 de junio de 2026</h3>
+          <p>Lo repetiremos varias veces, para los más despistados.</p>
+          <p>Sabemos que casarnos en Alicante o Madrid habría sido más sencillo, pero confiamos en que nuestra boda sea la excusa perfecta para una escapada de fin de semana que dé por inaugurada nuestra época favorita: <b>¡el verano!</b> Y nos parecía que no había lugar mejor para hacerlo, que a orillas de nuestro Mediterráneo. Así que, señoras y señores, metan en sus maletas sus mejores galas, pero dejen espacio para la toalla y el bañador.</p>
           <p>Ahora en serio, estamos muy emocionados por compartir este día con todos vosotros – nuestra familia y amigos más queridos – y queremos daros las gracias, de corazón, a todos los que os desplazáis hasta aquí para acompañarnos —algunos incluso desde el otro lado del océano. Nos hace muchísima ilusión celebrar este día rodeados de tanto cariño.</p>
           <p>Será un día para celebrar, reírnos mucho y compartir con nuestras personas favoritas este paso tan importante. Mientras tanto, en esta web os iremos contando todo lo que necesitáis saber: dónde, cómo y cuándo, además de daros información sobre horarios, recomendaciones etc. También es la mejor opción para confirmar vuestra asistencia, si queréis utilizar el servicio de autobús o informarnos sobre cualquier intolerancia o alergia que debamos tener en cuenta.</p>
           <p className="mt-4">Con todo nuestro cariño,<br/>Nacho y Ro</p>
