@@ -134,6 +134,164 @@ body, html, #root, .home-container, .home-content, .asistencia-form, .alojamient
   }
 }
 
+/* Modal Invitación Styles */
+.modal-invitacion-overlay {
+  position: fixed;
+  z-index: 9999;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, #111 0%, #3a2e2a 40%, #3a2e2a 60%, #111 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+.modal-carta-sola {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100vw;
+  margin-top: 2.5vh;
+  margin-bottom: -1.5rem;
+  z-index: 2;
+  position: relative;
+}
+.modal-invitacion {
+  background: none;
+  border-radius: 2.2rem;
+  box-shadow: none;
+  padding: 2.5rem 2.2rem 2.2rem 2.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 370px;
+  width: 95vw;
+  position: relative;
+  margin-top: -2.5rem;
+  z-index: 3;
+}
+@media (max-width: 700px) {
+  .modal-carta-sola {
+    margin-bottom: -0.5rem;
+  }
+  .modal-invitacion {
+    margin-top: -2.2rem;
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    max-width: 98vw;
+  }
+  .modal-sobre-img-sinborde {
+    width: 90vw;
+    min-width: 120px;
+    max-width: 98vw;
+  }
+}
+.modal-sobre-img {
+  width: 340px;
+  max-width: 98vw;
+  margin-bottom: 1.2rem;
+  filter: drop-shadow(0 2px 12px #0002);
+  border: 3px solid #c9a96e;
+  border-radius: 1.2rem;
+  box-shadow: 0 0 0 4px #fff8e7;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 600px) {
+  .modal-sobre-img {
+    width: 200px;
+  }
+}
+.modal-sobre-img-grande {
+  width: 340px;
+  max-width: 98vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: -60px;
+  margin-top: 10px;
+  z-index: 1;
+  position: relative;
+  filter: drop-shadow(0 8px 32px #0003);
+}
+@media (max-width: 600px) {
+  .modal-sobre-img-grande {
+    width: 200px;
+    margin-bottom: -30px;
+  }
+}
+.modal-sobre-img-sinborde {
+  width: 520px;
+  max-width: 98vw;
+  margin-bottom: 1.2rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  filter: none;
+  transition: width 0.2s;
+}
+@media (max-width: 900px) {
+  .modal-sobre-img-sinborde {
+    width: 90vw;
+    min-width: 120px;
+    max-width: 98vw;
+  }
+}
+.modal-invitacion-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal-invitacion-ilus {
+  margin-bottom: 0.7rem;
+}
+.modal-invitacion-text {
+  font-family: 'Playwrite France Traditionnelle', cursive;
+  font-size: 1.25rem;
+  color: #3a2e2a;
+  text-align: center;
+  margin-bottom: 1.3rem;
+  line-height: 1.3;
+}
+.modal-invitacion-btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.7rem 2.2rem;
+  font-size: 1.15rem;
+  font-family: 'Playwrite France Traditionnelle', cursive;
+  font-weight: 500;
+  margin-top: 0.7rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 12px #0002;
+}
+.modal-invitacion-btn:hover {
+  background: #c9a96e;
+  color: #222;
+}
+.modal-invitacion-btn.marron {
+  background: #3a2e2a;
+  color: #fff;
+  border: 2.5px solid #111;
+}
+.modal-invitacion-btn.marron:hover {
+  background: #c9a96e;
+  color: #222;
+  border: 2.5px solid #111;
+}
+@media (max-width: 600px) {
+  .modal-invitacion {
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    max-width: 98vw;
+  }
+}
+
 /* Ejemplo de uso de la fuente personalizada:
 .playwrite-fr-trad {
   font-family: 'Playwrite FR Trad', cursive;
