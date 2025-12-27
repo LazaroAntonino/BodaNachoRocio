@@ -1,0 +1,312 @@
+import React, { useEffect, useState } from "react";
+import "./Inspiracion.css";
+
+// Countdown Timer Component
+const Countdown = () => {
+  // Fecha objetivo: 15 de junio de 2026, 17:00
+  const targetDate = new Date(2026, 5, 15, 17, 0, 0).getTime();
+  const [timeLeft, setTimeLeft] = useState({
+    days: "00",
+    hours: "00",
+    minutes: "00",
+    seconds: "00",
+    complete: false,
+  });
+
+  useEffect(() => {
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+      if (distance < 0) {
+        setTimeLeft((prev) => ({ ...prev, complete: true }));
+        return;
+      }
+      setTimeLeft({
+        days: String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, "0"),
+        hours: String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, "0"),
+        minutes: String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, "0"),
+        seconds: String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, "0"),
+        complete: false,
+      });
+    };
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, [targetDate]);
+
+  if (timeLeft.complete) {
+    return (
+      <div className="countdown-wrapper">
+        <div className="countdown-complete">
+          <h3>¡El gran día ha llegado!</h3>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="countdown-wrapper">
+      <div className="countdown-item">
+        <div className="countdown-number">{timeLeft.days}</div>
+        <div className="countdown-label">Días</div>
+      </div>
+      <div className="countdown-item">
+        <div className="countdown-number">{timeLeft.hours}</div>
+        <div className="countdown-label">Horas</div>
+      </div>
+      <div className="countdown-item">
+        <div className="countdown-number">{timeLeft.minutes}</div>
+        <div className="countdown-label">Minutos</div>
+      </div>
+      <div className="countdown-item">
+        <div className="countdown-number">{timeLeft.seconds}</div>
+        <div className="countdown-label">Segundos</div>
+      </div>
+    </div>
+  );
+};
+
+// ImageSlider Component
+const sliderImages = [
+  "https://picsum.photos/1000/750?random=2",
+  "https://picsum.photos/1000/750?random=3",
+  "https://picsum.photos/1000/750?random=4",
+  "https://picsum.photos/1000/750?random=5",
+  "https://picsum.photos/1000/750?random=6",
+];
+
+const ImageSlider = () => {
+  const [current, setCurrent] = useState(0);
+  const length = sliderImages.length;
+  const autoPlayDelay = 5000;
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % length);
+    }, autoPlayDelay);
+    return () => clearInterval(interval);
+  }, [length]);
+
+  const goTo = (idx) => setCurrent(idx);
+  const prev = () => setCurrent((prev) => (prev - 1 + length) % length);
+  const next = () => setCurrent((prev) => (prev + 1) % length);
+
+  return (
+    <div className="gallery-slider">
+      <div className="slider-wrapper">
+        <div className="slider-track" style={{ transform: `translateX(-${current * 100}%)`, display: 'flex', transition: 'transform 0.5s' }}>
+          {sliderImages.map((src, idx) => (
+            <div className="slide-item" key={idx} style={{ minWidth: '100%' }}>
+              <img src={src} alt={`Foto ${idx + 1}`} className="slide-img" />
+            </div>
+          ))}
+        </div>
+      </div>
+      <button className="slider-arrow slider-prev" aria-label="Anterior" onClick={prev}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
+      <button className="slider-arrow slider-next" aria-label="Siguiente" onClick={next}>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
+      <div className="slider-dots">
+        {sliderImages.map((_, idx) => (
+          <span key={idx} className={`dot${current === idx ? ' active' : ''}`} onClick={() => goTo(idx)} aria-label={`Ir a foto ${idx + 1}`}></span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// RSVP Form Component
+const RSVPForm = () => {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    attendance: "",
+    guests: "",
+    message: "",
+  });
+  const [showGuests, setShowGuests] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+    if (name === "attendance") {
+      setShowGuests(value === "yes");
+      if (value !== "yes") setForm((prev) => ({ ...prev, guests: "" }));
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+    // Aquí puedes integrar lógica de envío real (API, email, etc.)
+  };
+
+  if (submitted) {
+    return <div className="rsvp-success">¡Gracias por confirmar tu asistencia!</div>;
+  }
+
+  return (
+    <form className="rsvp-form" onSubmit={handleSubmit}>
+      <div className="form-row">
+        <div className="form-field">
+          <input type="text" name="name" placeholder="Nombre completo" required className="form-input" value={form.name} onChange={handleChange} />
+        </div>
+      </div>
+      <div className="form-row">
+        <div className="form-field">
+          <input type="email" name="email" placeholder="Correo electrónico" required className="form-input" value={form.email} onChange={handleChange} />
+        </div>
+      </div>
+      <div className="form-row">
+        <div className="form-field">
+          <input type="tel" name="phone" placeholder="Teléfono" className="form-input" value={form.phone} onChange={handleChange} />
+        </div>
+      </div>
+      <div className="form-row">
+        <div className="form-field">
+          <select name="attendance" required className="form-select" value={form.attendance} onChange={handleChange}>
+            <option value="">¿Asistirás?</option>
+            <option value="yes">Sí, asistiré</option>
+            <option value="no">No podré asistir</option>
+          </select>
+        </div>
+      </div>
+      {showGuests && (
+        <div className="form-row">
+          <div className="form-field">
+            <input type="number" name="guests" placeholder="Número de acompañantes" min="0" max="10" className="form-input" value={form.guests} onChange={handleChange} />
+          </div>
+        </div>
+      )}
+      <div className="form-row">
+        <div className="form-field">
+          <textarea name="message" placeholder="Mensaje especial (opcional)" rows="4" className="form-textarea" value={form.message} onChange={handleChange}></textarea>
+        </div>
+      </div>
+      <button type="submit" className="cta-button cta-primary form-submit">Enviar confirmación</button>
+    </form>
+  );
+};
+
+const Inspiracion = () => {
+  return (
+    <div className="page-wrapper">
+      {/* Hero Section */}
+      <section className="hero-section">
+        <div className="hero-container">
+          <h1 className="hero-title">
+            Queremos compartir contigo el día más feliz de nuestras vidas
+          </h1>
+        </div>
+      </section>
+
+      {/* Location Section */}
+      <section className="location-section">
+        <div className="section-container">
+          <h2 className="section-title">
+            Carretera B-10, Km 4.3, 30612 Ulea, Murcia.
+          </h2>
+          <div className="map-wrapper">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3143.7!2d-1.4!3d38.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDAyJzAwLjAiTiAxwrAyNCcwMC4wIlc!5e0!3m2!1ses!2ses!4v1234567890"
+              width="100%"
+              height="450"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              title="Ubicación boda"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      {/* Story Section */}
+      <section className="story-section">
+        <div className="section-container">
+          <div className="story-grid">
+            <div className="story-text-column">
+              <p className="story-paragraph">
+                Toda buena historia comienza con un coqueteo evidente. En este caso un "si pasas por aquí pagas peaje".
+              </p>
+              <p className="story-paragraph">
+                Toda buena historia tiene altos y bajos, cercanías y distancias. Y así, nos tomamos lo de la distancia en serio, y nos tomó 9 años volver a reencontrarnos.
+              </p>
+              <p className="story-paragraph">
+                Algo en todos esos años dejó macerar la forma de amor que sentimos por el otro... lo que nos permite elegirnos día a día de forma libre y poder mirarnos y acompañarnos con más amor, aceptación, paciencia, apañe y ternura.
+              </p>
+            </div>
+            <div className="story-image-column">
+              <div className="story-image-wrapper">
+                <img
+                  src="https://picsum.photos/600/800?random=1"
+                  alt="Pareja"
+                  className="story-img"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Countdown Section */}
+      <section className="countdown-section">
+        <div className="section-container">
+          <h2 className="section-title">Ya queda menos para disfrutar este mágico día</h2>
+          <Countdown />
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section className="gallery-section">
+        <div className="section-container">
+          <h2 className="section-title">Hemos preparado todo para que sea un día inolvidable</h2>
+          <ImageSlider />
+        </div>
+      </section>
+
+      {/* Collaborative Album Section */}
+      <section className="album-section">
+        <div className="section-container">
+          <h2 className="section-title">Sube y comparte tus registros de fotos y videos del día de la boda en nuestro álbum colaborativo.</h2>
+          <a href="#" className="cta-button cta-primary">Ir al álbum</a>
+        </div>
+      </section>
+
+      {/* Playlist Section */}
+      <section className="playlist-section">
+        <div className="section-container">
+          <h2 className="section-title">Agrega las canciones que no pueden faltar en la fiesta en nuestra Playlist colaborativa que compartiremos con el DJ.</h2>
+          <a href="#" className="cta-button cta-secondary">Ir a la playlist</a>
+        </div>
+      </section>
+
+      {/* RSVP Section */}
+      <section className="rsvp-section">
+        <div className="section-container">
+          <h2 className="section-title">Completa el siguiente formulario para saber si contaremos con tu asistencia.</h2>
+          <RSVPForm />
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="footer-section">
+        <div className="section-container">
+          <h2 className="footer-title">¡Te esperamos!</h2>
+          <p className="footer-credits">
+            <a href="http://www.kippisdesign.com/" target="_blank" rel="noopener">Diseño y desarrollo por Kippis Design. Todos los derechos reservados.</a>
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export { Inspiracion };
+export default Inspiracion;

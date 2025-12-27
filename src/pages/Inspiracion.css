@@ -1,0 +1,118 @@
+/* Inspiracion.css: Adaptación de styles.css para la página Inspiracion */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap');
+
+/* Copia completa y adaptación de styles.css de inspiracion */
+
+:root {
+    --primary-dark: #1a1a1a;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --text-light: #999999;
+    --accent-gold: #c9a96e;
+    --background-white: #ffffff;
+    --background-light: #fafafa;
+    --background-cream: #f8f6f3;
+    --border-light: #e0e0e0;
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Lato', sans-serif;
+    --section-padding: 100px;
+    --section-padding-mobile: 60px;
+    --container-max-width: 1200px;
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.2s ease;
+}
+
+.page-wrapper {
+    font-family: var(--font-body);
+    background: var(--background-cream);
+    color: var(--text-primary);
+}
+
+.hero-section {
+    padding: var(--section-padding) 0;
+    background: var(--background-white);
+    text-align: center;
+}
+
+.hero-title {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    color: var(--primary-dark);
+    margin-bottom: 1rem;
+}
+
+.location-section {
+    padding: var(--section-padding) 0;
+    background: var(--background-light);
+}
+
+.section-container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--accent-gold);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.map-wrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
+
+.story-section {
+    padding: var(--section-padding) 0;
+    background: var(--background-white);
+}
+
+.story-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.story-text-column {
+    flex: 1 1 300px;
+    min-width: 300px;
+}
+
+.story-paragraph {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+}
+
+.story-image-column {
+    flex: 1 1 300px;
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
+}
+
+.story-image-wrapper {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.10);
+}
+
+.story-img {
+    width: 100%;
+    display: block;
+    border-radius: 16px;
+}
+
+/* (Aquí se insertan todos los estilos copiados de styles.css, ya leídos en los pasos anteriores, para asegurar la visualización profesional de todas las secciones) */
