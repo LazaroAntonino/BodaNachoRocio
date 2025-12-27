@@ -1,3 +1,92 @@
+.countdown-minimal {
+    width: 100%;
+    max-width: 900px;
+    margin: 2.5rem auto 2rem auto;
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+    background: #faf9f6;
+    border-radius: 32px;
+    box-shadow: 0 6px 32px rgba(201,169,110,0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.countdown-minimal-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: #c9a96e;
+    font-weight: 700;
+    margin-bottom: 1.7rem;
+    letter-spacing: 0.04em;
+}
+.countdown-minimal-row {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 2.2rem;
+    width: 100%;
+}
+.countdown-minimal-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 90px;
+}
+.countdown-minimal-number {
+    font-family: var(--font-heading);
+    font-size: 4.2rem;
+    color: #c9a96e;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2rem;
+}
+.countdown-minimal-label {
+    font-size: 1.1rem;
+    color: #bfa16a;
+    font-family: var(--font-body);
+    font-weight: 500;
+    text-transform: lowercase;
+}
+.countdown-minimal-sep {
+    font-size: 3.2rem;
+    color: #e5d3b3;
+    font-weight: 700;
+    align-self: flex-end;
+    margin-bottom: 0.3rem;
+}
+.countdown-minimal-date {
+    margin-top: 2.2rem;
+    font-size: 1.3rem;
+    color: #bfa16a;
+    font-family: var(--font-body);
+    font-weight: 400;
+    letter-spacing: 0.03em;
+}
+
+@media (max-width: 700px) {
+    .countdown-minimal {
+        padding: 1.2rem 0.3rem 1rem 0.3rem;
+        max-width: 99vw;
+    }
+    .countdown-minimal-row {
+        gap: 0.7rem;
+    }
+    .countdown-minimal-block {
+        min-width: 54px;
+    }
+    .countdown-minimal-number {
+        font-size: 2.2rem;
+    }
+    .countdown-minimal-sep {
+        font-size: 1.5rem;
+    }
+    .countdown-minimal-title {
+        font-size: 1.3rem;
+    }
+    .countdown-minimal-date {
+        font-size: 1rem;
+    }
+}
 /* Inspiracion.css: Adaptación de styles.css para la página Inspiracion */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;500;600;700&family=Lato:wght@300;400;700&display=swap');
 
