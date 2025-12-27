@@ -47,7 +47,7 @@ const Countdown = () => {
   return (
     <div className="countdown-minimal">
       <div className="countdown-announcement">
-        <div className="countdown-title">¡Nos casamos!</div>
+        <div className="countdown-title mt-5">¡Nos casamos!</div>
       </div>
       <div className="countdown-minimal-header d-flex flex-column justify-content-center align-items-center">
         <span className="countdown-minimal-date-inline">13 de junio de 2026</span>

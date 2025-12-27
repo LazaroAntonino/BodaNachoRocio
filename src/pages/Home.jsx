@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./Home.css";
 import { useNavigate } from "react-router";
 import { Inspiracion } from "./Inspiracion";
+import { Asistencia } from "./Asistencia";
+import { Horarios } from "./Horarios";
+import { Alojamientos } from "./Alojamientos";
+import { Ubicacion } from "./Ubicacion";
 import Select from 'react-select';
 
 const allergenOptions = [
@@ -149,20 +153,15 @@ export const Home = () => {
 	const renderSection = () => {
 		switch (active) {
 			case "bienvenidos":
-				return (
-					<>
-						{textos.bienvenidos}
-						<Inspiracion />
-					</>
-				);
+				return <Inspiracion />;
 			case "asistencia":
-				return textos.asistencia;
+				return <Asistencia />;
 			case "horarios":
-				return textos.horarios;
+				return <Horarios />;
 			case "alojamientos":
-				return textos.alojamientos;
+				return <Alojamientos />;
 			case "ubicacion":
-				return textos.ubicacion;
+				return <Ubicacion />;
 			case "contacto":
 				return <div className="section-placeholder">Contáctanos (próximamente)</div>;
 			default:
