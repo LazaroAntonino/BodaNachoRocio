@@ -68,52 +68,138 @@ const Countdown = () => {
 
 // ImageSlider Component
 const sliderImages = [
-  "https://picsum.photos/1000/750?random=2",
-  "https://picsum.photos/1000/750?random=3",
-  "https://picsum.photos/1000/750?random=4",
-  "https://picsum.photos/1000/750?random=5",
-  "https://picsum.photos/1000/750?random=6",
+  "https://picsum.photos/1200/800?random=2",
+  "https://picsum.photos/1200/800?random=3",
+  "https://picsum.photos/1200/800?random=4",
+  "https://picsum.photos/1200/800?random=5",
+  "https://picsum.photos/1200/800?random=6",
 ];
 
-const ImageSlider = () => {
+const ImageSlider = ({ autoPlay = true, delay = 5000 }) => {
   const [current, setCurrent] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
   const length = sliderImages.length;
-  const autoPlayDelay = 5000;
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % length);
-    }, autoPlayDelay);
-    return () => clearInterval(interval);
-  }, [length]);
+  const wrapperRef = React.useRef(null);
+  const startXRef = React.useRef(0);
+  const movedRef = React.useRef(false);
 
-  const goTo = (idx) => setCurrent(idx);
+  // Autoplay with pause on hover/focus and when user interacts
+  useEffect(() => {
+    if (!autoPlay || isPaused) return;
+    const id = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % length);
+    }, delay);
+    return () => clearInterval(id);
+  }, [autoPlay, isPaused, delay, length]);
+
+  // Preload current and next image for smoother transitions
+  useEffect(() => {
+    const next = (current + 1) % length;
+    const imgs = [sliderImages[current], sliderImages[next]];
+    imgs.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+  }, [current, length]);
+
+  const goTo = (idx) => {
+    setCurrent(idx % length);
+  };
   const prev = () => setCurrent((prev) => (prev - 1 + length) % length);
   const next = () => setCurrent((prev) => (prev + 1) % length);
 
+  // Keyboard navigation
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.key === "ArrowLeft") prev();
+      if (e.key === "ArrowRight") next();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+  // Touch handlers for swipe
+  const onTouchStart = (e) => {
+    startXRef.current = e.touches[0].clientX;
+    movedRef.current = false;
+    setIsPaused(true);
+  };
+  const onTouchMove = (e) => {
+    const dx = e.touches[0].clientX - startXRef.current;
+    if (Math.abs(dx) > 20) movedRef.current = true;
+  };
+  const onTouchEnd = (e) => {
+    const endX = e.changedTouches[0].clientX;
+    const dx = endX - startXRef.current;
+    if (movedRef.current) {
+      if (dx > 50) prev();
+      else if (dx < -50) next();
+    }
+    setTimeout(() => setIsPaused(false), 300);
+  };
+
   return (
-    <div className="gallery-slider">
+    <div
+      className="gallery-slider"
+      ref={wrapperRef}
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
+      onFocus={() => setIsPaused(true)}
+      onBlur={() => setIsPaused(false)}
+      onTouchStart={onTouchStart}
+      onTouchMove={onTouchMove}
+      onTouchEnd={onTouchEnd}
+    >
       <div className="slider-wrapper">
-        <div className="slider-track" style={{ transform: `translateX(-${current * 100}%)`, display: 'flex', transition: 'transform 0.5s' }}>
+        <div
+          className="slider-track"
+          style={{ transform: `translateX(-${current * 100}%)` }}
+          aria-live="polite"
+        >
           {sliderImages.map((src, idx) => (
             <div className="slide-item" key={idx} style={{ minWidth: '100%' }}>
-              <img src={src} alt={`Foto ${idx + 1}`} className="slide-img" />
+              <img
+                src={src}
+                alt={`Foto ${idx + 1}`}
+                className="slide-img"
+                loading={Math.abs(current - idx) <= 1 ? 'eager' : 'lazy'}
+                decoding="async"
+              />
             </div>
           ))}
         </div>
       </div>
-      <button className="slider-arrow slider-prev" aria-label="Anterior" onClick={prev}>
+
+      <button
+        className="slider-arrow slider-prev"
+        aria-label="Anterior"
+        onClick={prev}
+      >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M15 18l-6-6 6-6"/>
+          <path d="M15 18l-6-6 6-6" />
         </svg>
       </button>
-      <button className="slider-arrow slider-next" aria-label="Siguiente" onClick={next}>
+
+      <button
+        className="slider-arrow slider-next"
+        aria-label="Siguiente"
+        onClick={next}
+      >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-          <path d="M9 18l6-6-6-6"/>
+          <path d="M9 18l6-6-6-6" />
         </svg>
       </button>
-      <div className="slider-dots">
+
+      <div className="slider-dots" role="tablist" aria-label="Selector de imágenes">
         {sliderImages.map((_, idx) => (
-          <span key={idx} className={`dot${current === idx ? ' active' : ''}`} onClick={() => goTo(idx)} aria-label={`Ir a foto ${idx + 1}`}></span>
+          <button
+            key={idx}
+            className={`dot${current === idx ? ' active' : ''}`}
+            onClick={() => goTo(idx)}
+            aria-label={`Ir a foto ${idx + 1}`}
+            aria-selected={current === idx}
+            role="tab"
+          />
         ))}
       </div>
     </div>
