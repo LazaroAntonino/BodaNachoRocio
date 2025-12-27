@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Playwrite+France+Traditionnelle:wght@100..400&display=swap');
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
-body, h1, h2, h3, h4, h5, h6, .navbar-logo, .section-title, .hero-title, .footer-title {
+body, html, #root, .home-container, .home-content, .asistencia-form, .alojamientos-textos, .horarios-textos, .ubicacion-textos, .bienvenidos-textos, .navbar-links a, .pastel-link, .section-placeholder, .form-control, .form-label, .form-text, .btn, .navbar-logo, .main-photo-text, .countdown-title, .countdown-date, .countdown-location, .countdown-minimal-title, .countdown-minimal-header, .alojamientos-textos, .horarios-textos, .ubicacion-textos, .asistencia-textos, .alojamientos-textos, .bienvenidos-textos, .section-title, .footer-title, p, li, ul, ol, label, input, textarea, select {
   font-family: 'Playwrite France Traditionnelle', cursive !important;
   font-optical-sizing: auto;
   font-weight: 400;
