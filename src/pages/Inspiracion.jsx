@@ -46,29 +46,28 @@ const Countdown = () => {
 
   return (
     <div className="countdown-minimal">
-      <div className="countdown-minimal-title">Faltan</div>
-      <div className="countdown-minimal-row">
+      <div className="countdown-minimal-header">
+        <span className="countdown-minimal-title">Faltan</span>
+        <span className="countdown-minimal-date-inline">13 de junio de 2026</span>
+      </div>
+      <div className="countdown-minimal-row d-flex flex-row gap-5 align-content-center text-center">
         <div className="countdown-minimal-block">
           <span className="countdown-minimal-number">{timeLeft.days}</span>
           <span className="countdown-minimal-label">días</span>
         </div>
-        <span className="countdown-minimal-sep">:</span>
         <div className="countdown-minimal-block">
           <span className="countdown-minimal-number">{timeLeft.hours}</span>
           <span className="countdown-minimal-label">horas</span>
         </div>
-        <span className="countdown-minimal-sep">:</span>
         <div className="countdown-minimal-block">
           <span className="countdown-minimal-number">{timeLeft.minutes}</span>
           <span className="countdown-minimal-label">min</span>
         </div>
-        <span className="countdown-minimal-sep">:</span>
         <div className="countdown-minimal-block">
           <span className="countdown-minimal-number">{timeLeft.seconds}</span>
           <span className="countdown-minimal-label">seg</span>
         </div>
       </div>
-      <div className="countdown-minimal-date">13 de junio de 2026</div>
     </div>
   );
 };
