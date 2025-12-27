@@ -82,6 +82,58 @@ body, html, #root, .home-container, .home-content, .asistencia-form, .alojamient
 	}
 }
 
+/* Horarios Textos Styles */
+.horarios-textos .row {
+  justify-content: center;
+  align-items: flex-start;
+}
+.horarios-textos .col-md-6 {
+  background: none;
+  color: #3a2e2a;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 1.5rem 1.2rem;
+  margin: 0 0.7rem;
+  text-align: center;
+}
+.horarios-textos .horario-titulo {
+  display: inline-block;
+  background: #3a2e2a;
+  color: #fff;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 12px #0002;
+  padding: 0.4rem 1.2rem;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  font-family: 'Playwrite France Traditionnelle', cursive !important;
+}
+.horarios-textos h4 {
+  background: none;
+  color: #c9a96e;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-family: 'Playwrite France Traditionnelle', cursive !important;
+}
+.horarios-textos ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.horarios-textos li {
+  margin-bottom: 0.7rem;
+  font-size: 1.08rem;
+}
+@media (max-width: 700px) {
+  .horarios-textos .row {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  .horarios-textos .col-md-6 {
+    margin: 0 0 1.2rem 0;
+    padding: 1.2rem 0.7rem;
+  }
+}
+
 /* Ejemplo de uso de la fuente personalizada:
 .playwrite-fr-trad {
   font-family: 'Playwrite FR Trad', cursive;
