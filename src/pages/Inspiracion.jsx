@@ -321,35 +321,6 @@ const Inspiracion = () => {
           <p className="mt-4">Con todo nuestro cariño,<br/>Nacho y Ro</p>
         </div>
       </section>
-
-      
-      {/* Gallery Section */}
-      <section className="gallery-section">
-        <div className="section-container">
-          <h2 className="section-title">Hemos preparado todo para que sea un día inolvidable</h2>
-          <ImageSlider />
-        </div>
-      </section>
-
-      {/* Location Section */}
-      <section className="location-section">
-        <div className="section-container">
-          <h2 className="section-title">
-            Carretera B-10, Km 4.3, 30612 Ulea, Murcia.
-          </h2>
-          <div className="map-wrapper">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3143.7!2d-1.4!3d38.0!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzjCsDAyJzAwLjAiTiAxwrAyNCcwMC4wIlc!5e0!3m2!1ses!2ses!4v1234567890"
-              width="100%"
-              height="450"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              title="Ubicación boda"
-            ></iframe>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
