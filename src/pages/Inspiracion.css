@@ -211,4 +211,109 @@
 /* Accessibility focus styles */
 .slider-arrow:focus, .dot:focus { outline: 3px solid rgba(201,169,110,0.25); }
 
+/* Wedding Countdown Styles */
+.wedding-countdown {
+    background: linear-gradient(135deg, #fff8e7 0%, #f8f6f3 100%);
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(201,169,110,0.08);
+    padding: 2.5rem 1.5rem 2rem 1.5rem;
+    max-width: 480px;
+    margin: 2rem auto;
+    text-align: center;
+    position: relative;
+}
+
+.countdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.2rem;
+}
+.countdown-icon {
+    font-size: 2.2rem;
+    color: var(--accent-gold);
+    filter: drop-shadow(0 2px 8px rgba(201,169,110,0.12));
+}
+.countdown-title {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    color: var(--accent-gold);
+    margin: 0;
+}
+.countdown-items {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-bottom: 1.2rem;
+}
+.countdown-item {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(201,169,110,0.08);
+    padding: 0.7rem 0.9rem;
+    min-width: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.countdown-number {
+    font-family: var(--font-heading);
+    font-size: 2.1rem;
+    color: var(--accent-gold);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2rem;
+}
+.countdown-label {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-family: var(--font-body);
+}
+.countdown-sep {
+    font-size: 2rem;
+    color: var(--accent-gold);
+    font-weight: 700;
+    align-self: flex-end;
+    margin-bottom: 0.3rem;
+}
+.countdown-footer {
+    margin-top: 0.7rem;
+}
+.countdown-date {
+    font-size: 1rem;
+    color: var(--text-light);
+    font-family: var(--font-body);
+}
+.countdown-complete {
+    background: linear-gradient(90deg, #f8f6f3 60%, #fff8e7 100%);
+    border-radius: 16px;
+    padding: 2rem 1rem;
+    box-shadow: 0 2px 16px rgba(201,169,110,0.10);
+    color: var(--accent-gold);
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .wedding-countdown {
+        padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+        max-width: 98vw;
+    }
+    .countdown-items {
+        gap: 0.3rem;
+    }
+    .countdown-item {
+        min-width: 44px;
+        padding: 0.5rem 0.4rem;
+    }
+    .countdown-number {
+        font-size: 1.3rem;
+    }
+    .countdown-sep {
+        font-size: 1.2rem;
+    }
+}
+
 /* (Aquí se insertan todos los estilos copiados de styles.css, ya leídos en los pasos anteriores, para asegurar la visualización profesional de todas las secciones) */

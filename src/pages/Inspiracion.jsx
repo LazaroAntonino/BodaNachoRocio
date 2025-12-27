@@ -3,8 +3,8 @@ import "./Inspiracion.css";
 
 // Countdown Timer Component
 const Countdown = () => {
-  // Fecha objetivo: 15 de junio de 2026, 17:00
-  const targetDate = new Date(2026, 5, 15, 17, 0, 0).getTime();
+  // Fecha objetivo: 13 de junio de 2026, 17:00
+  const targetDate = new Date(2026, 5, 13, 17, 0, 0).getTime();
   const [timeLeft, setTimeLeft] = useState({
     days: "00",
     hours: "00",
@@ -45,22 +45,34 @@ const Countdown = () => {
   }
 
   return (
-    <div className="countdown-wrapper">
-      <div className="countdown-item">
-        <div className="countdown-number">{timeLeft.days}</div>
-        <div className="countdown-label">Días</div>
+    <div className="countdown-wrapper wedding-countdown">
+      <div className="countdown-header">
+        <span className="countdown-icon" aria-hidden="true">💍</span>
+        <h3 className="countdown-title">¡Faltan...</h3>
       </div>
-      <div className="countdown-item">
-        <div className="countdown-number">{timeLeft.hours}</div>
-        <div className="countdown-label">Horas</div>
+      <div className="countdown-items">
+        <div className="countdown-item">
+          <div className="countdown-number">{timeLeft.days}</div>
+          <div className="countdown-label">Días</div>
+        </div>
+        <div className="countdown-sep">:</div>
+        <div className="countdown-item">
+          <div className="countdown-number">{timeLeft.hours}</div>
+          <div className="countdown-label">Horas</div>
+        </div>
+        <div className="countdown-sep">:</div>
+        <div className="countdown-item">
+          <div className="countdown-number">{timeLeft.minutes}</div>
+          <div className="countdown-label">Minutos</div>
+        </div>
+        <div className="countdown-sep">:</div>
+        <div className="countdown-item">
+          <div className="countdown-number">{timeLeft.seconds}</div>
+          <div className="countdown-label">Segundos</div>
+        </div>
       </div>
-      <div className="countdown-item">
-        <div className="countdown-number">{timeLeft.minutes}</div>
-        <div className="countdown-label">Minutos</div>
-      </div>
-      <div className="countdown-item">
-        <div className="countdown-number">{timeLeft.seconds}</div>
-        <div className="countdown-label">Segundos</div>
+      <div className="countdown-footer">
+        <span className="countdown-date">al 13 de junio de 2026</span>
       </div>
     </div>
   );
