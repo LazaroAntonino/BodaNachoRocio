@@ -29,9 +29,9 @@ export const Home = () => {
 			<nav className="navbar pastel-navbar navbar-expand-lg">
 				<div className="container-fluid">
 					<span className="navbar-logo me-4">
-						<span className="logo-n">N</span>
+						<span className="logo-n">R</span>
 						<span className="logo-plus">+</span>
-						<span className="logo-r">R</span>
+						<span className="logo-r">N</span>
 					</span>
 					<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
 						<span className="navbar-toggler-icon"></span>
