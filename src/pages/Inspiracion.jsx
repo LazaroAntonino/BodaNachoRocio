@@ -49,12 +49,12 @@ const Countdown = () => {
       <div className="countdown-announcement">
         <div className="countdown-title">¡Nos casamos!</div>
       </div>
-      <div className="countdown-minimal-header">
+      <div className="countdown-minimal-header d-flex flex-column justify-content-center align-items-center">
         <span className="countdown-minimal-date-inline">13 de junio de 2026</span>
         <div className="countdown-location">Jávea, Alicante</div>
       </div>
       <div className="countdown-minimal-row d-flex flex-row gap-5 align-content-center text-center justify-content-center">
-        <div className="countdown-minimal-block">
+        <div className="countdown-minimal-block"> 
           <span className="countdown-minimal-number">{timeLeft.days}</span>
           <span className="countdown-minimal-label">días</span>
         </div>
