@@ -101,7 +101,7 @@ export const Home = () => {
 				<p>La celebración será en Jávea, una preciosa ciudad costera en la provincia de Alicante, España.</p>
 				<div className="ratio ratio-16x9 mb-3" style={{borderRadius: '1.5rem', overflow: 'hidden', boxShadow: '0 2px 16px #0002'}}>
         <iframe
-          src="https://www.google.com/maps?q=Jávea,+Alicante,+España&output=embed"
+          src="https://www.google.com/maps?q=Jávea,+Alicante,+España&output=embed&z=13"
           width="100%"
           height="350"
           style={{border:0}}
