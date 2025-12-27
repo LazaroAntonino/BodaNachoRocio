@@ -299,6 +299,13 @@ const Inspiracion = () => {
           </div>
         </div>
       </section>
+      {/* Countdown Section */}
+      <section className="countdown-section">
+        <div className="section-container">
+          <h2 className="section-title">Ya queda menos para disfrutar este mágico día</h2>
+          <Countdown />
+        </div>
+      </section>
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-container">
@@ -356,13 +363,7 @@ const Inspiracion = () => {
         </div>
       </section>
 
-      {/* Countdown Section */}
-      <section className="countdown-section">
-        <div className="section-container">
-          <h2 className="section-title">Ya queda menos para disfrutar este mágico día</h2>
-          <Countdown />
-        </div>
-      </section>
+      
 
       {/* Gallery Section */}
       <section className="gallery-section">
