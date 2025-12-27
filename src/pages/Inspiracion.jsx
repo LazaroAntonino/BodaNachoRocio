@@ -46,8 +46,12 @@ const Countdown = () => {
 
   return (
     <div className="countdown-minimal">
+      <div className="countdown-announcement">
+        <div className="countdown-title">¡Nos casamos!</div>
+        <div className="countdown-date">13 Junio 2026</div>
+        <div className="countdown-location">Jávea, Alicante</div>
+      </div>
       <div className="countdown-minimal-header">
-        <span className="countdown-minimal-title">Faltan</span>
         <span className="countdown-minimal-date-inline">13 de junio de 2026</span>
       </div>
       <div className="countdown-minimal-row d-flex flex-row gap-5 align-content-center text-center">
@@ -301,8 +305,7 @@ const Inspiracion = () => {
       </section>
       {/* Countdown Section */}
       <section className="countdown-section">
-        <div className="section-container">
-          <h2 className="section-title">Ya queda menos para disfrutar este mágico día</h2>
+        <div className="section-container mt-3">
           <Countdown />
         </div>
       </section>
