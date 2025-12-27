@@ -202,6 +202,13 @@ body, html, #root, .home-container, .home-content, .asistencia-form, .alojamient
   margin-bottom: -1.5rem;
   z-index: 2;
   position: relative;
+  transition: transform 0.7s cubic-bezier(0.4,0,0.2,1), opacity 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.modal-carta-sola.zoom-in {
+  transform: scale(2.2);
+  opacity: 0;
+  filter: blur(18px);
+  pointer-events: none;
 }
 .modal-invitacion {
   background: none;
@@ -335,6 +342,34 @@ body, html, #root, .home-container, .home-content, .asistencia-form, .alojamient
   .modal-invitacion {
     padding: 1.2rem 0.5rem 1.2rem 0.5rem;
     max-width: 98vw;
+  }
+}
+
+/* Animaciones de Transición de Pantallas */
+.home-fadeout {
+  animation: fadeoutHome 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+@keyframes fadeoutHome {
+  from {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  to {
+    opacity: 0;
+    filter: blur(18px);
+  }
+}
+.home-fadein {
+  animation: fadeinHome 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+@keyframes fadeinHome {
+  from {
+    opacity: 0;
+    filter: blur(18px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
   }
 }
 
