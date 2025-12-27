@@ -1,3 +1,64 @@
+.main-photo-section {
+    width: 100vw;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+.main-photo-wrapper {
+    position: relative;
+    width: 100vw;
+    max-width: 100%;
+    height: 38vw;
+    min-height: 220px;
+    max-height: 420px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.main-photo-img {
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: brightness(0.82) contrast(1.08);
+}
+.main-photo-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+.main-photo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.2rem;
+    color: #fff;
+    background: rgba(201,169,110,0.22);
+    padding: 0.7em 2em;
+    border-radius: 18px;
+    box-shadow: 0 2px 24px rgba(201,169,110,0.13);
+    letter-spacing: 0.08em;
+    text-align: center;
+    font-weight: 700;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.18);
+}
+@media (max-width: 700px) {
+    .main-photo-wrapper {
+        height: 44vw;
+        min-height: 120px;
+        max-height: 180px;
+    }
+    .main-photo-text {
+        font-size: 1.3rem;
+        padding: 0.4em 1em;
+    }
+}
 .countdown-minimal-header {
     display: flex;
     align-items: baseline;

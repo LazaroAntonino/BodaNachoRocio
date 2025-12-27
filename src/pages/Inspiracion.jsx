@@ -293,9 +293,9 @@ const Inspiracion = () => {
       {/* Imagen principal con texto centrado */}
       <section className="main-photo-section">
         <div className="main-photo-wrapper">
-          <img src="https://picsum.photos/1600/600?random=10" alt="Rocío & Nacho" className="main-photo-img" />
+          <img src="https://lh3.googleusercontent.com/pw/AP1GczMLtt4zfc2RiNySEEPgWZk3vzAouyruYBHcVnnk6hgMW2ALnpk1kw5xp9j3rLLybjO5iYbJ4hqXI_SssGee829d1fj2b8A8W_eDcHeTTYS2PjJoHnEG0iE4MBqwJBaBthcF2CV7uL9QDCxJGm7t-sae=w1290-h555-s-no-gm?authuser=0" alt="Rocío y Nacho" className="main-photo-img" />
           <div className="main-photo-overlay">
-            <span className="main-photo-text">Rocío & Nacho</span>
+            <span className="main-photo-text">Rocío y Nacho</span>
           </div>
         </div>
       </section>
