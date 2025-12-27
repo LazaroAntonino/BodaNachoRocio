@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+France+Traditionnelle:wght@100..400&display=swap');
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+
+/* Tipografía Global */
+body, html, #root, .home-container, .home-content, .asistencia-form, .alojamientos-textos, .horarios-textos, .ubicacion-textos, .bienvenidos-textos, .navbar, .navbar-logo, .navbar-links, .navbar-links a, .pastel-link, .section-placeholder, .form-control, .form-label, .form-text, .btn, .main-photo-text, .countdown-title, .countdown-date, .countdown-location, .countdown-minimal-title, .countdown-minimal-header, .alojamientos-textos, .horarios-textos, .ubicacion-textos, .asistencia-textos, .bienvenidos-textos, .section-title, .footer-title, h1, h2, h3, h4, h5, h6, p, label, input, textarea, select, ul, ol, li, th, td, caption, legend, fieldset, figcaption, blockquote, pre, code {
+  font-family: 'Playwrite France Traditionnelle', cursive !important;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
 /* Footer Styles */
 .footer {
 	width: 100%;
@@ -42,7 +53,6 @@
 		font-size: 0.98rem;
 	}
 }
-@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 /* Navbar Styles */
 .navbar {
