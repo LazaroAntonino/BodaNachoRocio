@@ -54,7 +54,7 @@ const Countdown = () => {
       <div className="countdown-minimal-header">
         <span className="countdown-minimal-date-inline">13 de junio de 2026</span>
       </div>
-      <div className="countdown-minimal-row d-flex flex-row gap-5 align-content-center text-center">
+      <div className="countdown-minimal-row d-flex flex-row gap-5 align-content-center text-center justify-content-center">
         <div className="countdown-minimal-block">
           <span className="countdown-minimal-number">{timeLeft.days}</span>
           <span className="countdown-minimal-label">días</span>
