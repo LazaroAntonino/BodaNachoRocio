@@ -193,7 +193,7 @@ export const Home = () => {
       {showModal && (
         <div className="modal-invitacion-overlay">
           <div className={`modal-carta-sola${zoomCarta ? ' zoom-in' : ''}`}>
-            <img src="/sobre-invitacion-rn.png" alt="Sobre invitación" className="modal-sobre-img-sinborde" />
+            <img src={import.meta.env.BASE_URL + 'sobre-invitacion-rn.png'} alt="Sobre invitación" className="modal-sobre-img-sinborde" />
           </div>
           <div className="modal-invitacion">
             {!zoomCarta && (
