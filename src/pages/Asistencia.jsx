@@ -13,8 +13,56 @@ const allergenOptions = [
 ];
 
 
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxyLWXbdjDKO-Bf5FGUSf5kAI1fOrzsORe5-PBfG_FvzUs-RlnUfF2lGS-iXnFos1t4/exec';
+
+async function sendToSheets(data) {
+  try {
+    await fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+  } catch (err) {
+    console.error('Error logging to sheets:', err);
+  }
+}
+
 const Asistencia = () => {
-  const [selectedAllergens, setSelectedAllergens] = useState([]);
+  const [form, setForm] = useState({
+    nombre: '',
+    asistentes: '',
+    restricciones: '',
+    mensaje: ''
+  });
+  const [enviado, setEnviado] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await sendToSheets({
+      'nombre': form.nombre,
+      'asistentes': form.asistentes,
+      'restricciones': form.restricciones,
+      'mensaje': form.mensaje
+    });
+    setEnviado(true);
+    setForm({ nombre: '', asistentes: '', restricciones: '', mensaje: '' });
+  };
+
+  if (enviado) {
+    return (
+      <div className="asistencia-textos" style={{maxWidth: 480, margin: '0 auto', padding: '2.5rem 1.5rem', textAlign: 'center'}}>
+        <h2 style={{color:'#c9a96e'}}>¡Gracias por confirmar tu asistencia!</h2>
+        <p style={{color:'#7c6a4d'}}>Hemos recibido tu respuesta.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="asistencia-textos" style={{
       maxWidth: 480,
@@ -50,54 +98,59 @@ const Asistencia = () => {
         padding: '2rem 1.2rem',
         color: '#3a2e2a',
         fontFamily: 'inherit',
-      }}>
+      }} onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label" style={{color:'#bfa16a', fontWeight:600}}>Nombre y apellidos</label>
-          <input type="text" className="form-control rounded-3 border-0" placeholder="Nombre y apellidos" required style={{background:'#f8f6f3', color:'#3a2e2a', border:'1px solid #f2e6d6', fontSize:'1.05rem'}} />
+          <input
+            type="text"
+            className="form-control rounded-3 border-0"
+            placeholder="Nombre y apellidos"
+            required
+            name="nombre"
+            value={form.nombre}
+            onChange={handleChange}
+            style={{background:'#f8f6f3', color:'#3a2e2a', border:'1px solid #f2e6d6', fontSize:'1.05rem'}}
+          />
         </div>
         <div className="mb-3">
           <label className="form-label" style={{color:'#bfa16a', fontWeight:600}}>Número de asistentes</label>
-          <input type="number" className="form-control rounded-3 border-0" min="1" max="20" placeholder="Total asistentes" required style={{background:'#f8f6f3', color:'#3a2e2a', border:'1px solid #f2e6d6', fontSize:'1.05rem'}} />
+          <input
+            type="number"
+            className="form-control rounded-3 border-0"
+            min="1"
+            max="20"
+            placeholder="Total asistentes"
+            required
+            name="asistentes"
+            value={form.asistentes}
+            onChange={handleChange}
+            style={{background:'#f8f6f3', color:'#3a2e2a', border:'1px solid #f2e6d6', fontSize:'1.05rem'}}
+          />
         </div>
         <div className="mb-3">
-          <label className="form-label" style={{color:'#bfa16a', fontWeight:600}}>Alergenos</label>
-          <Select
-            isMulti
-            options={allergenOptions}
-            value={selectedAllergens}
-            onChange={setSelectedAllergens}
-            classNamePrefix="react-select"
-            placeholder="Selecciona alérgenos..."
-            styles={{
-              control: (base) => ({
-                ...base,
-                borderRadius: '0.75rem',
-                background: '#f8f6f3',
-                color: '#3a2e2a',
-                border: '1px solid #f2e6d6',
-                minHeight: 44,
-                fontSize: '1.05rem',
-              }),
-              multiValue: (base) => ({
-                ...base,
-                background: '#c9a96e',
-                color: '#fff',
-                borderRadius: 8,
-                fontWeight: 500,
-              }),
-              option: (base, state) => ({
-                ...base,
-                background: state.isSelected ? '#c9a96e' : state.isFocused ? '#f5e6c5' : undefined,
-                color: state.isSelected ? '#fff' : '#3a2e2a',
-                fontWeight: state.isSelected ? 700 : 400,
-              }),
-            }}
+          <label className="form-label" style={{color:'#bfa16a', fontWeight:600}}>Restricciones alimenticias</label>
+          <input
+            type="text"
+            className="form-control rounded-3 border-0"
+            placeholder="Indica aquí cualquier restricción alimenticia, alergia, intolerancia, etc."
+            name="restricciones"
+            value={form.restricciones}
+            onChange={handleChange}
+            style={{background:'#f8f6f3', color:'#3a2e2a', border:'1px solid #f2e6d6', fontSize:'1.05rem'}}
           />
-          <div className="form-text" style={{color:'#bfa16a', fontSize:'0.98rem'}}>Puedes seleccionar varios.</div>
+          <div className="form-text" style={{color:'#bfa16a', fontSize:'0.98rem'}}>Puedes escribir lo que necesites.</div>
         </div>
         <div className="mb-3">
           <label className="form-label" style={{color:'#bfa16a', fontWeight:600}}>Mensaje para los novios</label>
-          <textarea className="form-control rounded-3 border-0" rows={3} placeholder="Comentarios, deseos, canciones, etc..." name="mensaje" style={{background:'#f8f6f3', color:'#3a2e2a', border:'1px solid #f2e6d6', fontSize:'1.05rem'}} />
+          <textarea
+            className="form-control rounded-3 border-0"
+            rows={3}
+            placeholder="Comentarios, deseos, canciones, etc..."
+            name="mensaje"
+            value={form.mensaje}
+            onChange={handleChange}
+            style={{background:'#f8f6f3', color:'#3a2e2a', border:'1px solid #f2e6d6', fontSize:'1.05rem'}}
+          />
         </div>
         <button type="submit" className="btn w-100 mt-2 rounded-3" style={{background:'#c9a96e', border:'none', color:'#fff', fontWeight:600, fontSize:'1.1rem', letterSpacing:'0.01em', boxShadow:'0 2px 8px #c9a96e22'}}>Enviar confirmación</button>
       </form>

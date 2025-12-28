@@ -175,9 +175,22 @@ export const Home = () => {
 		}
 	};
 
-	return (
-		<>
-			{showModal && (
+  // Cierra el menú del navbar si está abierto (modo móvil)
+  const closeNavbar = () => {
+    const navbarCollapse = document.getElementById('mainNavbar');
+    if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+      navbarCollapse.classList.remove('show');
+    }
+  };
+
+  const handleNavClick = (section) => {
+    setActive(section);
+    closeNavbar();
+  };
+
+  return (
+    <>
+      {showModal && (
         <div className="modal-invitacion-overlay">
           <div className={`modal-carta-sola${zoomCarta ? ' zoom-in' : ''}`}>
             <img src="/sobre-invitacion-rn.png" alt="Sobre invitación" className="modal-sobre-img-sinborde" />
@@ -206,22 +219,22 @@ export const Home = () => {
               <div className="collapse navbar-collapse" id="mainNavbar">
                 <ul className="navbar-links navbar-nav ms-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                    <button className={`nav-link pastel-link ${active === "bienvenidos" ? "active" : ""}`} onClick={() => setActive("bienvenidos")}>Bienvenidos</button>
+                    <button className={`nav-link pastel-link ${active === "bienvenidos" ? "active" : ""}`} onClick={() => handleNavClick("bienvenidos")}>Bienvenidos</button>
                   </li>
                   <li className="nav-item">
-                    <button className={`nav-link pastel-link ${active === "asistencia" ? "active" : ""}`} onClick={() => setActive("asistencia")}>Confirma tu asistencia</button>
+                    <button className={`nav-link pastel-link ${active === "asistencia" ? "active" : ""}`} onClick={() => handleNavClick("asistencia")}>Confirma tu asistencia</button>
                   </li>
                   <li className="nav-item">
-                    <button className={`nav-link pastel-link ${active === "horarios" ? "active" : ""}`} onClick={() => setActive("horarios")}>Horarios y autobuses</button>
+                    <button className={`nav-link pastel-link ${active === "horarios" ? "active" : ""}`} onClick={() => handleNavClick("horarios")}>Horarios y autobuses</button>
                   </li>
                   <li className="nav-item">
-                    <button className={`nav-link pastel-link ${active === "alojamientos" ? "active" : ""}`} onClick={() => setActive("alojamientos")}>Alojamientos</button>
+                    <button className={`nav-link pastel-link ${active === "alojamientos" ? "active" : ""}`} onClick={() => handleNavClick("alojamientos")}>Alojamientos</button>
                   </li>
                   <li className="nav-item">
-                    <button className={`nav-link pastel-link ${active === "ubicacion" ? "active" : ""}`} onClick={() => setActive("ubicacion")}>Ubicación</button>
+                    <button className={`nav-link pastel-link ${active === "ubicacion" ? "active" : ""}`} onClick={() => handleNavClick("ubicacion")}>Ubicación</button>
                   </li>
                   <li className="nav-item">
-                    <button className={`nav-link pastel-link ${active === "contacto" ? "active" : ""}`} onClick={() => setActive("contacto")}>Contáctanos</button>
+                    <button className={`nav-link pastel-link ${active === "contacto" ? "active" : ""}`} onClick={() => handleNavClick("contacto")}>Contáctanos</button>
                   </li>
                 </ul>
               </div>
