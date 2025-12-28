@@ -36,6 +36,7 @@ const Asistencia = () => {
     mensaje: ''
   });
   const [enviado, setEnviado] = useState(false);
+  const [enviando, setEnviando] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -44,24 +45,41 @@ const Asistencia = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setEnviando(true);
     await sendToSheets({
       'nombre': form.nombre,
       'asistentes': form.asistentes,
       'restricciones': form.restricciones,
       'mensaje': form.mensaje
     });
+    setEnviando(false);
     setEnviado(true);
     setForm({ nombre: '', asistentes: '', restricciones: '', mensaje: '' });
   };
 
-  if (enviado) {
-    return (
-      <div className="asistencia-textos" style={{maxWidth: 480, margin: '0 auto', padding: '2.5rem 1.5rem', textAlign: 'center'}}>
-        <h2 style={{color:'#c9a96e'}}>¡Gracias por confirmar tu asistencia!</h2>
-        <p style={{color:'#7c6a4d'}}>Hemos recibido tu respuesta.</p>
-      </div>
-    );
-  }
+    if (enviado) {
+      return (
+        <div style={{
+          minHeight: '70vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+          <div className="asistencia-textos" style={{
+            maxWidth: 480,
+            margin: '0 auto',
+            padding: '2.5rem 1.5rem',
+            textAlign: 'center',
+            background: 'linear-gradient(120deg, #fff8e7 60%, #f8f6f3 100%)',
+            borderRadius: '2rem',
+            boxShadow: '0 4px 32px #c9a96e22',
+          }}>
+            <h2 style={{color:'#c9a96e'}}>¡Gracias por confirmar tu asistencia!</h2>
+            <p style={{color:'#7c6a4d'}}>Hemos recibido tu respuesta.</p>
+          </div>
+        </div>
+      );
+    }
 
   return (
     <div className="asistencia-textos" style={{
@@ -152,7 +170,36 @@ const Asistencia = () => {
             style={{background:'#f8f6f3', color:'#3a2e2a', border:'1px solid #f2e6d6', fontSize:'1.05rem'}}
           />
         </div>
-        <button type="submit" className="btn w-100 mt-2 rounded-3" style={{background:'#c9a96e', border:'none', color:'#fff', fontWeight:600, fontSize:'1.1rem', letterSpacing:'0.01em', boxShadow:'0 2px 8px #c9a96e22'}}>Enviar confirmación</button>
+        <button type="submit" className="btn w-100 mt-2 rounded-3" style={{background:'#c9a96e', border:'none', color:'#fff', fontWeight:600, fontSize:'1.1rem', letterSpacing:'0.01em', boxShadow:'0 2px 8px #c9a96e22'}} disabled={enviando}>
+          {enviando ? 'Enviando...' : 'Enviar confirmación'}
+        </button>
+        {enviando && (
+          <div style={{
+            position: 'fixed',
+            top: 0, left: 0, right: 0, bottom: 0,
+            background: 'rgba(255,248,231,0.7)',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}>
+            <div style={{
+              background: '#fff8e7',
+              borderRadius: '1.5rem',
+              boxShadow: '0 2px 16px #c9a96e33',
+              padding: '2rem 2.5rem',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1rem',
+            }}>
+              <div className="spinner-border" style={{color:'#c9a96e', width:'2.5rem', height:'2.5rem'}} role="status">
+                <span className="visually-hidden">Cargando...</span>
+              </div>
+              <span style={{color:'#bfa16a', fontWeight:600, fontSize:'1.1rem'}}>Enviando tu confirmación...</span>
+            </div>
+          </div>
+        )}
       </form>
     </div>
   );
