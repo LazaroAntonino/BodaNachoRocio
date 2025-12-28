@@ -197,7 +197,7 @@ export const Home = () => {
             <div className="container-fluid">
 				              <a href="/" className="navbar-logo me-4" style={{textDecoration:'none'}}>
 				                <span className="logo-n">R</span>
-				                <span className="logo-plus">+</span>
+				                <span className="logo-plus">&</span>
 				                <span className="logo-r">N</span>
 				              </a>
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
