@@ -39,6 +39,7 @@ const Asistencia = () => {
   });
   const [enviado, setEnviado] = useState(false);
   const [enviando, setEnviando] = useState(false);
+  const [errores, setErrores] = useState({});
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -57,6 +58,15 @@ const Asistencia = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // Validación manual de campos obligatorios
+    const newErrors = {};
+    if (!form.nombre.trim()) newErrors.nombre = 'El nombre es obligatorio';
+    if (!form.acompanante) newErrors.acompanante = 'Selecciona si vendrás con acompañante';
+    if (form.acompanante === 'sí' && !form.acompananteNombre.trim()) newErrors.acompananteNombre = 'El nombre del acompañante es obligatorio';
+    if (!form.autobus.length) newErrors.autobus = 'Selecciona al menos una opción de autobús';
+    if (!form.restricciones.trim()) newErrors.restricciones = 'Este campo es obligatorio';
+    setErrores(newErrors);
+    if (Object.keys(newErrors).length > 0) return;
     setEnviando(true);
     await sendToSheets({
       'nombre': form.nombre,
@@ -126,23 +136,24 @@ const Asistencia = () => {
             type="text"
             className="form-control rounded-3 border-0"
             placeholder="Nombre y apellidos"
-            required
             name="nombre"
             value={form.nombre}
             onChange={handleChange}
             style={{background:'#eaf3fa', color:'#1B5583', border:'1px solid #4682B4', fontSize:'1.05rem'}}
           />
+          {errores.nombre && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.nombre}</div>}
         </div>
         <div className="mb-3">
           <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Vendrás con acompañante?</label>
           <div style={{display:'flex', gap:'1.5rem', marginTop:'0.5rem'}}>
             <label style={{display:'flex', alignItems:'center', gap:'0.4em'}}>
-              <input type="radio" name="acompanante" value="sí" checked={form.acompanante==='sí'} onChange={handleChange} required /> Sí
+              <input type="radio" name="acompanante" value="sí" checked={form.acompanante==='sí'} onChange={handleChange} /> Sí
             </label>
             <label style={{display:'flex', alignItems:'center', gap:'0.4em'}}>
-              <input type="radio" name="acompanante" value="no" checked={form.acompanante==='no'} onChange={handleChange} required /> No
+              <input type="radio" name="acompanante" value="no" checked={form.acompanante==='no'} onChange={handleChange} /> No
             </label>
           </div>
+          {errores.acompanante && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.acompanante}</div>}
         </div>
         {form.acompanante === 'sí' && (
           <div className="mb-3">
@@ -155,12 +166,12 @@ const Asistencia = () => {
               value={form.acompananteNombre}
               onChange={handleChange}
               style={{background:'#eaf3fa', color:'#1B5583', border:'1px solid #4682B4', fontSize:'1.05rem'}}
-              required
             />
+            {errores.acompananteNombre && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.acompananteNombre}</div>}
           </div>
         )}
         <div className="mb-3">
-          <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Necesitarás servicio de autobús?</label>
+          <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Necesitarás servicio de autobús? <span style={{fontWeight:400, fontSize:'0.98em'}}>(puedes marcar una o varias opciones según lo que necesites)</span></label>
           <div style={{display:'flex', flexDirection:'column', gap:'0.5rem', marginTop:'0.5rem'}}>
             <label><input type="checkbox" name="autobus" value="No, voy por mi cuenta" checked={form.autobus.includes('No, voy por mi cuenta')} onChange={handleChange} /> No, voy por mi cuenta</label>
             <label><input type="checkbox" name="autobus" value="Iré desde Denia hasta la Iglesia de San Bartolomé" checked={form.autobus.includes('Iré desde Denia hasta la Iglesia de San Bartolomé')} onChange={handleChange} /> Iré desde Denia hasta la Iglesia de San Bartolomé</label>
@@ -168,6 +179,7 @@ const Asistencia = () => {
             <label><input type="checkbox" name="autobus" value="Volveré a Denia en el primer turno" checked={form.autobus.includes('Volveré a Denia en el primer turno')} onChange={handleChange} /> Volveré a Denia en el primer turno</label>
             <label><input type="checkbox" name="autobus" value="Volveré a Denia o Jávea en el segundo turno" checked={form.autobus.includes('Volveré a Denia o Jávea en el segundo turno')} onChange={handleChange} /> Volveré a Denia o Jávea en el segundo turno</label>
           </div>
+          {errores.autobus && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.autobus}</div>}
         </div>
         <div className="mb-3">
           <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Alergias, intolerancias o restricciones alimenticias?</label>
@@ -180,6 +192,7 @@ const Asistencia = () => {
             onChange={handleChange}
             style={{background:'#eaf3fa', color:'#1B5583', border:'1px solid #4682B4', fontSize:'1.05rem'}}
           />
+          {errores.restricciones && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.restricciones}</div>}
         </div>
         <button type="submit" className="btn w-100 mt-2 rounded-3" style={{background:'#1B5583', border:'none', color:'#fff', fontWeight:600, fontSize:'1.1rem', letterSpacing:'0.01em', boxShadow:'0 2px 8px #4682B422'}} disabled={enviando}>
           {enviando ? 'Enviando...' : 'Enviar confirmación'}
