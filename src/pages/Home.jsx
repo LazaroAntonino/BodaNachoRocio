@@ -6,6 +6,7 @@ import { Horarios } from "./Horarios";
 import HorariosAutobuses from "./HorariosAutobuses";
 import { Alojamientos } from "./Alojamientos";
 import { Ubicacion } from "./Ubicacion";
+import MasInfo from "./MasInfo";
 import CuandoDonde from "./CuandoDonde";
 
 export const Home = () => {
@@ -37,6 +38,8 @@ export const Home = () => {
          return <Alojamientos />;
        case "ubicacion":
          return <Ubicacion />;
+       case "masinfo":
+         return <MasInfo />;
        case "contacto":
          return <div className="section-placeholder">Contáctanos (próximamente)</div>;
        default:

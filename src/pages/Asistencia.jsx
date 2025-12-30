@@ -77,7 +77,7 @@ const Asistencia = () => {
         justifyContent: 'center',
       }}>
         <div className="asistencia-textos" style={{
-          maxWidth: 480,
+          maxWidth: 800,
           margin: '0 auto',
           padding: '2.5rem 1.5rem',
           textAlign: 'center',
@@ -94,7 +94,7 @@ const Asistencia = () => {
 
   return (
     <div className="asistencia-textos" style={{
-      maxWidth: 540,
+      maxWidth: 800,
       margin: '0 auto',
       background: 'linear-gradient(120deg, #fff 60%, #eaf3fa 100%)',
       borderRadius: '2rem',
