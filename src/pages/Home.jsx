@@ -1,22 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./Home.css";
-import { useNavigate } from "react-router";
 import { Inspiracion } from "./Inspiracion";
 import { Asistencia } from "./Asistencia";
 import { Horarios } from "./Horarios";
+import HorariosAutobuses from "./HorariosAutobuses";
 import { Alojamientos } from "./Alojamientos";
 import { Ubicacion } from "./Ubicacion";
-import Select from 'react-select';
-
-const allergenOptions = [
-  { value: 'gluten', label: 'Gluten' },
-  { value: 'lactosa', label: 'Lactosa' },
-  { value: 'frutos secos', label: 'Frutos secos' },
-  { value: 'marisco', label: 'Marisco' },
-  { value: 'huevo', label: 'Huevo' },
-  { value: 'soja', label: 'Soja' },
-  { value: 'ninguno', label: 'Ninguno' },
-];
+import CuandoDonde from "./CuandoDonde";
 
 export const Home = () => {
   const [active, setActive] = useState("bienvenidos");
@@ -34,19 +24,23 @@ export const Home = () => {
 	const renderSection = () => {
 		switch (active) {
 			case "bienvenidos":
-				return <Inspiracion />;
-			case "asistencia":
-				return <Asistencia />;
-			case "horarios":
-				return <Horarios />;
-			case "alojamientos":
-				return <Alojamientos />;
-			case "ubicacion":
-				return <Ubicacion />;
-			case "contacto":
-				return <div className="section-placeholder">Contáctanos (próximamente)</div>;
-			default:
-				return null;
+               return <Inspiracion />;
+       case "cuandodonde":
+         return <CuandoDonde />;
+       case "asistencia":
+         return <Asistencia />;
+       case "horariosautobuses":
+         return <HorariosAutobuses />;
+       case "horarios":
+         return <Horarios />;
+       case "alojamientos":
+         return <Alojamientos />;
+       case "ubicacion":
+         return <Ubicacion />;
+       case "contacto":
+         return <div className="section-placeholder">Contáctanos (próximamente)</div>;
+       default:
+         return null;
 		}
 	};
 
@@ -94,22 +88,22 @@ export const Home = () => {
               <div className="collapse navbar-collapse" id="mainNavbar">
                 <ul className="navbar-links navbar-nav ms-auto mb-2 mb-lg-0">
                   <li className="nav-item">
-                    <button className={`nav-link pastel-link ${active === "bienvenidos" ? "active" : ""}`} onClick={() => handleNavClick("bienvenidos")}>Bienvenidos</button>
+                    <button className={`nav-link pastel-link ${active === "bienvenidos" ? "active" : ""}`} onClick={() => handleNavClick("bienvenidos")}>¡Bienvenidos!</button>
                   </li>
                   <li className="nav-item">
-                    <button className={`nav-link pastel-link ${active === "asistencia" ? "active" : ""}`} onClick={() => handleNavClick("asistencia")}>Confirma tu asistencia</button>
+                    <button className={`nav-link pastel-link ${active === "cuandodonde" ? "active" : ""}`} onClick={() => handleNavClick("cuandodonde")}>Cuándo y Dónde</button>
                   </li>
                   <li className="nav-item">
-                    <button className={`nav-link pastel-link ${active === "horarios" ? "active" : ""}`} onClick={() => handleNavClick("horarios")}>Horarios y autobuses</button>
+                    <button className={`nav-link pastel-link ${active === "horariosautobuses" ? "active" : ""}`} onClick={() => handleNavClick("horariosautobuses")}>Horarios y Autobuses</button>
+                  </li>
+                  <li className="nav-item">
+                    <button className={`nav-link pastel-link ${active === "asistencia" ? "active" : ""}`} onClick={() => handleNavClick("asistencia")}>Confirma tu Asistencia</button>
                   </li>
                   <li className="nav-item">
                     <button className={`nav-link pastel-link ${active === "alojamientos" ? "active" : ""}`} onClick={() => handleNavClick("alojamientos")}>Alojamientos</button>
                   </li>
                   <li className="nav-item">
-                    <button className={`nav-link pastel-link ${active === "ubicacion" ? "active" : ""}`} onClick={() => handleNavClick("ubicacion")}>Ubicación</button>
-                  </li>
-                  <li className="nav-item">
-                    <button className={`nav-link pastel-link ${active === "contacto" ? "active" : ""}`} onClick={() => handleNavClick("contacto")}>Contáctanos</button>
+                    <button className={`nav-link pastel-link ${active === "masinfo" ? "active" : ""}`} onClick={() => handleNavClick("masinfo")}>Más información</button>
                   </li>
                 </ul>
               </div>

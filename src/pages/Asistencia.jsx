@@ -13,7 +13,7 @@ const allergenOptions = [
 ];
 
 
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxyLWXbdjDKO-Bf5FGUSf5kAI1fOrzsORe5-PBfG_FvzUs-RlnUfF2lGS-iXnFos1t4/exec';
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzdM6QQb6GT4G3kqDV71VnL85OOrNwiL8QjjAawY7oxZr-gqSTdW9TIAbG3wAvKLJi3/exec';
 
 async function sendToSheets(data) {
   try {
@@ -28,19 +28,31 @@ async function sendToSheets(data) {
   }
 }
 
+
 const Asistencia = () => {
   const [form, setForm] = useState({
     nombre: '',
-    asistentes: '',
+    acompanante: '',
+    acompananteNombre: '',
+    autobus: [],
     restricciones: '',
-    mensaje: ''
   });
   const [enviado, setEnviado] = useState(false);
-    const [enviando, setEnviando] = useState(false);
+  const [enviando, setEnviando] = useState(false);
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
+    const { name, value, type, checked } = e.target;
+    if (type === 'checkbox') {
+      setForm((prev) => {
+        if (checked) {
+          return { ...prev, autobus: [...prev.autobus, value] };
+        } else {
+          return { ...prev, autobus: prev.autobus.filter((v) => v !== value) };
+        }
+      });
+    } else {
+      setForm((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -48,12 +60,13 @@ const Asistencia = () => {
     setEnviando(true);
     await sendToSheets({
       'nombre': form.nombre,
-      'asistentes': form.asistentes,
-      'restricciones': form.restricciones,
-      'mensaje': form.mensaje
+      'acompanante': form.acompanante,
+      'acompananteNombre': form.acompanante === 'sí' ? form.acompananteNombre : '',
+      'autobus': form.autobus.join(', '),
+      'restricciones': form.restricciones
     });
     setEnviado(true);
-  }
+  };
 
   if (enviado) {
     return (
@@ -72,8 +85,8 @@ const Asistencia = () => {
           borderRadius: '2rem',
           boxShadow: '0 4px 32px #b3cbe622',
         }}>
-          <h2 style={{color:'#4d7ca6'}}>¡Gracias por confirmar tu asistencia!</h2>
-          <p style={{color:'#7fa7cc'}}>Hemos recibido tu respuesta.</p>
+          <h2 style={{color:'#1B5583'}}>¡Gracias por confirmar tu asistencia!</h2>
+          <p style={{color:'#4682B4'}}>Hemos recibido tu respuesta.</p>
         </div>
       </div>
     );
@@ -81,42 +94,34 @@ const Asistencia = () => {
 
   return (
     <div className="asistencia-textos" style={{
-      maxWidth: 480,
+      maxWidth: 540,
       margin: '0 auto',
-      background: 'linear-gradient(120deg, #fff8e7 60%, #f8f6f3 100%)',
+      background: 'linear-gradient(120deg, #fff 60%, #eaf3fa 100%)',
       borderRadius: '2rem',
-      boxShadow: '0 4px 32px #c9a96e22',
+      boxShadow: '0 4px 32px #4682B422',
       padding: '2.5rem 1.5rem',
-      color: '#3a2e2a',
+      color: '#1B5583',
       fontFamily: 'Lato, sans-serif',
     }}>
       <h2 style={{
         fontFamily: 'Playfair Display, serif',
-        color: '#c9a96e',
+        color: '#1B5583',
         fontWeight: 700,
         fontSize: '2rem',
         marginBottom: '1.2rem',
         letterSpacing: '0.01em',
         textAlign: 'center',
-      }}>Confirma tu asistencia</h2>
-      <p style={{
-        fontSize: '1.08rem',
-        color: '#7c6a4d',
-        marginBottom: '2rem',
-        textAlign: 'center',
-      }}>
-        ¡Atención, atención! Este apartado es, probablemente, el más importante. Queremos verte ahí, queremos compartir todo esto contigo y queremos que, para ti, también sea un día que no olvides. Pero todo eso empieza porque nos confirmes tu asistencia y otros detalles mediante el formulario.
-      </p>
+      }}>CONFIRMA TU ASISTENCIA</h2>
       <form className="asistencia-form" style={{
-        background: '#fff8e7',
+        background: '#fff',
         borderRadius: '1.5rem',
-        boxShadow: '0 2px 16px #c9a96e11',
+        boxShadow: '0 2px 16px #4682B411',
         padding: '2rem 1.2rem',
-        color: '#3a2e2a',
+        color: '#1B5583',
         fontFamily: 'inherit',
       }} onSubmit={handleSubmit}>
         <div className="mb-3">
-          <label className="form-label" style={{color:'#bfa16a', fontWeight:600}}>Nombre y apellidos</label>
+          <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>Nombre y apellidos</label>
           <input
             type="text"
             className="form-control rounded-3 border-0"
@@ -125,76 +130,84 @@ const Asistencia = () => {
             name="nombre"
             value={form.nombre}
             onChange={handleChange}
-            style={{background:'#f8f6f3', color:'#3a2e2a', border:'1px solid #f2e6d6', fontSize:'1.05rem'}}
+            style={{background:'#eaf3fa', color:'#1B5583', border:'1px solid #4682B4', fontSize:'1.05rem'}}
           />
         </div>
         <div className="mb-3">
-          <label className="form-label" style={{color:'#bfa16a', fontWeight:600}}>Número de asistentes</label>
-          <input
-            type="number"
-            className="form-control rounded-3 border-0"
-            min="1"
-            max="20"
-            placeholder="Total asistentes"
-            required
-            name="asistentes"
-            value={form.asistentes}
-            onChange={handleChange}
-            style={{background:'#f8f6f3', color:'#3a2e2a', border:'1px solid #f2e6d6', fontSize:'1.05rem'}}
-          />
+          <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Vendrás con acompañante?</label>
+          <div style={{display:'flex', gap:'1.5rem', marginTop:'0.5rem'}}>
+            <label style={{display:'flex', alignItems:'center', gap:'0.4em'}}>
+              <input type="radio" name="acompanante" value="sí" checked={form.acompanante==='sí'} onChange={handleChange} required /> Sí
+            </label>
+            <label style={{display:'flex', alignItems:'center', gap:'0.4em'}}>
+              <input type="radio" name="acompanante" value="no" checked={form.acompanante==='no'} onChange={handleChange} required /> No
+            </label>
+          </div>
+        </div>
+        {form.acompanante === 'sí' && (
+          <div className="mb-3">
+            <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>Indica el nombre completo de tu acompañante</label>
+            <input
+              type="text"
+              className="form-control rounded-3 border-0"
+              placeholder="Nombre del acompañante"
+              name="acompananteNombre"
+              value={form.acompananteNombre}
+              onChange={handleChange}
+              style={{background:'#eaf3fa', color:'#1B5583', border:'1px solid #4682B4', fontSize:'1.05rem'}}
+              required
+            />
+          </div>
+        )}
+        <div className="mb-3">
+          <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Necesitarás servicio de autobús?</label>
+          <div style={{display:'flex', flexDirection:'column', gap:'0.5rem', marginTop:'0.5rem'}}>
+            <label><input type="checkbox" name="autobus" value="No, voy por mi cuenta" checked={form.autobus.includes('No, voy por mi cuenta')} onChange={handleChange} /> No, voy por mi cuenta</label>
+            <label><input type="checkbox" name="autobus" value="Iré desde Denia hasta la Iglesia de San Bartolomé" checked={form.autobus.includes('Iré desde Denia hasta la Iglesia de San Bartolomé')} onChange={handleChange} /> Iré desde Denia hasta la Iglesia de San Bartolomé</label>
+            <label><input type="checkbox" name="autobus" value="Iré desde la Iglesia de San Bartolomé hasta Casa Santonja" checked={form.autobus.includes('Iré desde la Iglesia de San Bartolomé hasta Casa Santonja')} onChange={handleChange} /> Iré desde la Iglesia de San Bartolomé hasta Casa Santonja</label>
+            <label><input type="checkbox" name="autobus" value="Volveré a Denia en el primer turno" checked={form.autobus.includes('Volveré a Denia en el primer turno')} onChange={handleChange} /> Volveré a Denia en el primer turno</label>
+            <label><input type="checkbox" name="autobus" value="Volveré a Denia o Jávea en el segundo turno" checked={form.autobus.includes('Volveré a Denia o Jávea en el segundo turno')} onChange={handleChange} /> Volveré a Denia o Jávea en el segundo turno</label>
+          </div>
         </div>
         <div className="mb-3">
-          <label className="form-label" style={{color:'#bfa16a', fontWeight:600}}>Restricciones alimenticias</label>
-          <input
-            type="text"
+          <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Alergias, intolerancias o restricciones alimenticias?</label>
+          <textarea
             className="form-control rounded-3 border-0"
-            placeholder="Indica aquí cualquier restricción alimenticia, alergia, intolerancia, etc."
+            rows={2}
+            placeholder="Indícanos si tú o tu acompañante tenéis alguna alergia, intolerancia o restricción alimenticia (y a quién corresponde)"
             name="restricciones"
             value={form.restricciones}
             onChange={handleChange}
-            style={{background:'#f8f6f3', color:'#3a2e2a', border:'1px solid #f2e6d6', fontSize:'1.05rem'}}
-          />
-          <div className="form-text" style={{color:'#bfa16a', fontSize:'0.98rem'}}>Puedes escribir lo que necesites.</div>
-        </div>
-        <div className="mb-3">
-          <label className="form-label" style={{color:'#bfa16a', fontWeight:600}}>Mensaje para los novios</label>
-          <textarea
-            className="form-control rounded-3 border-0"
-            rows={3}
-            placeholder="Comentarios, deseos, canciones, etc..."
-            name="mensaje"
-            value={form.mensaje}
-            onChange={handleChange}
-            style={{background:'#f8f6f3', color:'#3a2e2a', border:'1px solid #f2e6d6', fontSize:'1.05rem'}}
+            style={{background:'#eaf3fa', color:'#1B5583', border:'1px solid #4682B4', fontSize:'1.05rem'}}
           />
         </div>
-        <button type="submit" className="btn w-100 mt-2 rounded-3" style={{background:'#c9a96e', border:'none', color:'#fff', fontWeight:600, fontSize:'1.1rem', letterSpacing:'0.01em', boxShadow:'0 2px 8px #c9a96e22'}} disabled={enviando}>
+        <button type="submit" className="btn w-100 mt-2 rounded-3" style={{background:'#1B5583', border:'none', color:'#fff', fontWeight:600, fontSize:'1.1rem', letterSpacing:'0.01em', boxShadow:'0 2px 8px #4682B422'}} disabled={enviando}>
           {enviando ? 'Enviando...' : 'Enviar confirmación'}
         </button>
         {enviando && (
           <div style={{
             position: 'fixed',
             top: 0, left: 0, right: 0, bottom: 0,
-            background: 'rgba(255,248,231,0.7)',
+            background: 'rgba(234,243,250,0.7)',
             zIndex: 9999,
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
           }}>
             <div style={{
-              background: '#fff8e7',
+              background: '#fff',
               borderRadius: '1.5rem',
-              boxShadow: '0 2px 16px #c9a96e33',
+              boxShadow: '0 2px 16px #4682B433',
               padding: '2rem 2.5rem',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               gap: '1rem',
             }}>
-              <div className="spinner-border" style={{color:'#c9a96e', width:'2.5rem', height:'2.5rem'}} role="status">
+              <div className="spinner-border" style={{color:'#4682B4', width:'2.5rem', height:'2.5rem'}} role="status">
                 <span className="visually-hidden">Cargando...</span>
               </div>
-              <span style={{color:'#bfa16a', fontWeight:600, fontSize:'1.1rem'}}>Enviando tu confirmación...</span>
+              <span style={{color:'#1B5583', fontWeight:600, fontSize:'1.1rem'}}>Enviando tu confirmación...</span>
             </div>
           </div>
         )}
