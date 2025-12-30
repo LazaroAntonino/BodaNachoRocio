@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "./Inspiracion.css";
 import fotoPrincipal from '../img/fotomarTete.jpeg';
+import fotoSecundaria from '../img/atardecerBodaTete.jpeg';
 
 // Countdown Timer Component
 const Countdown = () => {
@@ -75,7 +76,7 @@ const Inspiracion = () => {
     <div className="page-wrapper" style={{background: 'var(--azul-crema-1)', minHeight: '100vh'}}>
       <section className="main-photo-section">
         <div className="main-photo-wrapper">
-          <img src={fotoPrincipal} alt="Rocío y Nacho" className="main-photo-img" style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center'}} />
+          <img src={fotoSecundaria} alt="Rocío y Nacho" className="main-photo-img" style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center'}} />
           <div className="main-photo-overlay">
             <span className="main-photo-text">Rocío y Nacho</span>
           </div>

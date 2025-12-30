@@ -81,7 +81,7 @@ export const Home = () => {
       )}
 			{!showModal && (
         <div className="home-container d-flex flex-column min-vh-100">
-          <nav className="navbar pastel-navbar navbar-expand-lg">
+          <nav className="navbar pastel-navbar navbar-expand-xl">
             <div className="container-fluid">
 				              <a href="/" className="navbar-logo me-4" style={{textDecoration:'none'}}>
 				                <span className="logo-n">R</span>

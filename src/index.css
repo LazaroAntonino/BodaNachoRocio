@@ -1,3 +1,32 @@
+/* Navbar custom collapse for 700px breakpoint */
+.navbar-custom-collapse .navbar-toggler {
+  display: none;
+}
+.navbar-custom-collapse .navbar-collapse {
+  display: flex !important;
+}
+
+@media (max-width: 700px) {
+  .navbar-custom-collapse .navbar-toggler {
+    display: block;
+  }
+  .navbar-custom-collapse .navbar-collapse {
+    display: none !important;
+  }
+  .navbar-custom-collapse .navbar-collapse.show {
+    display: flex !important;
+    flex-direction: column;
+    width: 100%;
+    background: var(--azul-crema-1, #fff);
+    position: absolute;
+    left: 0;
+    top: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 16px rgba(77,124,166,0.08);
+    border-radius: 0 0 18px 18px;
+    padding: 1.2rem 0 1.2rem 0;
+  }
+}
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 /* Tipografía Global */
