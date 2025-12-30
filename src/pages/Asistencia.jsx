@@ -36,7 +36,7 @@ const Asistencia = () => {
     mensaje: ''
   });
   const [enviado, setEnviado] = useState(false);
-  const [enviando, setEnviando] = useState(false);
+    const [enviando, setEnviando] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,34 +52,32 @@ const Asistencia = () => {
       'restricciones': form.restricciones,
       'mensaje': form.mensaje
     });
-    setEnviando(false);
     setEnviado(true);
-    setForm({ nombre: '', asistentes: '', restricciones: '', mensaje: '' });
-  };
+  }
 
-    if (enviado) {
-      return (
-        <div style={{
-          minHeight: '70vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+  if (enviado) {
+    return (
+      <div style={{
+        minHeight: '70vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        <div className="asistencia-textos" style={{
+          maxWidth: 480,
+          margin: '0 auto',
+          padding: '2.5rem 1.5rem',
+          textAlign: 'center',
+          background: 'linear-gradient(120deg, #eaf3fa 60%, #d2e3f3 100%)',
+          borderRadius: '2rem',
+          boxShadow: '0 4px 32px #b3cbe622',
         }}>
-          <div className="asistencia-textos" style={{
-            maxWidth: 480,
-            margin: '0 auto',
-            padding: '2.5rem 1.5rem',
-            textAlign: 'center',
-            background: 'linear-gradient(120deg, #fff8e7 60%, #f8f6f3 100%)',
-            borderRadius: '2rem',
-            boxShadow: '0 4px 32px #c9a96e22',
-          }}>
-            <h2 style={{color:'#c9a96e'}}>¡Gracias por confirmar tu asistencia!</h2>
-            <p style={{color:'#7c6a4d'}}>Hemos recibido tu respuesta.</p>
-          </div>
+          <h2 style={{color:'#4d7ca6'}}>¡Gracias por confirmar tu asistencia!</h2>
+          <p style={{color:'#7fa7cc'}}>Hemos recibido tu respuesta.</p>
         </div>
-      );
-    }
+      </div>
+    );
+  }
 
   return (
     <div className="asistencia-textos" style={{

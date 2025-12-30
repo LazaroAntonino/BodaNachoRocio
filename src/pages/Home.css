@@ -1,17 +1,19 @@
 /* Fondo elegante amarillo/dorado */
+
 .home-container {
     min-height: 100vh;
-    background: #faf9f6;
-    color: #222;
+    background: #eaf3fa;
+    color: #2a3a4d;
     font-family: 'Poppins', 'Lato', sans-serif;
     display: flex;
     flex-direction: column;
 
+    
 .pastel-navbar {
     width: 100%;
-    background: linear-gradient(90deg, #f8f6f3 0%, #fff8e7 100%);
-    box-shadow: 0 2px 16px rgba(201,169,110,0.08);
-    border-bottom: 1px solid #e9e6df;
+    background: linear-gradient(90deg, #eaf3fa 0%, #d2e3f3 100%);
+    box-shadow: 0 2px 16px #b3cbe622;
+    border-bottom: 1px solid #b3cbe6;
     min-height: 72px;
     padding: 0.7rem 2.5rem;
     position: sticky;
@@ -20,11 +22,12 @@
     display: flex;
     align-items: center;
 }
+    
 .navbar-logo {
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
     font-weight: 700;
-    color: #c9a96e;
+    color: #4d7ca6;
     letter-spacing: 0.08em;
     display: flex;
     align-items: center;
@@ -33,14 +36,15 @@
 .logo-n, .logo-r {
     font-size: 2.2rem;
     font-weight: 700;
-    color: #c9a96e;
+    color: #4d7ca6;
 }
 .logo-plus {
     font-size: 1.3rem;
     font-weight: 400;
-    color: #bfa16a;
+    color: #7fa7cc;
     margin: 0 0.15em;
 }
+    
 .navbar-links {
     display: flex;
     gap: 2.2rem;
@@ -58,7 +62,7 @@
     border: none;
     font-family: inherit;
     font-size: 1.15rem;
-    color: #7c6c53 !important;
+    color: #4d7ca6 !important;
     padding: 0.3rem 1.1rem;
     border-radius: 8px;
     cursor: pointer;
@@ -67,8 +71,8 @@
     box-shadow: none;
 }
 .pastel-link.active, .pastel-link:hover {
-    background: #f6f2e7 !important;
-    color: #c9a96e !important;
+    background: #d2e3f3 !important;
+    color: #3a5d7c !important;
 }
 @media (max-width: 900px) {
     .pastel-navbar {
