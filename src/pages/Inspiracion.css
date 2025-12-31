@@ -368,6 +368,7 @@
         max-width: 100vw;
     }
     .countdown-minimal-row {
+        margin-top: 30px;
         gap: 5px !important;
         flex-wrap: nowrap;
     }

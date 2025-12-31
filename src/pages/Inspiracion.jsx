@@ -49,7 +49,7 @@ const Countdown = () => {
   return (
     <div className="countdown-minimal mt-5">
       <div className="countdown-minimal-row d-flex flex-row gap-5 align-content-center text-center justify-content-center">
-        <div className="countdown-minimal-block"> 
+        <div className="countdown-minimal-block">
           <span className="countdown-minimal-number">{timeLeft.days}</span>
           <span className="countdown-minimal-label">días</span>
         </div>
@@ -73,23 +73,17 @@ const Countdown = () => {
 
 const Inspiracion = () => {
   return (
-    <div className="page-wrapper" style={{background: 'var(--azul-crema-1)', minHeight: '100vh'}}>
+    <div className="page-wrapper" style={{ background: 'var(--azul-crema-1)', minHeight: '100vh' }}>
       <section className="main-photo-section">
         <div className="main-photo-wrapper">
-          <img src={fotoSecundaria} alt="Rocío y Nacho" className="main-photo-img" style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center'}} />
-          <div className="main-photo-overlay">
-            <span className="main-photo-text">Rocío y Nacho</span>
-          </div>
-        </div>
-      </section>
-      <section className="main-photo-section">
-        <div className="main-photo-wrapper">
-          <img src={fotoPrincipal} alt="Rocío y Nacho" className="main-photo-img" style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center'}} />
+          <img src={fotoPrincipal} alt="Rocío y Nacho" className="main-photo-img" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
           <div className="main-photo-overlay">
             <span className="main-photo-text">
-              Ha llegado el momento: ¡nos casamos!<br />
-              <span style={{fontSize: '1.3rem', display: 'block', marginTop: '0.5em'}}>13 de junio de 2026</span><br />
-              <span style={{fontSize: '1.1rem', display: 'block', marginTop: '0.2em'}}>Jávea, Alicante</span>
+              <span className="main-photo-text">Rocío y Nacho</span><br/>
+              <br />Ha llegado el momento: ¡nos casamos!<br />
+              <br />
+              <span style={{ fontSize: '1.3rem', display: 'block', marginTop: '0.5em' }}>13 de junio de 2026</span><br />
+              <span style={{ fontSize: '1.1rem', display: 'block', marginTop: '0.2em' }}>Jávea, Alicante</span>
             </span>
           </div>
         </div>
@@ -99,16 +93,16 @@ const Inspiracion = () => {
           <Countdown />
         </div>
       </section>
-      <section className="hero-section" style={{background: 'transparent', boxShadow: 'none'}}>
-        <div className="hero-container carta-texto" style={{background: 'var(--azul-crema-1)', boxShadow: 'none', textAlign: 'left', width: '100%', margin: 0, padding: '2.5rem 0 2rem 0', maxWidth: '100vw'}}>
-          <div style={{color: 'var(--azul-crema-texto)', fontFamily: "'ProximaNova', Helvetica, Arial, sans-serif", fontSize: '1.13rem', width: '100%', margin: '0 auto', padding: 0}}>
-            <p style={{marginBottom: '1.2em', fontWeight: 500, background: 'transparent'}}>A nuestras familias y amigos…</p>
-            <p style={{marginBottom: '1.2em', background: 'transparent'}}>Aunque parezca que fue ayer cuando, con una cena improvisada y cero expectativas, nuestro querido amigo Nacho —y su incapacidad de renunciar a cualquier plan— nos presentara, lo cierto es que han pasado ya 7 años y hoy estamos felices de recordaros que <b>¡nos casamos!</b></p>
-            <p style={{marginBottom: '1.2em', background: 'transparent'}}>En Jávea, el 13 de junio de 2026. Lo repetiremos varias veces, para los más despistados.</p>
-            <p style={{marginBottom: '1.2em', background: 'transparent'}}>Sabemos que casarnos en Alicante o Madrid habría sido lo más sencillo, pero nos gustan los retos y que nuestra boda sea la excusa perfecta para una escapada de fin de semana que dé por inaugurado el verano. Y nos parecía que no había lugar mejor para hacerlo que a orillas de nuestro Mediterráneo. Así que, hagan las maletas con sus mejores galas, pero dejen espacio para la toalla y el bañador.</p>
-            <p style={{marginBottom: '1.2em', background: 'transparent'}}>Estamos muy contentos de poder compartir este día con todos vosotros —nuestra familia y amigos más queridos— y queremos daros las gracias de todo corazón a todos los que venís hasta aquí para acompañarnos en este día tan importante. Nos hace muchísima ilusión celebrar este día rodeados de tanto cariño.</p>
-            <p style={{marginBottom: '1.2em', background: 'transparent'}}>Mientras tanto, en esta web os iremos contando todo lo que necesitáis saber: dónde, cómo y cuándo, además de daros información sobre horarios, recomendaciones, etc. También es la mejor opción para confirmar vuestra asistencia, si queréis utilizar el servicio de autobús o informarnos sobre cualquier intolerancia o alergia que debamos tener en cuenta.</p>
-            <p style={{marginTop: '2em', fontWeight: 500, background: 'transparent'}}>Con todo nuestro cariño,<br/>Rocío y Nacho.</p>
+      <section className="hero-section" style={{ background: 'transparent', boxShadow: 'none' }}>
+        <div className="hero-container carta-texto" style={{ background: 'var(--azul-crema-1)', boxShadow: 'none', textAlign: 'center', width: '100%', margin: 0, padding: '2.5rem 0 2rem 0', maxWidth: '100vw' }}>
+          <div style={{ color: 'var(--azul-crema-texto)', fontFamily: "'ProximaNova', Helvetica, Arial, sans-serif", fontSize: '1.13rem', width: '100%', margin: '0 auto', padding: 0, textAlign: 'center' }}>
+            <p style={{ marginBottom: '1.2em', fontWeight: 500, background: 'transparent' }}>A nuestras familias y amigos…</p>
+            <p style={{ marginBottom: '1.2em', background: 'transparent' }}>Aunque parezca que fue ayer cuando, con una cena improvisada y cero expectativas, nuestro querido amigo Nacho —y su incapacidad de renunciar a cualquier plan— nos presentara, lo cierto es que han pasado ya 7 años y hoy estamos felices de recordaros que <b>¡nos casamos!</b></p>
+            <p style={{ marginBottom: '1.2em', background: 'transparent' }}>En Jávea, el 13 de junio de 2026. Lo repetiremos varias veces, para los más despistados.</p>
+            <p style={{ marginBottom: '1.2em', background: 'transparent' }}>Sabemos que casarnos en Alicante o Madrid habría sido lo más sencillo, pero nos gustan los retos y que nuestra boda sea la excusa perfecta para una escapada de fin de semana que dé por inaugurado el verano. Y nos parecía que no había lugar mejor para hacerlo que a orillas de nuestro Mediterráneo. Así que, hagan las maletas con sus mejores galas, pero dejen espacio para la toalla y el bañador.</p>
+            <p style={{ marginBottom: '1.2em', background: 'transparent' }}>Estamos muy contentos de poder compartir este día con todos vosotros —nuestra familia y amigos más queridos— y queremos daros las gracias de todo corazón a todos los que venís hasta aquí para acompañarnos en este día tan importante. Nos hace muchísima ilusión celebrar este día rodeados de tanto cariño.</p>
+            <p style={{ marginBottom: '1.2em', background: 'transparent' }}>Mientras tanto, en esta web os iremos contando todo lo que necesitáis saber: dónde, cómo y cuándo, además de daros información sobre horarios, recomendaciones, etc. También es la mejor opción para confirmar vuestra asistencia, si queréis utilizar el servicio de autobús o informarnos sobre cualquier intolerancia o alergia que debamos tener en cuenta.</p>
+            <p style={{ marginTop: '2em', fontWeight: 500, background: 'transparent' }}>Con todo nuestro cariño,<br />Rocío y Nacho.</p>
           </div>
         </div>
       </section>

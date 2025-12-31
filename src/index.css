@@ -1,3 +1,8 @@
+/* Forzar borde en los radio buttons en toda la web */
+input[type="radio"] {
+  border: 1px solid #4682B4 !important;
+  box-shadow: none !important;
+}
 /* Navbar custom collapse for 700px breakpoint */
 .navbar-custom-collapse .navbar-toggler {
   display: none;

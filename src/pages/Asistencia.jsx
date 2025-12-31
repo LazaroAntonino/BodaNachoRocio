@@ -91,7 +91,7 @@ const Asistencia = () => {
           margin: '0 auto',
           padding: '2.5rem 1.5rem',
           textAlign: 'center',
-          background: 'linear-gradient(120deg, #eaf3fa 60%, #d2e3f3 100%)',
+          background: 'transparent',
           borderRadius: '2rem',
           boxShadow: '0 4px 32px #b3cbe622',
         }}>
@@ -106,9 +106,9 @@ const Asistencia = () => {
     <div className="asistencia-textos" style={{
       maxWidth: 800,
       margin: '0 auto',
-      background: 'linear-gradient(120deg, #fff 60%, #eaf3fa 100%)',
+      background: 'transparent',
       borderRadius: '2rem',
-      boxShadow: '0 4px 32px #4682B422',
+      boxShadow: 'none',
       padding: '2.5rem 1.5rem',
       color: '#1B5583',
       fontFamily: 'Lato, sans-serif',
@@ -123,18 +123,18 @@ const Asistencia = () => {
         textAlign: 'center',
       }}>CONFIRMA TU ASISTENCIA</h2>
       <form className="asistencia-form" style={{
-        background: '#fff',
+        background: 'transparent',
         borderRadius: '1.5rem',
-        boxShadow: '0 2px 16px #4682B411',
+        boxShadow: 'none',
         padding: '2rem 1.2rem',
         color: '#1B5583',
         fontFamily: 'inherit',
       }} onSubmit={handleSubmit}>
-        <div className="mb-3">
+        <div className="mb-4">
           <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>Nombre y apellidos</label>
           <input
             type="text"
-            className="form-control rounded-3 border-0"
+            className="form-control rounded-3"
             placeholder="Nombre y apellidos"
             name="nombre"
             value={form.nombre}
@@ -143,24 +143,24 @@ const Asistencia = () => {
           />
           {errores.nombre && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.nombre}</div>}
         </div>
-        <div className="mb-3">
+        <div className="mb-4">
           <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Vendrás con acompañante?</label>
           <div style={{display:'flex', gap:'1.5rem', marginTop:'0.5rem'}}>
             <label style={{display:'flex', alignItems:'center', gap:'0.4em'}}>
-              <input type="radio" name="acompanante" value="sí" checked={form.acompanante==='sí'} onChange={handleChange} /> Sí
+              <input type="radio" style={{border:'1px solid #4682B4'}} name="acompanante" value="sí" checked={form.acompanante==='sí'} onChange={handleChange} /> Sí
             </label>
             <label style={{display:'flex', alignItems:'center', gap:'0.4em'}}>
-              <input type="radio" name="acompanante" value="no" checked={form.acompanante==='no'} onChange={handleChange} /> No
+              <input type="radio" style={{border:'1px solid #4682B4'}} name="acompanante" value="no" checked={form.acompanante==='no'} onChange={handleChange} /> No
             </label>
           </div>
           {errores.acompanante && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.acompanante}</div>}
         </div>
         {form.acompanante === 'sí' && (
-          <div className="mb-3">
+          <div className="mb-4">
             <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>Indica el nombre completo de tu acompañante</label>
             <input
               type="text"
-              className="form-control rounded-3 border-0"
+              className="form-control rounded-3"
               placeholder="Nombre del acompañante"
               name="acompananteNombre"
               value={form.acompananteNombre}
@@ -170,7 +170,7 @@ const Asistencia = () => {
             {errores.acompananteNombre && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.acompananteNombre}</div>}
           </div>
         )}
-        <div className="mb-3">
+        <div className="mb-4">
           <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Necesitarás servicio de autobús? <span style={{fontWeight:400, fontSize:'0.98em'}}>(puedes marcar una o varias opciones según lo que necesites)</span></label>
           <div style={{display:'flex', flexDirection:'column', gap:'0.5rem', marginTop:'0.5rem'}}>
             <label><input type="checkbox" name="autobus" value="No, voy por mi cuenta" checked={form.autobus.includes('No, voy por mi cuenta')} onChange={handleChange} /> No, voy por mi cuenta</label>
@@ -181,10 +181,10 @@ const Asistencia = () => {
           </div>
           {errores.autobus && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.autobus}</div>}
         </div>
-        <div className="mb-3">
+        <div className="mb-4">
           <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Alergias, intolerancias o restricciones alimenticias?</label>
           <textarea
-            className="form-control rounded-3 border-0"
+            className="form-control rounded-3"
             rows={2}
             placeholder="Indícanos si tú o tu acompañante tenéis alguna alergia, intolerancia o restricción alimenticia (y a quién corresponde)"
             name="restricciones"

@@ -6,9 +6,9 @@ const Alojamientos = () => (
   <div className="alojamientos-textos" style={{
     maxWidth: '800px',
     margin: '0 auto',
-    background: 'linear-gradient(120deg, #fff 60%, #eaf3fa 100%)',
+    background: 'transparent',
     borderRadius: '2rem',
-    boxShadow: '0 4px 32px #4682B422',
+    boxShadow: 'none',
     padding: '2.5rem 1.5rem',
     color: '#1B5583',
     fontFamily: 'Lato, sans-serif',
@@ -26,14 +26,15 @@ const Alojamientos = () => (
       fontSize: '1.08rem',
       color: '#4682B4',
       marginBottom: '2rem',
+      marginTop:'2rem',
       textAlign: 'center',
     }}>
       En este documento os dejamos algunas ideas de hoteles en Denia, en Jávea y próximos a Casa Santonja:
     </p>
     <ul style={{
-      background:'#eaf3fa',
+      background:'transparent',
       borderRadius:'1.2rem',
-      boxShadow:'0 2px 12px #4682B411',
+      boxShadow:'none',
       padding:'1.2rem 1.5rem',
       color:'#1B5583',
       fontSize:'1.08rem',
@@ -44,13 +45,13 @@ const Alojamientos = () => (
       flexDirection:'column',
       gap:'1.1rem'
     }}>
-      <li>
+      <li style={{textAlign:'center'}}>
         <a href="https://drive.google.com/your-link-denia" target="_blank" rel="noopener noreferrer" style={{color:'#1B5583', fontWeight:600, textDecoration:'underline'}}>Hoteles en Denia</a>
       </li>
-      <li>
+      <li style={{textAlign:'center'}}>
         <a href="https://drive.google.com/your-link-javea" target="_blank" rel="noopener noreferrer" style={{color:'#1B5583', fontWeight:600, textDecoration:'underline'}}>Hoteles en Jávea</a>
       </li>
-      <li>
+      <li style={{textAlign:'center'}}>
         <a href="https://drive.google.com/your-link-finca" target="_blank" rel="noopener noreferrer" style={{color:'#1B5583', fontWeight:600, textDecoration:'underline'}}>Hoteles cerca de la finca</a>
       </li>
     </ul>
