@@ -1,3 +1,5 @@
+
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 /* Forzar borde en los radio buttons en toda la web */
 input[type="radio"] {
   border: 1px solid #4682B4 !important;
@@ -32,7 +34,6 @@ input[type="radio"] {
     padding: 1.2rem 0 1.2rem 0;
   }
 }
-@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 /* Tipografía Global */
 body, html, #root {

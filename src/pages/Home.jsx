@@ -8,7 +8,7 @@ import { Alojamientos } from "./Alojamientos";
 import { Ubicacion } from "./Ubicacion";
 import MasInfo from "./MasInfo";
 import CuandoDonde from "./CuandoDonde";
-import CartaRoTete from "../img/CartaRoTeteSinFondo.png";
+import CartaRoTete from "../img/cartaRoTeteSinFondo.png";
 import logoTete from "../img/logotetero.png";
 
 export const Home = () => {
