@@ -82,9 +82,9 @@ export const Home = () => {
         <div className="home-container d-flex flex-column min-vh-100">
           <nav className="navbar pastel-navbar navbar-expand-xl">
             <div className="container-fluid">
-                      <a href="/" className="navbar-logo me-5" style={{textDecoration:'none'}}>
-                        <img src={logoTete} className="ms-5"alt="Logo Tetero" style={{height:'55px', width:'auto', display:'block'}} />
-                      </a>
+                      <a href="/" className="navbar-logo me-4" style={{textDecoration:'none'}}>
+                <img src={logoTete} className="ms-3" alt="Logo Tetero" style={{height:'55px', width:'auto', display:'block'}} />
+              </a>
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
               </button>
