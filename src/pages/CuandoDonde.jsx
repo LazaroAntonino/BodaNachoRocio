@@ -31,7 +31,7 @@ const CuandoDonde = () => (
       boxShadow:'none',
       padding:'1.2rem 1.5rem',
       color:'#1B5583',
-      fontSize:'1.20rem',
+      fontSize:'1rem',
       listStyle:'none',
       margin:'0 auto 2rem auto',
       maxWidth:600,
@@ -43,10 +43,10 @@ const CuandoDonde = () => (
         <span style={{flex:1}}>
           Como el porqué ya está claro, os contamos que la ceremonia será en la <b>Iglesia de San Bartolomé de Jávea</b> el <b>13 de junio de 2026 a las 12:30</b>.
         </span>
-        <img src={acuarelaSanBartolome} alt="Acuarela San Bartolomé Jávea" style={{width: 150, height: 300, borderRadius: 12, boxShadow: '0 2px 12px #4682B433'}} />
+        <img src={acuarelaSanBartolome} alt="Acuarela San Bartolomé Jávea" style={{width: 140, height: 300, borderRadius: 12, boxShadow: '0 2px 12px #4682B433'}} />
       </li>
       <li style={{display:'flex', alignItems:'center', gap:'1.2rem'}}>
-        <img src={acuarelaCasaSantonja} alt="Acuarela Casa Santonja" style={{width: 180, height: 300, borderRadius: 12, boxShadow: '0 2px 12px #4682B433'}} />
+        <img src={acuarelaCasaSantonja} alt="Acuarela Casa Santonja" style={{width: 140, height: 300, borderRadius: 12, boxShadow: '0 2px 12px #4682B433'}} />
         <span style={{flex:1}}>
           Continuaremos con la celebración en <b>Casa Santonja (Beniarbeig)</b>.
         </span>
