@@ -8,6 +8,8 @@ import { Alojamientos } from "./Alojamientos";
 import { Ubicacion } from "./Ubicacion";
 import MasInfo from "./MasInfo";
 import CuandoDonde from "./CuandoDonde";
+import CartaRoTete from "../img/CartaRoTeteSinFondo.png";
+import logoTete from "../img/logotetero.png";
 
 export const Home = () => {
   const [active, setActive] = useState("bienvenidos");
@@ -65,7 +67,7 @@ export const Home = () => {
       {showModal && (
         <div className="modal-invitacion-overlay">
           <div className={`modal-carta-sola${zoomCarta ? ' zoom-in' : ''}`}>
-            <img src="/sobre-invitacion-rn.png" alt="Sobre invitación" className="modal-sobre-img-sinborde" />
+            <img src={CartaRoTete} alt="Sobre invitación" className="modal-sobre-img-sinborde" />
           </div>
           <div className="modal-invitacion">
             {!zoomCarta && (
@@ -80,11 +82,9 @@ export const Home = () => {
         <div className="home-container d-flex flex-column min-vh-100">
           <nav className="navbar pastel-navbar navbar-expand-xl">
             <div className="container-fluid">
-				              <a href="/" className="navbar-logo me-4" style={{textDecoration:'none'}}>
-				                <span className="logo-n">R</span>
-				                <span className="logo-plus">&</span>
-				                <span className="logo-r">N</span>
-				              </a>
+                      <a href="/" className="navbar-logo me-5" style={{textDecoration:'none'}}>
+                        <img src={logoTete} className="ms-5"alt="Logo Tetero" style={{height:'55px', width:'auto', display:'block'}} />
+                      </a>
               <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar" aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
               </button>
