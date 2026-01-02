@@ -267,6 +267,17 @@ const Asistencia = () => {
               /> Volveré a Denia o Jávea en el segundo turno
             </label>
           </div>
+          {/* Mensaje informativo simple */}
+          {form.autobus.includes('No, voy por mi cuenta') && (
+            <div style={{color:'#218838', fontSize:'0.98rem', marginTop:6}}>
+              Si seleccionas esta opción, no puedes marcar otras opciones de autobús.
+            </div>
+          )}
+          {form.autobus.length > 0 && !form.autobus.includes('No, voy por mi cuenta') && (
+            <div style={{color:'#218838', fontSize:'0.98rem', marginTop:6}}>
+              Si seleccionas cualquier opción de autobús, no puedes marcar "No, voy por mi cuenta".
+            </div>
+          )}
           {errores.autobus && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.autobus}</div>}
         </div>
         <div className="mb-4">
