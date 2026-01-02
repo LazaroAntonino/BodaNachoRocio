@@ -40,14 +40,14 @@ const CuandoDonde = () => (
       gap:'1.1rem'
     }}>
       <li style={{display:'flex', alignItems:'center', gap:'1.2rem', marginBottom:'4rem', marginTop:'2rem'}}>
-        <span style={{flex:1}}>
+        <span style={{flex:1, textAlign:'center'}}>
           Como el porqué ya está claro, os contamos que la ceremonia será en la <b>Iglesia de San Bartolomé de Jávea</b> el <b>13 de junio de 2026 a las 12:30</b>.
         </span>
         <img src={acuarelaSanBartolome} alt="Acuarela San Bartolomé Jávea" style={{width: 140, height: 300, borderRadius: 12, boxShadow: '0 2px 12px #4682B433'}} />
       </li>
       <li style={{display:'flex', alignItems:'center', gap:'1.2rem'}}>
         <img src={acuarelaCasaSantonja} alt="Acuarela Casa Santonja" style={{width: 140, height: 300, borderRadius: 12, boxShadow: '0 2px 12px #4682B433'}} />
-        <span style={{flex:1}}>
+        <span style={{flex:1, textAlign:'center'}}>
           Continuaremos con la celebración en <b>Casa Santonja (Beniarbeig)</b>.
         </span>
       </li>

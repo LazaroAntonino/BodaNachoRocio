@@ -44,19 +44,19 @@ const HorariosAutobuses = () => (
       flexDirection:'column',
       gap:'3rem'
     }}>
-      <li>
+      <li style={{textAlign:'center'}}>
         <span style={{display:'block', textAlign:'center', marginBottom:'1rem'}}>
           <b style={{color:'#4682B4'}}>Denia - Jávea</b>
         </span>
         El autobús saldrá a las <b>11:30</b> desde el hotel <b>La Posada del Mar</b>.
       </li>
-      <li>
+      <li style={{textAlign:'center'}}>
         <span style={{display:'block', textAlign:'center', marginBottom:'1rem'}}>
           <b style={{color:'#4682B4'}}>Iglesia de Jávea - Casa Santonja</b>
         </span>
         Al salir de la iglesia, los autobuses os estarán esperando en la parada de la <b>Ronda Norte</b>, junto a la oficina de Correos.
       </li>
-      <li>
+      <li style={{textAlign:'center'}}>
         <span style={{display:'block', textAlign:'center', marginBottom:'1rem'}}>
           <b style={{color:'#4682B4'}}>Casa Santonja - Denia - Jávea</b>
         </span>

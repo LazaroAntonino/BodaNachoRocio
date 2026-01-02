@@ -95,7 +95,7 @@ const Inspiracion = () => {
       </section>
       <section className="hero-section" style={{ background: 'transparent', boxShadow: 'none' }}>
         <div className="hero-container carta-texto" style={{ background: 'var(--azul-crema-1)', boxShadow: 'none', textAlign: 'center', width: '100%', margin: 0, padding: '2.5rem 0 2rem 0', maxWidth: '100vw' }}>
-          <div style={{ color: 'var(--azul-crema-texto)', fontFamily: "'ProximaNova', Helvetica, Arial, sans-serif", fontSize: '1.13rem', width: '100%', margin: '0 auto', padding: 0, textAlign: 'center' }}>
+          <div style={{ color: '#1B5583', fontFamily: "'ProximaNova', Helvetica, Arial, sans-serif", fontSize: '1.13rem', width: '100%', margin: '0 auto', padding: 0, textAlign: 'center' }}>
             <p style={{ marginBottom: '1.2em', fontWeight: 500, background: 'transparent' }}>A nuestras familias y amigos…</p>
             <p style={{ marginBottom: '1.2em', background: 'transparent' }}>Aunque parezca que fue ayer cuando, con una cena improvisada y cero expectativas, nuestro querido amigo Nacho —y su incapacidad de renunciar a cualquier plan— nos presentara, lo cierto es que han pasado ya 7 años y hoy estamos felices de recordaros que <b>¡nos casamos!</b></p>
             <p style={{ marginBottom: '1.2em', background: 'transparent' }}>En Jávea, el 13 de junio de 2026. Lo repetiremos varias veces, para los más despistados.</p>
