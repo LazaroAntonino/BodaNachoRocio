@@ -1,4 +1,6 @@
+
 import React from "react";
+import fotoTeteMasInfo from '../img/fototetemasinfo.jpeg';
 import './Home.css';
 
 const MasInfo = () => (
@@ -70,6 +72,19 @@ const MasInfo = () => (
     }}>
       <div><b>Nacho</b> - <a href="tel:696730832" style={{ color: '#1B5583', textDecoration: 'underline' }}>696 730 832</a></div>
       <div><b>Rocío</b> - <a href="tel:608162299" style={{ color: '#1B5583', textDecoration: 'underline' }}>608 162 299</a></div>
+    </div>
+    <div style={{width:'100%', display:'flex', justifyContent:'center', marginTop:'2.5rem'}}>
+      <img 
+        src={fotoTeteMasInfo} 
+        alt="Foto Tete Más Información" 
+        style={{
+          maxWidth:'340px',
+          width:'100%',
+          borderRadius:'18px',
+          boxShadow:'0 2px 16px #4682B422',
+          objectFit:'cover',
+        }}
+      />
     </div>
   </div>
 );

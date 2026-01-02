@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import "./Inspiracion.css";
 import fotoPrincipal from '../img/fotomarTete.jpeg';
-import fotoSecundaria from '../img/atardecerBodaTete.jpeg';
+import fotoTeteBienvenidos from '../img/fototetebienvenidosrecortada.jpg';
 
 // Countdown Timer Component
 const Countdown = () => {
@@ -96,16 +96,29 @@ const Inspiracion = () => {
       <section className="hero-section" style={{ background: 'transparent', boxShadow: 'none' }}>
         <div className="hero-container carta-texto" style={{ background: 'var(--azul-crema-1)', boxShadow: 'none', textAlign: 'center', width: '100%', margin: 0, padding: '2.5rem 0 2rem 0', maxWidth: '100vw' }}>
           <div style={{ color: '#1B5583', fontFamily: "'ProximaNova', Helvetica, Arial, sans-serif", fontSize: '1.13rem', width: '100%', margin: '0 auto', padding: 0, textAlign: 'center' }}>
-            <p style={{ marginBottom: '1.2em', fontWeight: 500, background: 'transparent' }}>A nuestras familias y amigos…</p>
-            <p style={{ marginBottom: '1.2em', background: 'transparent' }}>Aunque parezca que fue ayer cuando, con una cena improvisada y cero expectativas, nuestro querido amigo Nacho —y su incapacidad de renunciar a cualquier plan— nos presentara, lo cierto es que han pasado ya 7 años y hoy estamos felices de recordaros que <b>¡nos casamos!</b></p>
-            <p style={{ marginBottom: '1.2em', background: 'transparent' }}>En Jávea, el 13 de junio de 2026. Lo repetiremos varias veces, para los más despistados.</p>
-            <p style={{ marginBottom: '1.2em', background: 'transparent' }}>Sabemos que casarnos en Alicante o Madrid habría sido lo más sencillo, pero nos gustan los retos y que nuestra boda sea la excusa perfecta para una escapada de fin de semana que dé por inaugurado el verano. Y nos parecía que no había lugar mejor para hacerlo que a orillas de nuestro Mediterráneo. Así que, hagan las maletas con sus mejores galas, pero dejen espacio para la toalla y el bañador.</p>
-            <p style={{ marginBottom: '1.2em', background: 'transparent' }}>Estamos muy contentos de poder compartir este día con todos vosotros —nuestra familia y amigos más queridos— y queremos daros las gracias de todo corazón a todos los que venís hasta aquí para acompañarnos en este día tan importante. Nos hace muchísima ilusión celebrar este día rodeados de tanto cariño.</p>
-            <p style={{ marginBottom: '1.2em', background: 'transparent' }}>Mientras tanto, en esta web os iremos contando todo lo que necesitáis saber: dónde, cómo y cuándo, además de daros información sobre horarios, recomendaciones, etc. También es la mejor opción para confirmar vuestra asistencia, si queréis utilizar el servicio de autobús o informarnos sobre cualquier intolerancia o alergia que debamos tener en cuenta.</p>
-            <p style={{ marginTop: '2em', fontWeight: 500, background: 'transparent' }}>Con todo nuestro cariño,<br />Rocío y Nacho.</p>
+            <p style={{ marginBottom: '1.2em', fontWeight: 500, background: 'transparent', boxShadow: 'none' }}>A nuestras familias y amigos…</p>
+            <p style={{ marginBottom: '1.2em', background: 'transparent', boxShadow: 'none' }}>Aunque parezca que fue ayer cuando, con una cena improvisada y cero expectativas, nuestro querido amigo Nacho —y su incapacidad de renunciar a cualquier plan— nos presentara, lo cierto es que han pasado ya 7 años y hoy estamos felices de recordaros que <b>¡nos casamos!</b></p>
+            <p style={{ marginBottom: '1.2em', background: 'transparent', boxShadow: 'none' }}>En Jávea, el 13 de junio de 2026. Lo repetiremos varias veces, para los más despistados.</p>
+            <p style={{ marginBottom: '1.2em', background: 'transparent', boxShadow: 'none' }}>Sabemos que casarnos en Alicante o Madrid habría sido lo más sencillo, pero nos gustan los retos y que nuestra boda sea la excusa perfecta para una escapada de fin de semana que dé por inaugurado el verano. Y nos parecía que no había lugar mejor para hacerlo que a orillas de nuestro Mediterráneo. Así que, hagan las maletas con sus mejores galas, pero dejen espacio para la toalla y el bañador.</p>
+            <p style={{ marginBottom: '1.2em', background: 'transparent', boxShadow: 'none' }}>Estamos muy contentos de poder compartir este día con todos vosotros —nuestra familia y amigos más queridos— y queremos daros las gracias de todo corazón a todos los que venís hasta aquí para acompañarnos en este día tan importante. Nos hace muchísima ilusión celebrar este día rodeados de tanto cariño.</p>
+            <p style={{ marginBottom: '1.2em', background: 'transparent', boxShadow: 'none' }}>Mientras tanto, en esta web os iremos contando todo lo que necesitáis saber: dónde, cómo y cuándo, además de daros información sobre horarios, recomendaciones, etc. También es la mejor opción para confirmar vuestra asistencia, si queréis utilizar el servicio de autobús o informarnos sobre cualquier intolerancia o alergia que debamos tener en cuenta.</p>
+            <p style={{ marginTop: '2em', fontWeight: 500, background: 'transparent', boxShadow: 'none' }}>Con todo nuestro cariño,<br />Rocío y Nacho.</p>
           </div>
         </div>
       </section>
+        <div style={{width:'100%', display:'flex', justifyContent:'center', marginBottom:'2.5rem'}}>
+          <img
+            src={fotoTeteBienvenidos}
+            alt="Foto Tete Bienvenidos"
+            style={{
+              maxWidth:'340px',
+              width:'100%',
+              borderRadius:'18px',
+              boxShadow:'0 2px 16px #4682B422',
+              objectFit:'cover',
+            }}
+          />
+        </div>
     </div>
   );
 };

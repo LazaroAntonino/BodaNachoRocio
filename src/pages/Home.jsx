@@ -60,6 +60,9 @@ export const Home = () => {
   const handleNavClick = (section) => {
     setActive(section);
     closeNavbar();
+    setTimeout(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    }, 0);
   };
 
   return (
@@ -94,13 +97,13 @@ export const Home = () => {
                     <button className={`nav-link pastel-link ${active === "bienvenidos" ? "active" : ""}`} onClick={() => handleNavClick("bienvenidos")}>¡Bienvenidos!</button>
                   </li>
                   <li className="nav-item">
-                    <button className={`nav-link pastel-link ${active === "cuandodonde" ? "active" : ""}`} onClick={() => handleNavClick("cuandodonde")}>Cuándo y Dónde</button>
+                    <button className={`nav-link pastel-link ${active === "cuandodonde" ? "active" : ""}`} onClick={() => handleNavClick("cuandodonde")}>Cuándo y dónde</button>
                   </li>
                   <li className="nav-item">
-                    <button className={`nav-link pastel-link ${active === "horariosautobuses" ? "active" : ""}`} onClick={() => handleNavClick("horariosautobuses")}>Horarios y Autobuses</button>
+                    <button className={`nav-link pastel-link ${active === "horariosautobuses" ? "active" : ""}`} onClick={() => handleNavClick("horariosautobuses")}>Horarios y autobuses</button>
                   </li>
                   <li className="nav-item">
-                    <button className={`nav-link pastel-link ${active === "asistencia" ? "active" : ""}`} onClick={() => handleNavClick("asistencia")}>Confirma tu Asistencia</button>
+                    <button className={`nav-link pastel-link ${active === "asistencia" ? "active" : ""}`} onClick={() => handleNavClick("asistencia")}>Confirma tu asistencia</button>
                   </li>
                   <li className="nav-item">
                     <button className={`nav-link pastel-link ${active === "alojamientos" ? "active" : ""}`} onClick={() => handleNavClick("alojamientos")}>Alojamientos</button>
