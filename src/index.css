@@ -1,3 +1,19 @@
+/* ...existing code... */
+.img-sanbartolome {
+  height: 320px;
+}
+.img-santonja {
+  height: 220px;
+}
+
+@media (min-width: 700px) {
+  .img-sanbartolome {
+    height: 540px;
+  }
+  .img-santonja {
+    height: 420px;
+  }
+}
 
 @import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 /* Forzar borde en los radio buttons en toda la web */

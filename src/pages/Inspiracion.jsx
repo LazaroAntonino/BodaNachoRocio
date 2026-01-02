@@ -106,7 +106,7 @@ const Inspiracion = () => {
           </div>
         </div>
       </section>
-        <div style={{width:'100%', display:'flex', justifyContent:'center', marginBottom:'2.5rem'}}>
+        <div style={{width:'100%', display:'flex', flexDirection:'column', alignItems:'center', gap:'1.5rem', marginBottom:'2.5rem'}}>
           <img
             src={fotoTeteBienvenidos}
             alt="Foto Tete Bienvenidos"
@@ -118,6 +118,32 @@ const Inspiracion = () => {
               objectFit:'cover',
             }}
           />
+          <a
+            href="#asistencia"
+            onClick={e => {
+              e.preventDefault();
+              const navBtn = Array.from(document.querySelectorAll('button.pastel-link.nav-link')).find(btn => btn.textContent?.toLowerCase().includes('asistencia'));
+              if (navBtn) navBtn.click();
+              else window.location.hash = '#asistencia';
+            }}
+            style={{
+              display:'inline-block',
+              background:'#4682B4',
+              color:'#fff',
+              border:'none',
+              borderRadius:'8px',
+              padding:'0.5rem 1.2rem',
+              fontWeight:600,
+              textDecoration:'none',
+              fontSize:'1rem',
+              boxShadow:'0 2px 8px #4682B422',
+              marginTop:'3rem',
+              cursor:'pointer',
+              transition:'background 0.2s',
+            }}
+          >
+            Confirmar asistencia
+          </a>
         </div>
     </div>
   );
