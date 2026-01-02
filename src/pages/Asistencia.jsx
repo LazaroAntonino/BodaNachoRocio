@@ -1,5 +1,5 @@
 // ...existing code...
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Select from 'react-select';
 
 const allergenOptions = [
@@ -44,6 +44,13 @@ const Asistencia = () => {
   const [enviando, setEnviando] = useState(false);
   const [errores, setErrores] = useState({});
 
+  // Refs para los campos
+  const nombreRef = useRef(null);
+  const acompananteRef = useRef(null);
+  const acompananteNombreRef = useRef(null);
+  const autobusRef = useRef(null);
+  const restriccionesRef = useRef(null);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     if (type === 'checkbox' && name === 'autobus') {
@@ -80,7 +87,26 @@ const Asistencia = () => {
     }
     if (!form.restricciones.trim()) newErrors.restricciones = 'Este campo es obligatorio';
     setErrores(newErrors);
-    if (Object.keys(newErrors).length > 0) return;
+    // Scroll automático al primer campo con error
+    if (Object.keys(newErrors).length > 0) {
+      const order = ['nombre', 'acompanante', 'acompananteNombre', 'autobus', 'restricciones'];
+      for (let key of order) {
+        if (newErrors[key]) {
+          let ref = null;
+          if (key === 'nombre') ref = nombreRef;
+          if (key === 'acompanante') ref = acompananteRef;
+          if (key === 'acompananteNombre') ref = acompananteNombreRef;
+          if (key === 'autobus') ref = autobusRef;
+          if (key === 'restricciones') ref = restriccionesRef;
+          if (ref && ref.current) {
+            ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            ref.current.focus && ref.current.focus();
+            break;
+          }
+        }
+      }
+      return;
+    }
     setEnviando(true);
     const ok = await sendToSheets({
       'nombre': form.nombre,
@@ -176,6 +202,7 @@ const Asistencia = () => {
         <div className="mb-4">
           <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>Nombre y apellidos</label>
           <input
+            ref={nombreRef}
             type="text"
             className="form-control rounded-3"
             placeholder="Nombre y apellidos"
@@ -188,7 +215,7 @@ const Asistencia = () => {
         </div>
         <div className="mb-4">
           <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Vendrás con acompañante?</label>
-          <div style={{display:'flex', gap:'1.5rem', marginTop:'0.5rem'}}>
+          <div ref={acompananteRef} style={{display:'flex', gap:'1.5rem', marginTop:'0.5rem'}}>
             <label style={{display:'flex', alignItems:'center', gap:'0.4em'}}>
               <input type="radio" style={{border:'1px solid #4682B4'}} name="acompanante" value="sí" checked={form.acompanante==='sí'} onChange={handleChange} /> Sí
             </label>
@@ -202,6 +229,7 @@ const Asistencia = () => {
           <div className="mb-4">
             <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>Indica el nombre completo de tu acompañante</label>
             <input
+              ref={acompananteNombreRef}
               type="text"
               className="form-control rounded-3"
               placeholder="Nombre del acompañante"
@@ -215,7 +243,7 @@ const Asistencia = () => {
         )}
         <div className="mb-4">
           <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Necesitarás servicio de autobús? <span style={{fontWeight:400, fontSize:'0.98em'}}>(puedes marcar una o varias opciones según lo que necesites)</span></label>
-          <div style={{display:'flex', flexDirection:'column', gap:'0.5rem', marginTop:'0.5rem'}}>
+          <div ref={autobusRef} style={{display:'flex', flexDirection:'column', gap:'0.5rem', marginTop:'0.5rem'}}>
             <label>
               <input
                 type="checkbox"
@@ -309,6 +337,7 @@ const Asistencia = () => {
         <div className="mb-4">
           <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Alergias, intolerancias o restricciones alimenticias?</label>
           <textarea
+            ref={restriccionesRef}
             className="form-control rounded-3"
             rows={2}
             placeholder="Indícanos si tú o tu acompañante tenéis alguna alergia, intolerancia o restricción alimenticia (y a quién corresponde)"
