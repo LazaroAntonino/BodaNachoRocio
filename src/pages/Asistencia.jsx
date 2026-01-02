@@ -46,13 +46,20 @@ const Asistencia = () => {
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    if (type === 'checkbox') {
+    if (type === 'checkbox' && name === 'autobus') {
       setForm((prev) => {
+        let newAutobus = [...prev.autobus];
         if (checked) {
-          return { ...prev, autobus: [...prev.autobus, value] };
+          if (value === 'No, voy por mi cuenta') {
+            newAutobus = ['No, voy por mi cuenta'];
+          } else {
+            newAutobus = newAutobus.filter((v) => v !== 'No, voy por mi cuenta');
+            newAutobus.push(value);
+          }
         } else {
-          return { ...prev, autobus: prev.autobus.filter((v) => v !== value) };
+          newAutobus = newAutobus.filter((v) => v !== value);
         }
+        return { ...prev, autobus: newAutobus };
       });
     } else {
       setForm((prev) => ({ ...prev, [name]: value }));
@@ -66,7 +73,11 @@ const Asistencia = () => {
     if (!form.nombre.trim()) newErrors.nombre = 'El nombre es obligatorio';
     if (!form.acompanante) newErrors.acompanante = 'Selecciona si vendrás con acompañante';
     if (form.acompanante === 'sí' && !form.acompananteNombre.trim()) newErrors.acompananteNombre = 'El nombre del acompañante es obligatorio';
-    if (!form.autobus.length) newErrors.autobus = 'Selecciona al menos una opción de autobús';
+    if (!form.autobus.length) {
+      newErrors.autobus = 'Selecciona al menos una opción de autobús';
+    } else if (form.autobus.includes('No, voy por mi cuenta') && form.autobus.length > 1) {
+      newErrors.autobus = 'No puedes seleccionar "No, voy por mi cuenta" junto con otras opciones de autobús';
+    }
     if (!form.restricciones.trim()) newErrors.restricciones = 'Este campo es obligatorio';
     setErrores(newErrors);
     if (Object.keys(newErrors).length > 0) return;
@@ -205,11 +216,56 @@ const Asistencia = () => {
         <div className="mb-4">
           <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Necesitarás servicio de autobús? <span style={{fontWeight:400, fontSize:'0.98em'}}>(puedes marcar una o varias opciones según lo que necesites)</span></label>
           <div style={{display:'flex', flexDirection:'column', gap:'0.5rem', marginTop:'0.5rem'}}>
-            <label><input type="checkbox" name="autobus" value="No, voy por mi cuenta" checked={form.autobus.includes('No, voy por mi cuenta')} onChange={handleChange} /> No, voy por mi cuenta</label>
-            <label><input type="checkbox" name="autobus" value="Iré desde Denia hasta la Iglesia de San Bartolomé" checked={form.autobus.includes('Iré desde Denia hasta la Iglesia de San Bartolomé')} onChange={handleChange} /> Iré desde Denia hasta la Iglesia de San Bartolomé</label>
-            <label><input type="checkbox" name="autobus" value="Iré desde la Iglesia de San Bartolomé hasta Casa Santonja" checked={form.autobus.includes('Iré desde la Iglesia de San Bartolomé hasta Casa Santonja')} onChange={handleChange} /> Iré desde la Iglesia de San Bartolomé hasta Casa Santonja</label>
-            <label><input type="checkbox" name="autobus" value="Volveré a Denia en el primer turno" checked={form.autobus.includes('Volveré a Denia en el primer turno')} onChange={handleChange} /> Volveré a Denia en el primer turno</label>
-            <label><input type="checkbox" name="autobus" value="Volveré a Denia o Jávea en el segundo turno" checked={form.autobus.includes('Volveré a Denia o Jávea en el segundo turno')} onChange={handleChange} /> Volveré a Denia o Jávea en el segundo turno</label>
+            <label>
+              <input
+                type="checkbox"
+                name="autobus"
+                value="No, voy por mi cuenta"
+                checked={form.autobus.includes('No, voy por mi cuenta')}
+                onChange={handleChange}
+                disabled={form.autobus.length > 0 && !form.autobus.includes('No, voy por mi cuenta')}
+              /> No, voy por mi cuenta
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="autobus"
+                value="Iré desde Denia hasta la Iglesia de San Bartolomé"
+                checked={form.autobus.includes('Iré desde Denia hasta la Iglesia de San Bartolomé')}
+                onChange={handleChange}
+                disabled={form.autobus.includes('No, voy por mi cuenta')}
+              /> Iré desde Denia hasta la Iglesia de San Bartolomé
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="autobus"
+                value="Iré desde la Iglesia de San Bartolomé hasta Casa Santonja"
+                checked={form.autobus.includes('Iré desde la Iglesia de San Bartolomé hasta Casa Santonja')}
+                onChange={handleChange}
+                disabled={form.autobus.includes('No, voy por mi cuenta')}
+              /> Iré desde la Iglesia de San Bartolomé hasta Casa Santonja
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="autobus"
+                value="Volveré a Denia en el primer turno"
+                checked={form.autobus.includes('Volveré a Denia en el primer turno')}
+                onChange={handleChange}
+                disabled={form.autobus.includes('No, voy por mi cuenta')}
+              /> Volveré a Denia en el primer turno
+            </label>
+            <label>
+              <input
+                type="checkbox"
+                name="autobus"
+                value="Volveré a Denia o Jávea en el segundo turno"
+                checked={form.autobus.includes('Volveré a Denia o Jávea en el segundo turno')}
+                onChange={handleChange}
+                disabled={form.autobus.includes('No, voy por mi cuenta')}
+              /> Volveré a Denia o Jávea en el segundo turno
+            </label>
           </div>
           {errores.autobus && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.autobus}</div>}
         </div>

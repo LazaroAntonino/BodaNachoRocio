@@ -77,7 +77,7 @@ const CuandoDonde = () => (
       </div>
       {/* Finca */}
       <div>
-          <div style={{textAlign:'center', color:'#4682B4', fontWeight:'bold', fontSize:'1.15rem', marginBottom:'0.5rem', marginTop:'5rem'}}>Casa Santonja (Beniarbeig)</div>
+          <div style={{textAlign:'center', color:'#4682B4', fontWeight:'bold', fontSize:'1.15rem', marginBottom:'0.5rem', marginTop:'none'}}>Casa Santonja (Beniarbeig)</div>
           <img 
             src={acuarelaCasaSantonja} 
             alt="Acuarela Casa Santonja" 
