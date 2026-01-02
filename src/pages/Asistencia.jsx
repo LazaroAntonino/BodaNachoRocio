@@ -23,8 +23,10 @@ async function sendToSheets(data) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
+    return true;
   } catch (err) {
     console.error('Error logging to sheets:', err);
+    return false;
   }
 }
 
@@ -38,6 +40,7 @@ const Asistencia = () => {
     restricciones: '',
   });
   const [enviado, setEnviado] = useState(false);
+  const [errorEnvio, setErrorEnvio] = useState(false);
   const [enviando, setEnviando] = useState(false);
   const [errores, setErrores] = useState({});
 
@@ -68,14 +71,19 @@ const Asistencia = () => {
     setErrores(newErrors);
     if (Object.keys(newErrors).length > 0) return;
     setEnviando(true);
-    await sendToSheets({
+    const ok = await sendToSheets({
       'nombre': form.nombre,
       'acompanante': form.acompanante,
       'acompananteNombre': form.acompanante === 'sí' ? form.acompananteNombre : '',
       'autobus': form.autobus.join(', '),
       'restricciones': form.restricciones
     });
-    setEnviado(true);
+    setEnviando(false);
+    if (ok) {
+      setEnviado(true);
+    } else {
+      setErrorEnvio(true);
+    }
   };
 
   if (enviado) {
@@ -93,10 +101,34 @@ const Asistencia = () => {
           textAlign: 'center',
           background: 'transparent',
           borderRadius: '2rem',
-          boxShadow: '0 4px 32px #b3cbe622',
+          boxShadow: 'none',
         }}>
           <h2 style={{color:'#1B5583'}}>¡Gracias por confirmar tu asistencia!</h2>
           <p style={{color:'#4682B4'}}>Hemos recibido tu respuesta.</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (errorEnvio) {
+    return (
+      <div style={{
+        minHeight: '70vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}>
+        <div className="asistencia-textos" style={{
+          maxWidth: 800,
+          margin: '0 auto',
+          padding: '2.5rem 1.5rem',
+          textAlign: 'center',
+          background: 'transparent',
+          borderRadius: '2rem',
+          boxShadow: 'none',
+        }}>
+          <h2 style={{color:'#c00'}}>No se ha podido guardar tu respuesta</h2>
+          <p style={{color:'#4682B4'}}>Por favor, inténtalo de nuevo más tarde.<br />Si el problema persiste, contacta con los novios.</p>
         </div>
       </div>
     );
