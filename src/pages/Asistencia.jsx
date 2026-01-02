@@ -269,12 +269,38 @@ const Asistencia = () => {
           </div>
           {/* Mensaje informativo simple */}
           {form.autobus.includes('No, voy por mi cuenta') && (
-            <div style={{color:'#218838', fontSize:'0.98rem', marginTop:6}}>
+            <div style={{
+              background:'#fffbe6',
+              color:'#bfa100',
+              border:'1.5px solid #ffe066',
+              borderRadius:8,
+              padding:'0.7em 1em',
+              marginTop:8,
+              fontSize:'1rem',
+              fontWeight:700,
+              display:'flex',
+              alignItems:'center',
+              gap:'0.5em',
+            }}>
+              <span style={{fontSize:'1.2em', fontWeight:900}}>&#9888;</span>
               Si seleccionas esta opción, no puedes marcar otras opciones de autobús.
             </div>
           )}
           {form.autobus.length > 0 && !form.autobus.includes('No, voy por mi cuenta') && (
-            <div style={{color:'#218838', fontSize:'0.98rem', marginTop:6}}>
+            <div style={{
+              background:'#fffbe6',
+              color:'#bfa100',
+              border:'1.5px solid #ffe066',
+              borderRadius:8,
+              padding:'0.7em 1em',
+              marginTop:8,
+              fontSize:'1rem',
+              fontWeight:700,
+              display:'flex',
+              alignItems:'center',
+              gap:'0.5em',
+            }}>
+              <span style={{fontSize:'1.2em', fontWeight:900}}>&#9888;</span>
               Si seleccionas cualquier opción de autobús, no puedes marcar "No, voy por mi cuenta".
             </div>
           )}
