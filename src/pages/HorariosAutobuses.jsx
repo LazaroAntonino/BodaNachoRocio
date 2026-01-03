@@ -60,7 +60,7 @@ const HorariosAutobuses = () => (
         <span style={{display:'block', textAlign:'center', marginBottom:'1rem'}}>
           <b style={{color:'#4682B4'}}>Casa Santonja - Denia - Jávea</b>
         </span>
-        La fiesta acabará a la <b>1:00h</b>, pero para aquellos que necesiten volver antes o que quieran renunciar a las horas de fiesta más apasionantes de sus vidas, habrá un primer turno de autobuses.<br />La primera parada será en el hotel <b>La Posada del Mar (Denia)</b> y la segunda en la <b>Playa del Arenal (Jávea)</b>.
+        La fiesta acabará a la <b>1:00h</b>, pero para aquellos que necesiten volver antes o que quieran renunciar a las horas de fiesta más apasionantes de sus vidas, habrá un primer turno de autobuses.<br /><br />La primera parada será en el hotel <b>La Posada del Mar (Denia)</b> y la segunda en la <b>Playa del Arenal (Jávea)</b>.
       </li>
     </ul>
     {/*

@@ -79,8 +79,8 @@ const Inspiracion = () => {
           <img src={fotoPrincipal} alt="Rocío y Nacho" className="main-photo-img" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }} />
           <div className="main-photo-overlay">
             <span className="main-photo-text">
-              <span className="main-photo-text">Rocío y Nacho</span><br/>
-              <br />Ha llegado el momento: ¡nos casamos!<br />
+              <br />Ha llegado el momento:<br />
+              <br />¡nos casamos!<br />
               <br />
               <span style={{ fontSize: '1.3rem', display: 'block', marginTop: '0.5em' }}>13 de junio de 2026</span><br />
               <span style={{ fontSize: '1.1rem', display: 'block', marginTop: '0.2em' }}>Jávea, Alicante</span>
