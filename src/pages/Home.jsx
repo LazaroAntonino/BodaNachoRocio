@@ -74,7 +74,7 @@ export const Home = () => {
           </div>
           <div className="modal-invitacion">
             {!zoomCarta && (
-              <button className="modal-invitacion-btn marron" onClick={handleAbrirInvitacion}>
+              <button className="modal-invitacion-btn" onClick={handleAbrirInvitacion}>
                 Abrir invitación
               </button>
             )}

@@ -245,7 +245,7 @@ body, html, #root {
   position: fixed;
   z-index: 9999;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to bottom, #111 0%, #3a2e2a 40%, #3a2e2a 60%, #111 100%);
+  background: linear-gradient(to bottom, var(--azul-crema-2, #d2e3f3) 0%, var(--azul-crema-3, #b3cbe6) 50%, var(--azul-crema-4, #7fa7cc) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -371,9 +371,10 @@ body, html, #root {
   line-height: 1.3;
 }
 .modal-invitacion-btn {
-  background: #111;
-  color: #fff;
-  border: none;
+  background: #fff;
+  color: var(--azul-crema-5, #4d7ca6);
+  border: 2px solid var(--azul-crema-5, #4d7ca6);
+  text-shadow: none;
   border-radius: 2rem;
   padding: 0.7rem 2.2rem;
   font-size: 1.15rem;
@@ -381,23 +382,16 @@ body, html, #root {
   font-weight: 500;
   margin-top: 0.7rem;
   cursor: pointer;
-  transition: background 0.2s;
-  box-shadow: 0 2px 12px #0002;
+  transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px #7fa7cc33;
 }
 .modal-invitacion-btn:hover {
-  background: var(--azul-crema-5);
-  color: #222;
+  background: var(--azul-crema-2, #d2e3f3);
+  color: var(--azul-crema-5, #4d7ca6);
+  border: 2px solid var(--azul-crema-5, #4d7ca6);
+  box-shadow: 0 4px 18px #b3cbe655;
 }
-.modal-invitacion-btn.marron {
-  background: #3a2e2a;
-  color: #fff;
-  border: 2.5px solid #111;
-}
-.modal-invitacion-btn.marron:hover {
-  background: var(--azul-crema-5);
-  color: #222;
-  border: 2.5px solid #111;
-}
+
 @media (max-width: 600px) {
   .modal-invitacion {
     padding: 1.2rem 0.5rem 1.2rem 0.5rem;
