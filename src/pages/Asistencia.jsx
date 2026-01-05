@@ -13,7 +13,7 @@ const allergenOptions = [
 ];
 
 
-const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzdM6QQb6GT4G3kqDV71VnL85OOrNwiL8QjjAawY7oxZr-gqSTdW9TIAbG3wAvKLJi3/exec';
+const SHEET_URL = 'https://script.google.com/macros/s/AKfycbzvPGxJk5xnTfro6mked0qEChIWSysWM8P7xn9PNX1jIhcc5JCWhNl2BnGxaTakZCc_/exec';
 
 async function sendToSheets(data) {
   try {
@@ -38,6 +38,8 @@ const Asistencia = () => {
     acompananteNombre: '',
     autobus: [],
     restricciones: '',
+    preboda: '', // sí/no
+    prebodaNumero: '', // número libre
   });
   const [enviado, setEnviado] = useState(false);
   const [errorEnvio, setErrorEnvio] = useState(false);
@@ -50,6 +52,8 @@ const Asistencia = () => {
   const acompananteNombreRef = useRef(null);
   const autobusRef = useRef(null);
   const restriccionesRef = useRef(null);
+  const prebodaRef = useRef(null);
+  const prebodaNumeroRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -68,6 +72,11 @@ const Asistencia = () => {
         }
         return { ...prev, autobus: newAutobus };
       });
+    } else if (name === 'prebodaNumero') {
+      // Solo permitir números positivos o vacío
+      if (/^\d*$/.test(value)) {
+        setForm((prev) => ({ ...prev, prebodaNumero: value }));
+      }
     } else {
       setForm((prev) => ({ ...prev, [name]: value }));
     }
@@ -86,10 +95,15 @@ const Asistencia = () => {
       newErrors.autobus = 'No puedes seleccionar "No, voy por mi cuenta" junto con otras opciones de autobús';
     }
     if (!form.restricciones.trim()) newErrors.restricciones = 'Este campo es obligatorio';
+    // Validación de preboda
+    if (!form.preboda) newErrors.preboda = 'Por favor, responde si vendrás a la preboda';
+    if (form.preboda === 'sí' && (!form.prebodaNumero || parseInt(form.prebodaNumero, 10) < 1)) {
+      newErrors.prebodaNumero = 'Indica cuántos asistiréis a la preboda';
+    }
     setErrores(newErrors);
     // Scroll automático al primer campo con error
     if (Object.keys(newErrors).length > 0) {
-      const order = ['nombre', 'acompanante', 'acompananteNombre', 'autobus', 'restricciones'];
+      const order = ['nombre', 'acompanante', 'acompananteNombre', 'autobus', 'restricciones', 'preboda', 'prebodaNumero'];
       for (let key of order) {
         if (newErrors[key]) {
           let ref = null;
@@ -98,6 +112,8 @@ const Asistencia = () => {
           if (key === 'acompananteNombre') ref = acompananteNombreRef;
           if (key === 'autobus') ref = autobusRef;
           if (key === 'restricciones') ref = restriccionesRef;
+          if (key === 'preboda') ref = prebodaRef;
+          if (key === 'prebodaNumero') ref = prebodaNumeroRef;
           if (ref && ref.current) {
             ref.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
             ref.current.focus && ref.current.focus();
@@ -113,7 +129,9 @@ const Asistencia = () => {
       'acompanante': form.acompanante,
       'acompananteNombre': form.acompanante === 'sí' ? form.acompananteNombre : '',
       'autobus': form.autobus.join(', '),
-      'restricciones': form.restricciones
+      'restricciones': form.restricciones,
+      'preboda': form.preboda,
+      'prebodaNumero': form.preboda === 'sí' ? form.prebodaNumero : '',
     });
     setEnviando(false);
     if (ok) {
@@ -140,8 +158,8 @@ const Asistencia = () => {
           borderRadius: '2rem',
           boxShadow: 'none',
         }}>
-          <h2 style={{color:'#1B5583'}}>¡Gracias por confirmar tu asistencia!</h2>
-          <p style={{color:'#4682B4'}}>Hemos recibido tu respuesta.</p>
+          <h2 style={{ color: '#1B5583' }}>¡Gracias por confirmar tu asistencia!</h2>
+          <p style={{ color: '#4682B4' }}>Hemos recibido tu respuesta.</p>
         </div>
       </div>
     );
@@ -164,8 +182,8 @@ const Asistencia = () => {
           borderRadius: '2rem',
           boxShadow: 'none',
         }}>
-          <h2 style={{color:'#c00'}}>No se ha podido guardar tu respuesta</h2>
-          <p style={{color:'#4682B4'}}>Por favor, inténtalo de nuevo más tarde.<br />Si el problema persiste, contacta con los novios.</p>
+          <h2 style={{ color: '#c00' }}>No se ha podido guardar tu respuesta</h2>
+          <p style={{ color: '#4682B4' }}>Por favor, inténtalo de nuevo más tarde.<br />Si el problema persiste, contacta con los novios.</p>
         </div>
       </div>
     );
@@ -200,7 +218,7 @@ const Asistencia = () => {
         fontFamily: 'inherit',
       }} onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>Nombre y apellidos</label>
+          <label className="form-label" style={{ color: '#1B5583', fontWeight: 600 }}>Nombre y apellidos</label>
           <input
             ref={nombreRef}
             type="text"
@@ -209,25 +227,25 @@ const Asistencia = () => {
             name="nombre"
             value={form.nombre}
             onChange={handleChange}
-            style={{background:'#eaf3fa', color:'#1B5583', border:'1px solid #4682B4', fontSize:'1.05rem'}}
+            style={{ background: '#eaf3fa', color: '#1B5583', border: '1px solid #4682B4', fontSize: '1.05rem' }}
           />
-          {errores.nombre && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.nombre}</div>}
+          {errores.nombre && <div style={{ color: '#c00', fontSize: '0.98rem', marginTop: 4 }}>{errores.nombre}</div>}
         </div>
         <div className="mb-4">
-          <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Vendrás con acompañante?</label>
-          <div ref={acompananteRef} style={{display:'flex', gap:'1.5rem', marginTop:'0.5rem'}}>
-            <label style={{display:'flex', alignItems:'center', gap:'0.4em'}}>
-              <input type="radio" style={{border:'1px solid #4682B4'}} name="acompanante" value="sí" checked={form.acompanante==='sí'} onChange={handleChange} /> Sí
+          <label className="form-label" style={{ color: '#1B5583', fontWeight: 600 }}>¿Vendrás con acompañante?</label>
+          <div ref={acompananteRef} style={{ display: 'flex', gap: '1.5rem', marginTop: '0.5rem' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.4em' }}>
+              <input type="radio" style={{ border: '1px solid #4682B4' }} name="acompanante" value="sí" checked={form.acompanante === 'sí'} onChange={handleChange} /> Sí
             </label>
-            <label style={{display:'flex', alignItems:'center', gap:'0.4em'}}>
-              <input type="radio" style={{border:'1px solid #4682B4'}} name="acompanante" value="no" checked={form.acompanante==='no'} onChange={handleChange} /> No
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.4em' }}>
+              <input type="radio" style={{ border: '1px solid #4682B4' }} name="acompanante" value="no" checked={form.acompanante === 'no'} onChange={handleChange} /> No
             </label>
           </div>
-          {errores.acompanante && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.acompanante}</div>}
+          {errores.acompanante && <div style={{ color: '#c00', fontSize: '0.98rem', marginTop: 4 }}>{errores.acompanante}</div>}
         </div>
         {form.acompanante === 'sí' && (
           <div className="mb-4">
-            <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>Indica el nombre completo de tu acompañante</label>
+            <label className="form-label" style={{ color: '#1B5583', fontWeight: 600 }}>Indica el nombre completo de tu acompañante</label>
             <input
               ref={acompananteNombreRef}
               type="text"
@@ -236,14 +254,43 @@ const Asistencia = () => {
               name="acompananteNombre"
               value={form.acompananteNombre}
               onChange={handleChange}
-              style={{background:'#eaf3fa', color:'#1B5583', border:'1px solid #4682B4', fontSize:'1.05rem'}}
+              style={{ background: '#eaf3fa', color: '#1B5583', border: '1px solid #4682B4', fontSize: '1.05rem' }}
             />
-            {errores.acompananteNombre && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.acompananteNombre}</div>}
+            {errores.acompananteNombre && <div style={{ color: '#c00', fontSize: '0.98rem', marginTop: 4 }}>{errores.acompananteNombre}</div>}
           </div>
         )}
         <div className="mb-4">
-          <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Necesitarás servicio de autobús? <span style={{fontWeight:400, fontSize:'0.98em'}}>(puedes marcar una o varias opciones según lo que necesites)</span></label>
-          <div ref={autobusRef} style={{display:'flex', flexDirection:'column', gap:'0.5rem', marginTop:'0.5rem'}}>
+          <label className="form-label" style={{ color: '#1B5583', fontWeight: 600 }}>¿Vendrás/vendréis a la preboda en Denia el viernes 12?</label>
+          <div ref={prebodaRef} style={{ display: 'flex', gap: '1.5rem', marginTop: '0.5rem' }}>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.4em' }}>
+              <input type="radio" style={{ border: '1px solid #4682B4' }} name="preboda" value="sí" checked={form.preboda === 'sí'} onChange={handleChange} /> Sí
+            </label>
+            <label style={{ display: 'flex', alignItems: 'center', gap: '0.4em' }}>
+              <input type="radio" style={{ border: '1px solid #4682B4' }} name="preboda" value="no" checked={form.preboda === 'no'} onChange={handleChange} /> No
+            </label>
+          </div>
+          {errores.preboda && <div style={{ color: '#c00', fontSize: '0.98rem', marginTop: 4 }}>{errores.preboda}</div>}
+        </div>
+        {form.preboda === 'sí' && (
+          <div className="mb-4">
+            <label className="form-label" style={{ color: '#1B5583', fontWeight: 600 }}>¿Cuántos vendréis a la preboda?</label>
+            <input
+              ref={prebodaNumeroRef}
+              type="number"
+              className="form-control rounded-3"
+              placeholder="Número de asistentes a la preboda"
+              name="prebodaNumero"
+              value={form.prebodaNumero}
+              onChange={handleChange}
+              style={{ background: '#eaf3fa', color: '#1B5583', border: '1px solid #4682B4', fontSize: '1.05rem', maxWidth: 180 }}
+              inputMode="numeric"
+            />
+            {errores.prebodaNumero && <div style={{ color: '#c00', fontSize: '0.98rem', marginTop: 4 }}>{errores.prebodaNumero}</div>}
+          </div>
+        )}
+        <div className="mb-4">
+          <label className="form-label" style={{ color: '#1B5583', fontWeight: 600 }}>¿Necesitarás servicio de autobús? <span style={{ fontWeight: 400, fontSize: '0.98em' }}>(puedes marcar una o varias opciones según lo que necesites)</span></label>
+          <div ref={autobusRef} style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.5rem' }}>
             <label>
               <input
                 type="checkbox"
@@ -298,44 +345,44 @@ const Asistencia = () => {
           {/* Mensaje informativo simple */}
           {form.autobus.includes('No, voy por mi cuenta') && (
             <div style={{
-              background:'#fffbe6',
-              color:'#bfa100',
-              border:'1.5px solid #ffe066',
-              borderRadius:8,
-              padding:'0.7em 1em',
-              marginTop:8,
-              fontSize:'1rem',
-              fontWeight:700,
-              display:'flex',
-              alignItems:'center',
-              gap:'0.5em',
+              background: '#fffbe6',
+              color: '#bfa100',
+              border: '1.5px solid #ffe066',
+              borderRadius: 8,
+              padding: '0.7em 1em',
+              marginTop: 8,
+              fontSize: '1rem',
+              fontWeight: 700,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5em',
             }}>
-              <span style={{fontSize:'1.2em', fontWeight:900}}>&#9888;</span>
+              <span style={{ fontSize: '1.2em', fontWeight: 900 }}>&#9888;</span>
               Si seleccionas esta opción, no puedes marcar otras opciones de autobús.
             </div>
           )}
           {form.autobus.length > 0 && !form.autobus.includes('No, voy por mi cuenta') && (
             <div style={{
-              background:'#fffbe6',
-              color:'#bfa100',
-              border:'1.5px solid #ffe066',
-              borderRadius:8,
-              padding:'0.7em 1em',
-              marginTop:8,
-              fontSize:'1rem',
-              fontWeight:700,
-              display:'flex',
-              alignItems:'center',
-              gap:'0.5em',
+              background: '#fffbe6',
+              color: '#bfa100',
+              border: '1.5px solid #ffe066',
+              borderRadius: 8,
+              padding: '0.7em 1em',
+              marginTop: 8,
+              fontSize: '1rem',
+              fontWeight: 700,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5em',
             }}>
-              <span style={{fontSize:'1.2em', fontWeight:900}}>&#9888;</span>
+              <span style={{ fontSize: '1.2em', fontWeight: 900 }}>&#9888;</span>
               Si seleccionas cualquier opción de autobús, no puedes marcar "No, voy por mi cuenta".
             </div>
           )}
-          {errores.autobus && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.autobus}</div>}
+          {errores.autobus && <div style={{ color: '#c00', fontSize: '0.98rem', marginTop: 4 }}>{errores.autobus}</div>}
         </div>
         <div className="mb-4">
-          <label className="form-label" style={{color:'#1B5583', fontWeight:600}}>¿Alergias, intolerancias o restricciones alimenticias?</label>
+          <label className="form-label" style={{ color: '#1B5583', fontWeight: 600 }}>¿Alergias, intolerancias o restricciones alimenticias?</label>
           <textarea
             ref={restriccionesRef}
             className="form-control rounded-3"
@@ -344,11 +391,11 @@ const Asistencia = () => {
             name="restricciones"
             value={form.restricciones}
             onChange={handleChange}
-            style={{background:'#eaf3fa', color:'#1B5583', border:'1px solid #4682B4', fontSize:'1.05rem'}}
+            style={{ background: '#eaf3fa', color: '#1B5583', border: '1px solid #4682B4', fontSize: '1.05rem' }}
           />
-          {errores.restricciones && <div style={{color:'#c00', fontSize:'0.98rem', marginTop:4}}>{errores.restricciones}</div>}
+          {errores.restricciones && <div style={{ color: '#c00', fontSize: '0.98rem', marginTop: 4 }}>{errores.restricciones}</div>}
         </div>
-        <button type="submit" className="btn w-100 mt-2 rounded-3" style={{background:'#1B5583', border:'none', color:'#fff', fontWeight:600, fontSize:'1.1rem', letterSpacing:'0.01em', boxShadow:'0 2px 8px #4682B422'}} disabled={enviando}>
+        <button type="submit" className="btn w-100 mt-2 rounded-3" style={{ background: '#1B5583', border: 'none', color: '#fff', fontWeight: 600, fontSize: '1.1rem', letterSpacing: '0.01em', boxShadow: '0 2px 8px #4682B422' }} disabled={enviando}>
           {enviando ? 'Enviando...' : 'Enviar confirmación'}
         </button>
         {enviando && (
@@ -371,10 +418,10 @@ const Asistencia = () => {
               alignItems: 'center',
               gap: '1rem',
             }}>
-              <div className="spinner-border" style={{color:'#4682B4', width:'2.5rem', height:'2.5rem'}} role="status">
+              <div className="spinner-border" style={{ color: '#4682B4', width: '2.5rem', height: '2.5rem' }} role="status">
                 <span className="visually-hidden">Cargando...</span>
               </div>
-              <span style={{color:'#1B5583', fontWeight:600, fontSize:'1.1rem'}}>Enviando tu confirmación...</span>
+              <span style={{ color: '#1B5583', fontWeight: 600, fontSize: '1.1rem' }}>Enviando tu confirmación...</span>
             </div>
           </div>
         )}
