@@ -46,7 +46,7 @@ const Alojamientos = () => (
       gap:'1.1rem'
     }}>
       <li style={{textAlign:'center'}}>
-        <a href="https://drive.google.com/your-link-denia" target="_blank" rel="noopener noreferrer" style={{color:'#1B5583', fontWeight:600, textDecoration:'underline'}}>Hoteles en Denia</a>
+        <a href="https://drive.google.com/file/d/1dBHCjkP9lJn0SVr_FRGLRS1oGPS7DfSm/view?usp=drivesdk" target="_blank" rel="noopener noreferrer" style={{color:'#1B5583', fontWeight:600, textDecoration:'underline'}}>Hoteles en Denia</a>
       </li>
       <li style={{textAlign:'center'}}>
         <a href="https://drive.google.com/your-link-javea" target="_blank" rel="noopener noreferrer" style={{color:'#1B5583', fontWeight:600, textDecoration:'underline'}}>Hoteles en Jávea</a>
