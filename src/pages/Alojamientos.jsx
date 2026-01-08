@@ -49,10 +49,7 @@ const Alojamientos = () => (
         <a href="https://drive.google.com/file/d/1IrAmh0g2cd4Wmn6VTkwo14tPBmSQm5MB/view?usp=sharing" target="_blank" rel="noopener noreferrer" style={{color:'#1B5583', fontWeight:600, textDecoration:'underline'}}>Hoteles en Denia</a>
       </li>
       <li style={{textAlign:'center'}}>
-        <a href="https://drive.google.com/your-link-javea" target="_blank" rel="noopener noreferrer" style={{color:'#1B5583', fontWeight:600, textDecoration:'underline'}}>Hoteles en Jávea</a>
-      </li>
-      <li style={{textAlign:'center'}}>
-        <a href="https://drive.google.com/your-link-finca" target="_blank" rel="noopener noreferrer" style={{color:'#1B5583', fontWeight:600, textDecoration:'underline'}}>Hoteles cerca de la finca</a>
+        <a href="https://drive.google.com/your-link-javea" target="_blank" rel="noopener noreferrer" style={{color:'#1B5583', fontWeight:600, textDecoration:'underline'}}>Hoteles en Jávea y cerca de la finca</a>
       </li>
     </ul>
     {/*
