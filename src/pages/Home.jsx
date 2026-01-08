@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-const STORED_SHA256_HEX = "b5cd81ff8c5709145696be8ba622519aeea01b447625e67e402c62b633b7064f"; // Hash de la contraseña
+const STORED_SHA256_HEX = "a151f0b10dc9dc80fd4f794c71c3368ee1a51018ef92dfc64366064c3a9d0547"; // Hash de la contraseña
 
 async function sha256Hex(str) {
   const data = new TextEncoder().encode(str);
