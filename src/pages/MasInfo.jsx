@@ -3,7 +3,7 @@ import fotoTeteMasInfo from '../img/fototetemasinfo.jpeg';
 import './Home.css';
 
 const STORED_SHA256_HEX = "b5cd81ff8c5709145696be8ba622519aeea01b447625e67e402c62b633b7064f"; // Genera el hash de tu contraseña real
-const IBAN = "ES00 00 000000000 0000000000000000 000"; // Tu IBAN real
+const IBAN = "ES26 0073 0100 5402 1683 8738"; // Tu IBAN real
 
 async function sha256Hex(str) {
   const data = new TextEncoder().encode(str);
