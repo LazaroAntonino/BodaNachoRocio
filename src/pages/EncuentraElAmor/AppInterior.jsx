@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faHeart, faComments } from "@fortawesome/free-solid-svg-icons";
 import MiPerfil  from "./tabs/MiPerfil";
@@ -15,14 +15,6 @@ export default function AppInterior() {
   const [subTab, setSubTab]           = useState("buscar");
   const [openMatchId, setOpenMatchId] = useState(null);
   const newMatches = 0;
-
-  // Bloquear scroll del body mientras AppInterior está montado.
-  // Se libera automáticamente al hacer logout (desmontaje).
-  useEffect(() => {
-    const prev = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => { document.body.style.overflow = prev; };
-  }, []);
 
   const handleOpenChat = (matchId) => {
     setOpenMatchId(matchId);

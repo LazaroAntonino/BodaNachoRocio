@@ -92,8 +92,25 @@
     font-family: 'Poppins', 'Lato', sans-serif;
     display: flex;
     flex-direction: column;
+}
 
-    
+/* Cuando el tab "Encuentra el amor" está activo: el contenedor se bloquea a la
+   altura del viewport para que la bottom nav del juego quede pegada al fondo
+   y el body no pueda hacer scroll por encima. */
+.home-container.amor-active-root {
+    min-height: 0;
+    height: 100vh;        /* fallback */
+    height: 100dvh;        /* dynamic viewport: se ajusta con barras móviles */
+    max-height: 100dvh;
+    overflow: hidden;
+}
+
+/* Suprime el scroll del body cuando estamos en el tab amor */
+body:has(.amor-active-root) {
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
 .pastel-navbar {
     width: 100%;
     background: linear-gradient(90deg, #eaf3fa 0%, #d2e3f3 100%);
@@ -270,7 +287,6 @@
     .home-content {
         padding: 1.2rem 0.3rem 1rem 0.3rem;
     }
-}
 }
 
 /* Caja central */

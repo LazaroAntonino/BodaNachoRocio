@@ -145,7 +145,7 @@ export default function Mensajes({ openMatchId, onChatOpened }) {
 
       {loading ? (
         <div className="amor-buscar-loading">
-          <div className="amor-spinner" style={{ width: 40, height: 40, borderWidth: 4 }} />
+          <div className="amor-spinner amor-spinner--md" />
         </div>
       ) : (
         <MatchList matches={matches} onSelect={setSelectedMatch} userId={user.id} />

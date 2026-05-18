@@ -119,7 +119,7 @@ function CardStack({ onOpenChat }) {
   if (loading) {
     return (
       <div className="amor-buscar-loading">
-        <div className="amor-spinner" style={{ width: 48, height: 48, borderWidth: 5 }} />
+        <div className="amor-spinner amor-spinner--lg" />
       </div>
     );
   }

@@ -67,21 +67,16 @@ export default function MiPerfil() {
 
   return (
     <div className="amor-onboarding-wrapper">
-      <h2 className="amor-title" style={{ marginBottom: 0 }}>Mi perfil 👤</h2>
+      <h2 className="amor-title">Mi perfil 👤</h2>
 
       {/* ── Foto ── */}
-      <div className="amor-onboarding-section" style={{ alignItems: "center" }}>
+      <div className="amor-onboarding-section amor-onboarding-section--center">
         <div className="amor-photo-area">
-          <div className="amor-photo-preview-wrap" style={{ width: 140, height: 140 }}>
+          <div className="amor-photo-preview-wrap amor-photo-preview-wrap--sm">
             {fotoUrl ? (
-              <img
-                src={fotoUrl}
-                alt="Tu foto"
-                className="amor-photo-preview"
-                style={{ width: 140, height: 140 }}
-              />
+              <img src={fotoUrl} alt="Tu foto" className="amor-photo-preview" />
             ) : (
-              <div className="amor-photo-placeholder" style={{ width: 140, height: 140 }}>📷</div>
+              <div className="amor-photo-placeholder">📷</div>
             )}
             {uploading && (
               <div className="amor-photo-spinner">
@@ -98,7 +93,7 @@ export default function MiPerfil() {
             accept="image/*"
             capture="user"
             onChange={handleFileChange}
-            style={{ display: "none" }}
+            className="amor-visually-hidden"
             disabled={uploading}
           />
         </div>
@@ -158,8 +153,7 @@ export default function MiPerfil() {
       {/* ── Descripción ── */}
       <div className="amor-onboarding-section">
         <label className="amor-onboarding-label" htmlFor="perfil-desc">
-          Sobre mí{" "}
-          <span style={{ fontWeight: 400, fontSize: "0.88rem" }}>(opcional)</span>
+          Sobre mí <span className="amor-label-hint">(opcional)</span>
         </label>
         <div className="amor-textarea-wrap">
           <textarea
@@ -178,17 +172,7 @@ export default function MiPerfil() {
 
       {/* ── Feedback ── */}
       {error && <p className="amor-error">{error}</p>}
-      {saved && (
-        <p style={{
-          color: "#2e7d52",
-          fontFamily: "'Lato', sans-serif",
-          fontSize: "0.95rem",
-          textAlign: "center",
-          margin: 0,
-        }}>
-          ✓ Guardado
-        </p>
-      )}
+      {saved && <p className="amor-saved-msg">✓ Guardado</p>}
 
       {/* ── Guardar ── */}
       <button
@@ -204,18 +188,7 @@ export default function MiPerfil() {
       <button
         type="button"
         onClick={logout}
-        style={{
-          background: "none",
-          border: "none",
-          color: "#b00020",
-          fontFamily: "'Lato', sans-serif",
-          fontSize: "0.97rem",
-          cursor: "pointer",
-          padding: "0.5rem 1rem",
-          minHeight: 44,
-          marginTop: "0.5rem",
-          opacity: 0.8,
-        }}
+        className="amor-logout-btn"
       >
         Cerrar sesión
       </button>

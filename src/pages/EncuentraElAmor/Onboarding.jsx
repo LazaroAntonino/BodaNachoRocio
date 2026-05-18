@@ -58,7 +58,7 @@ export default function Onboarding() {
 
   return (
     <div className="amor-onboarding-wrapper">
-      <h2 className="amor-title" style={{ marginBottom: 0 }}>Tu perfil 💘</h2>
+      <h2 className="amor-title">Tu perfil 💘</h2>
 
       {/* ── Foto ── */}
       <div className="amor-onboarding-section">
@@ -85,7 +85,7 @@ export default function Onboarding() {
             accept="image/*"
             capture="user"
             onChange={handleFileChange}
-            style={{ display: "none" }}
+            className="amor-visually-hidden"
             disabled={uploading}
           />
         </div>
@@ -148,8 +148,7 @@ export default function Onboarding() {
       {/* ── Descripción ── */}
       <div className="amor-onboarding-section">
         <label className="amor-onboarding-label" htmlFor="amor-desc">
-          Cuéntanos algo de ti{" "}
-          <span style={{ fontWeight: 400, fontSize: "0.88rem" }}>(opcional)</span>
+          Cuéntanos algo de ti <span className="amor-label-hint">(opcional)</span>
         </label>
         <div className="amor-textarea-wrap">
           <textarea

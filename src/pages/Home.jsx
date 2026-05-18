@@ -209,7 +209,7 @@ export const Home = () => {
         </div>
       )}
 			{!showModal && (
-        <div className="home-container d-flex flex-column min-vh-100">
+        <div className={`home-container d-flex flex-column${active === "amor" ? " amor-active-root" : " min-vh-100"}`}>
           <nav className="navbar pastel-navbar navbar-expand-xl">
             <div className="container-fluid">
                       <a href="/" className="navbar-logo me-4" style={{textDecoration:'none'}}>
