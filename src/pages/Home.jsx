@@ -15,6 +15,7 @@ import { Alojamientos } from "./Alojamientos";
 import { Ubicacion } from "./Ubicacion";
 import MasInfo from "./MasInfo";
 import CuandoDonde from "./CuandoDonde";
+import EncuentraElAmor from "./EncuentraElAmor/EncuentraElAmor";
 import CartaRoTete from "../img/cartaRoTeteSinFondo.png";
 import logoTete from "../img/logotetero.png";
 
@@ -72,6 +73,8 @@ export const Home = () => {
          return <Ubicacion />;
        case "masinfo":
          return <MasInfo />;
+       case "amor":
+         return <EncuentraElAmor />;
        case "contacto":
          return <div className="section-placeholder">Contáctanos (próximamente)</div>;
        default:
@@ -233,13 +236,16 @@ export const Home = () => {
                     <button className={`nav-link pastel-link ${active === "alojamientos" ? "active" : ""}`} onClick={() => handleNavClick("alojamientos")}>Alojamientos</button>
                   </li>
                   <li className="nav-item">
+                    <button className={`nav-link pastel-link ${active === "amor" ? "active" : ""}`} onClick={() => handleNavClick("amor")}>Encuentra el amor 💘</button>
+                  </li>
+                  <li className="nav-item">
                     <button className={`nav-link pastel-link ${active === "masinfo" ? "active" : ""}`} onClick={() => handleNavClick("masinfo")}>Más información</button>
                   </li>
                 </ul>
               </div>
             </div>
           </nav>
-          <main className="home-content container-fluid px-2 px-md-4 py-3 flex-grow-1">
+          <main className={`home-content container-fluid flex-grow-1${active === "amor" ? " p-0 overflow-hidden d-flex flex-column" : " px-2 px-md-4 py-3"}`} style={active === "amor" ? { minHeight: 0 } : undefined}>
             {renderSection()}
           </main>
         </div>

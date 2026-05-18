@@ -1,0 +1,1356 @@
+/* ===================================================
+   EncuentraElAmor — estilos con prefijo .amor-
+   =================================================== */
+
+/* La página /amor llena el espacio que le da el <main> de Home (debajo del navbar) */
+.amor-page-root {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--azul-crema-1, #eaf3fa);
+}
+
+/* Prevenir overflow horizontal en toda la feature */
+.amor-auth-wrapper,
+.amor-onboarding-wrapper,
+.amor-app-layout,
+.amor-buscar-wrapper,
+.amor-countdown-wrapper,
+.amor-mensajes-wrapper {
+  box-sizing: border-box;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* ---------- Wrapper general ---------- */
+.amor-auth-wrapper {
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem 2rem;
+  background: linear-gradient(160deg, var(--azul-crema-1) 0%, var(--azul-crema-2) 100%);
+  border-radius: 1.4rem;
+}
+
+/* ---------- Título ---------- */
+.amor-title {
+  font-family: 'Playfair Display', serif;
+  color: var(--azul-crema-acento, #3a5d7c);
+  font-size: 1.7rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.01em;
+}
+
+/* ---------- Tab switch ---------- */
+.amor-tab-switch {
+  display: flex;
+  width: 100%;
+  max-width: 360px;
+  border-radius: 2rem;
+  overflow: hidden;
+  border: 2px solid var(--azul-crema-3, #b3cbe6);
+  margin-bottom: 1.5rem;
+}
+
+.amor-tab-btn {
+  flex: 1;
+  padding: 0.7rem 0;
+  min-height: 44px;
+  min-width: 44px;
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  border: none;
+  background: transparent;
+  color: var(--azul-crema-5, #4d7ca6);
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s;
+}
+
+.amor-tab-btn.active {
+  background: var(--azul-crema-5, #4d7ca6);
+  color: #fff;
+}
+
+/* ---------- Formulario ---------- */
+.amor-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  width: 100%;
+  max-width: 360px;
+}
+
+/* ---------- Input ---------- */
+.amor-input {
+  width: 100%;
+  min-height: 48px;
+  font-size: 16px; /* evita zoom iOS */
+  font-family: 'Lato', sans-serif;
+  color: var(--azul-crema-texto, #2a3a4d);
+  background: #fff;
+  border: 1px solid var(--azul-crema-3, #b3cbe6);
+  border-radius: 12px;
+  padding: 0.65rem 1rem;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  box-sizing: border-box;
+}
+
+.amor-input:focus {
+  border-color: var(--azul-crema-5, #4d7ca6);
+  box-shadow: 0 0 0 3px #4d7ca622;
+}
+
+.amor-input::placeholder {
+  color: var(--azul-crema-4, #7fa7cc);
+}
+
+/* ---------- Botón principal ---------- */
+.amor-btn-primary {
+  width: 100%;
+  min-height: 48px;
+  background: #fff;
+  color: var(--azul-crema-5, #4d7ca6);
+  border: 2px solid var(--azul-crema-5, #4d7ca6);
+  border-radius: 2rem;
+  padding: 0.7rem 1rem;
+  font-size: 1.08rem;
+  font-family: 'Playwrite France Traditionnelle', cursive;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px #7fa7cc33;
+  margin-top: 0.3rem;
+}
+
+.amor-btn-primary:hover:not(:disabled) {
+  background: var(--azul-crema-2, #d2e3f3);
+  box-shadow: 0 4px 18px #b3cbe655;
+}
+
+.amor-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- Error ---------- */
+.amor-error {
+  color: #b00020;
+  font-size: 0.93rem;
+  text-align: center;
+  margin-top: 0.2rem;
+  font-family: 'Lato', sans-serif;
+}
+
+/* ===================================================
+   Onboarding
+   =================================================== */
+
+.amor-onboarding-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem 3rem;
+  background: linear-gradient(160deg, var(--azul-crema-1) 0%, var(--azul-crema-2) 100%);
+  border-radius: 1.4rem;
+  gap: 1.4rem;
+  width: 100%;
+  box-sizing: border-box;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Sección individual dentro del onboarding */
+.amor-onboarding-section {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.amor-onboarding-label {
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--azul-crema-acento, #3a5d7c);
+}
+
+/* ---------- Preview foto circular ---------- */
+.amor-photo-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.amor-photo-preview-wrap {
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.amor-photo-preview {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--azul-crema-3, #b3cbe6);
+  background: var(--azul-crema-2, #d2e3f3);
+  display: block;
+}
+
+.amor-photo-placeholder {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 2px dashed var(--azul-crema-4, #7fa7cc);
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--azul-crema-4, #7fa7cc);
+  font-size: 2.8rem;
+}
+
+/* Spinner superpuesto mientras sube */
+.amor-photo-spinner {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.amor-spinner {
+  width: 38px;
+  height: 38px;
+  border: 4px solid var(--azul-crema-3);
+  border-top-color: var(--azul-crema-5);
+  border-radius: 50%;
+  animation: amor-spin 0.7s linear infinite;
+}
+
+@keyframes amor-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Label que actúa como botón file */
+.amor-file-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.5rem 1.4rem;
+  border: 2px solid var(--azul-crema-5, #4d7ca6);
+  border-radius: 2rem;
+  background: #fff;
+  color: var(--azul-crema-5, #4d7ca6);
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 0.97rem;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+
+.amor-file-label:hover {
+  background: var(--azul-crema-2);
+}
+
+/* ---------- Pill buttons (género / busca) ---------- */
+.amor-pill-group {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.amor-pill {
+  min-height: 44px;
+  padding: 0.5rem 1.4rem;
+  border-radius: 2rem;
+  border: 2px solid var(--azul-crema-3, #b3cbe6);
+  background: #fff;
+  color: var(--azul-crema-5, #4d7ca6);
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  font-size: 0.97rem;
+  cursor: pointer;
+  transition: background 0.18s, color 0.18s, border-color 0.18s;
+  flex: 1;
+  text-align: center;
+}
+
+.amor-pill.selected {
+  background: var(--azul-crema-5, #4d7ca6);
+  color: #fff;
+  border-color: var(--azul-crema-5, #4d7ca6);
+}
+
+/* ---------- Textarea + contador ---------- */
+.amor-textarea-wrap {
+  position: relative;
+}
+
+.amor-textarea {
+  width: 100%;
+  min-height: 100px;
+  font-size: 16px;
+  font-family: 'Lato', sans-serif;
+  color: var(--azul-crema-texto, #2a3a4d);
+  background: #fff;
+  border: 1px solid var(--azul-crema-3, #b3cbe6);
+  border-radius: 12px;
+  padding: 0.7rem 1rem 1.6rem;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+
+.amor-textarea:focus {
+  border-color: var(--azul-crema-5, #4d7ca6);
+  box-shadow: 0 0 0 3px #4d7ca622;
+}
+
+.amor-textarea-counter {
+  position: absolute;
+  bottom: 0.4rem;
+  right: 0.7rem;
+  font-size: 0.78rem;
+  color: var(--azul-crema-4, #7fa7cc);
+  font-family: 'Lato', sans-serif;
+  pointer-events: none;
+}
+
+/* ---------- Botón guardar ---------- */
+.amor-btn-save {
+  width: 100%;
+  max-width: 380px;
+  min-height: 52px;
+  background: var(--azul-crema-5, #4d7ca6);
+  color: #fff;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+  font-family: 'Playwrite France Traditionnelle', cursive;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px #7fa7cc33;
+  margin-top: 0.5rem;
+}
+
+.amor-btn-save:hover:not(:disabled) {
+  background: var(--azul-crema-acento, #3a5d7c);
+  box-shadow: 0 4px 18px #b3cbe655;
+}
+
+.amor-btn-save:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+/* ===================================================
+   AppInterior — layout + bottom nav
+   =================================================== */
+
+.amor-app-layout {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin: 0;
+}
+
+.amor-app-main {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Bottom nav ---------- */
+.amor-bottom-nav {
+  flex-shrink: 0;
+  display: flex;
+  background: #fff;
+  border-top: 1px solid var(--azul-crema-3, #b3cbe6);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  z-index: 200;
+  box-shadow: 0 -2px 12px rgba(77,124,166,0.08);
+}
+
+/* Clase helper: padding inferior seguro para elementos fijos en iOS */
+.amor-safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+.amor-nav-btn {
+  flex: 1;
+  min-height: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--azul-crema-4, #7fa7cc);
+  padding: 0.4rem 0;
+  transition: color 0.18s;
+  position: relative;
+}
+
+.amor-nav-btn.active {
+  color: var(--azul-crema-acento, #3a5d7c);
+}
+
+.amor-nav-btn svg,
+.amor-nav-btn i {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.amor-nav-label {
+  font-size: 0.72rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.amor-nav-btn.active .amor-nav-label {
+  font-weight: 700;
+}
+
+/* Badge mensajes nuevos */
+.amor-nav-badge {
+  position: absolute;
+  top: 6px;
+  right: calc(50% - 18px);
+  background: #e0375a;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 3px;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ===================================================
+   Buscar — cuenta atrás
+   =================================================== */
+
+.amor-countdown-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 2rem 1rem 2.5rem;
+  text-align: center;
+  gap: 1.6rem;
+}
+
+.amor-countdown-title {
+  font-family: 'Playfair Display', serif;
+  color: var(--azul-crema-acento, #3a5d7c);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.4;
+  max-width: 320px;
+  margin: 0;
+}
+
+.amor-countdown-emoji {
+  font-size: 3rem;
+  animation: amor-pulse 2s ease-in-out infinite;
+  display: block;
+  line-height: 1;
+}
+
+@keyframes amor-pulse {
+  0%, 100% { transform: scale(1);    opacity: 1;    }
+  50%       { transform: scale(1.2); opacity: 0.75; }
+}
+
+.amor-countdown-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 320px;
+}
+
+@media (min-width: 480px) {
+  .amor-countdown-grid {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 480px;
+  }
+}
+
+.amor-countdown-box {
+  background: var(--azul-crema-1, #eaf3fa);
+  border: 1px solid var(--azul-crema-3, #b3cbe6);
+  border-radius: 16px;
+  padding: 0.9rem 0.5rem 0.7rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.amor-countdown-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--azul-crema-5, #4d7ca6);
+  line-height: 1;
+  min-width: 2ch;
+  text-align: center;
+}
+
+.amor-countdown-lbl {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--azul-crema-4, #7fa7cc);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.amor-countdown-footer {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9rem;
+  color: var(--azul-crema-4, #7fa7cc);
+  margin: 0;
+}
+
+/* ===================================================
+   Buscar — tarjetas + botones
+   =================================================== */
+
+/* Wrapper: ocupa todo el espacio disponible en amor-app-main y centra el contenido */
+.amor-buscar-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  padding: 0.75rem 1rem 1rem;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+}
+
+/* Loading spinner centrado */
+.amor-buscar-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+}
+
+/* Empty state */
+.amor-buscar-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 1.2rem;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.amor-buscar-empty p {
+  font-family: 'Playfair Display', serif;
+  color: var(--azul-crema-acento, #3a5d7c);
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+/* ── Stack de tarjetas ── */
+.amor-card-stack {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  /* La tarjeta ocupa el espacio disponible menos los botones y algo de padding */
+  flex: 1;
+  min-height: 0;
+  max-height: 520px;
+  aspect-ratio: 3 / 4;
+}
+
+/* Tarjeta base */
+.amor-card {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(77,124,166,0.18);
+  background: var(--azul-crema-2);
+  will-change: transform, opacity;
+}
+
+/* Tarjeta activa (encima) */
+.amor-card--active {
+  z-index: 3;
+  transition: none; /* la animación la aplica la clase fly */
+}
+
+/* Tarjeta detrás (1 posición) */
+.amor-card--behind-1 {
+  z-index: 2;
+  transform: scale(0.95) translateY(10px);
+  filter: brightness(0.92);
+  pointer-events: none;
+}
+
+/* Tarjeta detrás (2 posiciones) */
+.amor-card--behind-2 {
+  z-index: 1;
+  transform: scale(0.90) translateY(20px);
+  filter: brightness(0.84);
+  pointer-events: none;
+}
+
+/* ── Animaciones de vuelo ── */
+.amor-card--fly-right {
+  animation: amor-fly-right 0.35s cubic-bezier(0.4, 0, 0.8, 1) forwards;
+}
+.amor-card--fly-left {
+  animation: amor-fly-left 0.35s cubic-bezier(0.4, 0, 0.8, 1) forwards;
+}
+
+@keyframes amor-fly-right {
+  0%   { transform: translateX(0)     rotate(0deg);   opacity: 1; }
+  100% { transform: translateX(130%)  rotate(22deg);  opacity: 0; }
+}
+@keyframes amor-fly-left {
+  0%   { transform: translateX(0)     rotate(0deg);   opacity: 1; }
+  100% { transform: translateX(-130%) rotate(-22deg); opacity: 0; }
+}
+
+/* ── Badge LIKE / NOPE ── */
+.amor-card-badge {
+  position: absolute;
+  top: 1.4rem;
+  z-index: 10;
+  font-family: 'Lato', sans-serif;
+  font-weight: 900;
+  font-size: 1.5rem;
+  letter-spacing: 0.06em;
+  padding: 0.3rem 0.9rem;
+  border-radius: 10px;
+  border: 3px solid;
+  text-transform: uppercase;
+  pointer-events: none;
+  opacity: 0;
+  animation: amor-badge-appear 0.15s ease forwards;
+}
+
+@keyframes amor-badge-appear {
+  to { opacity: 1; }
+}
+
+.amor-card-badge--like {
+  right: 1.2rem;
+  color: #21c55d;
+  border-color: #21c55d;
+  background: rgba(255,255,255,0.15);
+  transform: rotate(12deg);
+}
+
+.amor-card-badge--nope {
+  left: 1.2rem;
+  color: #ef4444;
+  border-color: #ef4444;
+  background: rgba(255,255,255,0.15);
+  transform: rotate(-12deg);
+}
+
+.amor-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Gradient overlay */
+.amor-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.75) 0%,
+    rgba(0,0,0,0.25) 40%,
+    transparent 65%
+  );
+  border-radius: inherit;
+}
+
+/* Info sobre la imagen */
+.amor-card-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.2rem 1.1rem 1rem;
+  z-index: 2;
+}
+
+.amor-card-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  margin: 0 0 0.3rem;
+  line-height: 1.2;
+}
+
+.amor-card-desc {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.93rem;
+  color: rgba(255,255,255,0.9);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  line-height: 1.4;
+}
+
+/* ── Botones like/dislike ── */
+.amor-action-btns {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.amor-btn-action {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: 2.5px solid;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.7rem;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 3px 14px rgba(77,124,166,0.13);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.amor-btn-action:active:not(:disabled) {
+  transform: scale(0.88);
+}
+
+.amor-btn-action:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.amor-btn-dislike {
+  border-color: #e5e7eb;
+  color: #9ca3af;
+}
+.amor-btn-dislike:hover:not(:disabled) {
+  border-color: #ef4444;
+  color: #ef4444;
+  box-shadow: 0 4px 18px rgba(239,68,68,0.18);
+}
+
+.amor-btn-like {
+  border-color: var(--azul-crema-5, #4d7ca6);
+  color: #e74c3c;
+}
+.amor-btn-like:hover:not(:disabled) {
+  box-shadow: 0 4px 18px rgba(231,76,60,0.25);
+  transform: scale(1.08);
+}
+
+/* ===================================================
+   MatchAnimation
+   =================================================== */
+
+.amor-match-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--azul-crema-2) 0%, var(--azul-crema-4) 50%, #f5b7b1 100%);
+  background-size: 300% 300%;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  animation: amor-match-bg 4s ease infinite, amor-match-fade-in 0.3s ease forwards;
+  overflow: hidden;
+}
+
+@keyframes amor-match-bg {
+  0%   { background-position: 0% 50%;   }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%;   }
+}
+
+@keyframes amor-match-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Contenido central */
+.amor-match-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 2rem 1.5rem 2.5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: amor-match-scale-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both;
+}
+
+@keyframes amor-match-scale-in {
+  from { opacity: 0; transform: scale(0.4); }
+  to   { opacity: 1; transform: scale(1);   }
+}
+
+/* Título */
+.amor-match-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 4px 24px rgba(0,0,0,0.25), 0 1px 0 rgba(255,255,255,0.3);
+  margin: 0;
+  letter-spacing: 0.03em;
+  line-height: 1.1;
+}
+
+/* Fotos + corazón */
+.amor-match-photos {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.amor-match-avatar {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #fff;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+  background: var(--azul-crema-2);
+}
+
+/* Reducir avatares en pantallas pequeñas para evitar desbordamiento */
+@media (max-width: 380px) {
+  .amor-match-avatar {
+    width: 100px;
+    height: 100px;
+  }
+  .amor-match-title {
+    font-size: 2.2rem;
+  }
+  .amor-match-heart {
+    font-size: 1.6rem;
+  }
+}
+
+.amor-match-avatar--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--azul-crema-5);
+  font-size: 3rem;
+}
+
+.amor-match-heart {
+  font-size: 2.2rem;
+  animation: amor-pulse 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 2px 6px rgba(231,76,60,0.4));
+}
+
+/* Nombres */
+.amor-match-names {
+  font-family: 'Playwrite France Traditionnelle', cursive;
+  font-size: 1.25rem;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  margin: 0;
+}
+
+/* Botones */
+.amor-match-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  width: 100%;
+  max-width: 280px;
+}
+
+.amor-match-btn-primary {
+  min-height: 50px;
+  background: #fff;
+  color: var(--azul-crema-5, #4d7ca6);
+  border: 2.5px solid var(--azul-crema-5, #4d7ca6);
+  border-radius: 2rem;
+  font-family: 'Playwrite France Traditionnelle', cursive;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 12px rgba(77,124,166,0.2);
+}
+
+.amor-match-btn-primary:hover {
+  background: var(--azul-crema-1);
+  box-shadow: 0 4px 18px rgba(77,124,166,0.3);
+}
+
+.amor-match-btn-secondary {
+  background: none;
+  border: none;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.97rem;
+  text-decoration: underline;
+  cursor: pointer;
+  min-height: 44px;
+  opacity: 0.9;
+}
+
+.amor-match-btn-secondary:hover { opacity: 1; }
+
+/* ===================================================
+   Mensajes — lista de conversaciones
+   =================================================== */
+
+.amor-mensajes-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
+}
+
+.amor-mensajes-header {
+  padding: 0.9rem 1rem 0.6rem;
+  background: #fff;
+  border-bottom: 1px solid var(--azul-crema-3, #b3cbe6);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.amor-mensajes-title {
+  font-family: 'Playfair Display', serif;
+  color: var(--azul-crema-acento, #3a5d7c);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Empty state */
+.amor-mensajes-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  color: var(--azul-crema-4, #7fa7cc);
+  font-size: 1.05rem;
+}
+
+/* Lista */
+.amor-match-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Item de conversación */
+.amor-match-item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-height: 72px;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-bottom: 1px solid var(--azul-crema-3, #b3cbe6);
+  background: #fff;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+
+.amor-match-item:last-child {
+  border-bottom: none;
+}
+
+.amor-match-item:active {
+  background: var(--azul-crema-1, #eaf3fa);
+}
+
+/* Avatar */
+.amor-match-item-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--azul-crema-2, #d2e3f3);
+  background: var(--azul-crema-2);
+}
+
+.amor-match-item-avatar--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--azul-crema-5);
+  font-size: 1.2rem;
+}
+
+/* Texto central */
+.amor-match-item-body {
+  flex: 1;
+  min-width: 0; /* permite truncado */
+}
+
+.amor-match-item-name {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.97rem;
+  font-weight: 600;
+  color: var(--azul-crema-texto, #2a3a4d);
+  margin: 0 0 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.amor-match-item-name.unread {
+  font-weight: 700;
+}
+
+.amor-match-item-preview {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.84rem;
+  color: #8a9bb0;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.amor-match-item-preview.unread {
+  color: var(--azul-crema-texto, #2a3a4d);
+  font-weight: 600;
+}
+
+/* Columna derecha: fecha + dot */
+.amor-match-item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.amor-match-item-time {
+  font-family: 'Lato', sans-serif;
+  font-size: 0.75rem;
+  color: #aab4c0;
+  white-space: nowrap;
+}
+
+.amor-match-item-time.unread {
+  color: var(--azul-crema-5, #4d7ca6);
+  font-weight: 700;
+}
+
+.amor-unread-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--azul-crema-5, #4d7ca6);
+}
+
+/* ── Confetti de corazones ── */
+.amor-confetti {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.amor-confetti-piece {
+  position: absolute;
+  top: -10vh;
+  font-size: 1.4rem;
+  animation: amor-confetti-fall linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes amor-confetti-fall {
+  0%   { transform: translateY(-10vh) rotate(0deg);   opacity: 1;   }
+  80%  { opacity: 0.8; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0;   }
+}
+
+/* ===================================================
+   Chat
+   =================================================== */
+
+.amor-chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: var(--azul-crema-1);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Header */
+.amor-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  background: #fff;
+  border-bottom: 1px solid var(--azul-crema-2);
+  flex-shrink: 0;
+  min-height: 56px;
+}
+
+.amor-chat-back-btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--azul-crema-5);
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+.amor-chat-back-btn:active { background: var(--azul-crema-2); }
+
+.amor-chat-header-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--azul-crema-2);
+}
+
+.amor-chat-header-avatar-placeholder {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--azul-crema-3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--azul-crema-5);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.amor-chat-header-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.amor-chat-header-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--azul-crema-texto);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Message list */
+.amor-chat-messages {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 0.75rem 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  -webkit-overflow-scrolling: touch;
+}
+
+.amor-chat-bubble-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.amor-chat-bubble-group + .amor-chat-bubble-group {
+  margin-top: 12px;
+}
+
+.amor-chat-bubble-row {
+  display: flex;
+  margin-top: 4px;
+}
+.amor-chat-bubble-row:first-child { margin-top: 0; }
+
+.amor-chat-bubble-row--mine  { justify-content: flex-end; }
+.amor-chat-bubble-row--theirs { justify-content: flex-start; }
+
+.amor-chat-bubble {
+  max-width: 75%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  word-break: break-word;
+  white-space: pre-wrap;
+}
+
+.amor-chat-bubble--mine {
+  background: var(--azul-crema-5);
+  color: #fff;
+  border-radius: 18px 18px 4px 18px;
+}
+
+.amor-chat-bubble--theirs {
+  background: var(--azul-crema-2);
+  color: var(--azul-crema-texto);
+  border-radius: 18px 18px 18px 4px;
+}
+
+.amor-chat-bubble--tmp {
+  opacity: 0.65;
+}
+
+.amor-chat-group-time {
+  font-size: 0.7rem;
+  color: #999;
+  margin-top: 3px;
+  padding: 0 2px;
+}
+.amor-chat-group-time--mine  { text-align: right; }
+.amor-chat-group-time--theirs { text-align: left; }
+
+/* Footer / input */
+.amor-chat-footer {
+  flex-shrink: 0;
+  background: #fff;
+  border-top: 1px solid var(--azul-crema-2);
+  padding: 0.5rem 0.75rem;
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px));
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.amor-chat-textarea {
+  flex: 1;
+  resize: none;
+  border: 1.5px solid var(--azul-crema-3);
+  border-radius: 20px;
+  padding: 0.55rem 0.9rem;
+  font-size: 16px; /* prevents iOS zoom */
+  font-family: 'Lato', sans-serif;
+  line-height: 1.4;
+  color: var(--azul-crema-texto);
+  background: var(--azul-crema-1);
+  outline: none;
+  max-height: calc(1.4em * 4 + 1.1rem); /* ~4 lines */
+  overflow-y: hidden;
+  box-sizing: border-box;
+}
+.amor-chat-textarea:focus {
+  border-color: var(--azul-crema-5);
+}
+
+.amor-chat-send-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--azul-crema-5);
+  color: #fff;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.amor-chat-send-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.amor-chat-send-btn:not(:disabled):active {
+  transform: scale(0.92);
+}
+
+.amor-chat-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #aaa;
+  font-size: 0.9rem;
+  gap: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.amor-chat-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: var(--azul-crema-5);
+}
