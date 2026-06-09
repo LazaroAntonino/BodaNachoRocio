@@ -1,6 +1,38 @@
 import React from "react";
 import './Home.css';
 
+const sectionCardStyle = {
+  background: 'rgba(70, 130, 180, 0.07)',
+  borderRadius: '1.2rem',
+  padding: '1.5rem 1.7rem',
+  marginBottom: '1.8rem',
+};
+
+const sectionTitleStyle = {
+  fontFamily: 'Playfair Display, serif',
+  color: '#1B5583',
+  fontWeight: 700,
+  fontSize: '1.15rem',
+  marginBottom: '1rem',
+  letterSpacing: '0.05em',
+  display: 'flex',
+  alignItems: 'center',
+  gap: '0.5rem',
+};
+
+const bodyTextStyle = {
+  fontSize: '1.05rem',
+  color: '#2d5a7a',
+  lineHeight: 1.75,
+  marginBottom: '0.85rem',
+};
+
+const returnCardStyle = {
+  background: 'rgba(27, 85, 131, 0.07)',
+  borderRadius: '0.9rem',
+  padding: '1rem 1.3rem',
+  borderLeft: '4px solid #4682B4',
+};
 
 const HorariosAutobuses = () => (
   <div className="horariosautobuses-textos" style={{
@@ -13,61 +45,94 @@ const HorariosAutobuses = () => (
     color: '#1B5583',
     fontFamily: 'Lato, sans-serif',
   }}>
+
+    {/* Título */}
     <h2 style={{
       fontFamily: 'Playfair Display, serif',
       color: '#1B5583',
       fontWeight: 700,
       fontSize: '2rem',
-      marginBottom: '3rem',
+      marginBottom: '0.4rem',
       letterSpacing: '0.01em',
       textAlign: 'center',
-    }}>HORARIOS DE AUTOBUSES</h2>
-    <p style={{
-      fontSize: '1.08rem',
-      color: '#4682B4',
-      marginBottom: '2rem',
-      textAlign: 'center',
-    }}>
-      Vuestra comodidad es nuestra prioridad, así que hemos contratado autobuses que os llevarán de un punto a otro, sin que tengáis que preocuparos del coche.
-    </p>
-    <ul style={{
-      background:'transparent',
-      borderRadius:'1.2rem',
-      boxShadow:'none',
-      padding:'1.2rem 1.5rem',
-      color:'#1B5583',
-      fontSize:'1.08rem',
-      listStyle:'none',
-      margin:'0 auto',
-      maxWidth:600,
-      display:'flex',
-      flexDirection:'column',
-      gap:'3rem'
-    }}>
-      <li style={{textAlign:'center'}}>
-        <span style={{display:'block', textAlign:'center', marginBottom:'1rem'}}>
-          <b style={{color:'#4682B4'}}>Denia - Jávea</b>
-        </span>
-        El autobús saldrá a las <b>11:30</b> desde el hotel <b>La Posada del Mar</b>.
-      </li>
-      <li style={{textAlign:'center'}}>
-        <span style={{display:'block', textAlign:'center', marginBottom:'1rem'}}>
-          <b style={{color:'#4682B4'}}>Iglesia de Jávea - Casa Santonja</b>
-        </span>
-        Al salir de la iglesia, los autobuses os estarán esperando en la parada de la <b>Ronda Norte</b>, junto a la oficina de Correos.
-      </li>
-      <li style={{textAlign:'center'}}>
-        <span style={{display:'block', textAlign:'center', marginBottom:'1rem'}}>
-          <b style={{color:'#4682B4'}}>Casa Santonja - Denia - Jávea</b>
-        </span>
-        La fiesta acabará a la <b>1:00h</b>, pero para aquellos que necesiten volver antes o que quieran renunciar a las horas de fiesta más apasionantes de sus vidas, habrá un primer turno de autobuses.<br /><br />La primera parada será en el hotel <b>La Posada del Mar (Denia)</b> y la segunda en la <b>Playa del Arenal (Jávea)</b>.
-      </li>
-    </ul>
-    {/*
-      - El diseño sigue la paleta blanco, Azul Capri y Azul Acero.
-      - Estructura y estilos igual que Asistencia, Alojamientos y MasInfo.
-      - Responsive y visualmente consistente.
-    */}
+      paddingBottom: '5rem',
+    }}>AUTOBUSES</h2>
+
+    {/* IDA */}
+    <div style={sectionCardStyle}>
+      <p style={bodyTextStyle}>
+        Para los que os alojáis en el <b>Port Denia</b>, el autobús saldrá a las <b>10:45</b> de la parada del hotel, por lo que conviene que estéis unos minutos antes allí.
+      </p>
+      <p style={bodyTextStyle}>
+        Para todos los demás, el autobús saldrá puntual a las <b>11:00</b> de la zona de parking de autobuses que está delante del hotel{' '}
+        <b>La Posada del Mar</b> (por lo que también conviene llegar con antelación). Ésta es la dirección exacta:{' '}
+        <span style={{ fontStyle: 'italic', color: '#1B5583' }}>APARCAMIENTO, CV-730, 1, 03700 Dénia, Alicante</span>
+        {' — '}
+        <a
+          href="https://maps.app.goo.gl/kZrjsiGBc4VD823z9?g_st=aw"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: '#4682B4', fontWeight: 600, textDecoration: 'underline' }}
+        >
+          Ver en Google Maps
+        </a>
+      </p>
+      <p style={{ ...bodyTextStyle, marginBottom: 0 }}>
+        A los que estáis en <b>Jávea</b>, tened en cuenta que <b>no saldrá ningún autobús del Arenal</b> a la iglesia.
+      </p>
+    </div>
+
+    {/* TRAYECTO IGLESIA → FINCA */}
+    <div style={sectionCardStyle}>
+      <p style={{ ...bodyTextStyle, marginBottom: 0 }}>
+        Tendréis que coger los autobuses en el mismo sitio en el que os dejaron para ir a la iglesia, en la{' '}
+        <b>Calle Ronda Norte</b>.
+      </p>
+    </div>
+
+    {/* VUELTA */}
+    <div style={sectionCardStyle}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
+
+        {/* 1er autobús */}
+        <div style={returnCardStyle}>
+          <div style={{
+            fontFamily: 'Playfair Display, serif',
+            fontWeight: 700,
+            color: '#1B5583',
+            fontSize: '1.05rem',
+            marginBottom: '0.4rem',
+            letterSpacing: '0.02em',
+          }}>
+            🕙 Primer autobús — 22:30
+          </div>
+          <div style={{ fontSize: '1.03rem', color: '#2d5a7a', lineHeight: 1.7 }}>
+            <b>Casa Santonja → Denia:</b> Un autobús volverá a Denia a las <b>22:30</b>, con parada delante del hotel{' '}
+            <b>La Posada del Mar</b>.
+          </div>
+        </div>
+
+        {/* 2° autobús */}
+        <div style={returnCardStyle}>
+          <div style={{
+            fontFamily: 'Playfair Display, serif',
+            fontWeight: 700,
+            color: '#1B5583',
+            fontSize: '1.05rem',
+            marginBottom: '0.4rem',
+            letterSpacing: '0.02em',
+          }}>
+            🕧 Segundo autobús — 0:40
+          </div>
+          <div style={{ fontSize: '1.03rem', color: '#2d5a7a', lineHeight: 1.7 }}>
+            <b>Casa Santonja → Denia → Jávea:</b> El siguiente volverá a Denia sobre las <b>0:40</b>, con parada
+            delante del hotel <b>La Posada del Mar</b> y en el <b>Arenal de Jávea</b>.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
   </div>
 );
 
