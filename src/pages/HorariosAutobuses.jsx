@@ -60,6 +60,9 @@ const HorariosAutobuses = () => (
 
     {/* IDA */}
     <div style={sectionCardStyle}>
+      <div style={sectionTitleStyle}>
+         IDA
+      </div>
       <p style={bodyTextStyle}>
         Para los que os alojáis en el <b>Port Denia</b>, el autobús saldrá a las <b>10:45</b> de la parada del hotel, por lo que conviene que estéis unos minutos antes allí.
       </p>
@@ -84,6 +87,9 @@ const HorariosAutobuses = () => (
 
     {/* TRAYECTO IGLESIA → FINCA */}
     <div style={sectionCardStyle}>
+      <div style={sectionTitleStyle}>
+         TRAYECTO IGLESIA → FINCA
+      </div>
       <p style={{ ...bodyTextStyle, marginBottom: 0 }}>
         Tendréis que coger los autobuses en el mismo sitio en el que os dejaron para ir a la iglesia, en la{' '}
         <b>Calle Ronda Norte</b>.
@@ -92,6 +98,9 @@ const HorariosAutobuses = () => (
 
     {/* VUELTA */}
     <div style={sectionCardStyle}>
+      <div style={sectionTitleStyle}>
+         VUELTA
+      </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
 
         {/* 1er autobús */}
