@@ -44,7 +44,7 @@ const CuandoDonde = () => (
           className="img-sanbartolome"
         />
         <div style={{ textAlign: 'center', margin: '1.5rem auto 0 auto', color: '#1B5583', fontSize: '1.08rem', maxWidth: '95%', lineHeight: '1.7' }}>
-          La ceremonia religiosa tendrá lugar en la Iglesia de San Bartolomé, el 13 de junio a las 12:30 del mediodía.
+          La ceremonia religiosa tendrá lugar en la Iglesia de San Bartolomé, el 13 de junio a las 12:15 del mediodía.
         </div>
         <div style={{ margin: '1.2rem auto 0 auto', maxWidth: '95%' }}>
           <iframe
